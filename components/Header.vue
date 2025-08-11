@@ -34,6 +34,7 @@
             md:flex
             md:justify-between
             md:items-center
+            md:py-3
             ">
 
                 <div class="
@@ -72,7 +73,7 @@
             md:max-w-full
             md:h-auto
             md:bg-transparent
-            md:justify-center
+            md:justify-between
             md:gap-4
             ">
 
@@ -86,10 +87,16 @@
                    font-bold
                    text-black
                    mb-1
-                   ">হিলফুল ফুজুল ফাউন্ডেশন</h2>
+                   ">Care2Training</h2>
                         <p class="
                    text-[10px]
-                   ">ইসলামের আদর্শে, সমাজের কল্যাণে</p>
+                   ">
+                        Study Abroad
+                    </p>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <img class="w-20" :src="logoMain" alt="logo">
                     </div>
 
                     <ul class="
@@ -97,7 +104,7 @@
              px-6
              flex
              flex-col
-             gap-1
+             gap-1/2
              md:flex-row
              md:gap-1
              md:py-1
@@ -108,39 +115,111 @@
                     relative
                     ">
                             <NuxtLink :class="[
-                                'transition-all text-black ease-in-out duration-300 py-3 md:px-6 pl-3 w-full block',
+                                'list_item',
                                 $route.path === '/'
                                     ? 'activeRoute'
-                                    : 'hover:bg-green-700 hover:text-white hover:rounded-md md:hover:bg-green-100/20  md:hover:text-white'
+                                    : 'list_item_hover'
                             ]" to="/" @click="closeMenu">
                                 Home
                             </NuxtLink>
                         </li>
+                        
                         <li class="
                     relative
                     ">
                             <NuxtLink :class="[
-                                'transition-all text-black ease-in-out duration-300 py-3 md:px-6 pl-3 w-full block',
+                                'list_item',
                                 $route.path === '/about'
                                     ? 'activeRoute'
-                                    : 'hover:bg-green-700 hover:text-white hover:rounded-md md:hover:bg-green-100/20  md:hover:text-white'
+                                    : 'list_item_hover'
                             ]" to="/about"  @click="closeMenu">
                             
                                 About 
                             </NuxtLink>
                         </li>
+                        
                         <li class="
                     relative
                     ">
                             <NuxtLink :class="[
-                                'transition-all ease-in-out text-black duration-300 py-3 md:px-6 pl-3 w-full block',
+                                'list_item',
+                                $route.path === '/services'
+                                    ? 'activeRoute'
+                                    : 'list_item_hover'
+                            ]" to="/services"  @click="closeMenu">
+                            
+                                Country 
+                            </NuxtLink>
+                        </li>
+                        
+                        <li class="
+                    relative
+                    ">
+                            <NuxtLink :class="[
+                                'list_item',
+                                $route.path === '/services'
+                                    ? 'activeRoute'
+                                    : 'list_item_hover'
+                            ]" to="/services"  @click="closeMenu">
+                            
+                                Services 
+                            </NuxtLink>
+                        </li>
+                        
+                        <li class="
+                    relative
+                    ">
+                            <NuxtLink :class="[
+                                'list_item',
+                                $route.path === '/events'
+                                    ? 'activeRoute'
+                                    : 'list_item_hover'
+                            ]" to="/events"  @click="closeMenu">
+                            
+                                Events 
+                            </NuxtLink>
+                        </li>
+                        
+                        <li class="
+                    relative
+                    ">
+                            <NuxtLink :class="[
+                                'list_item',
+                                $route.path === '/blogs'
+                                    ? 'activeRoute'
+                                    : 'list_item_hover'
+                            ]" to="/blogs"  @click="closeMenu">
+                            
+                                Blogs 
+                            </NuxtLink>
+                        </li>
+                        
+                    
+                        <li class="
+                    relative
+                    ">
+                            <NuxtLink :class="[
+                                'list_item',
                                 $route.path === '/contact'
                                     ? 'activeRoute'
-                                    : 'hover:bg-green-700 hover:text-white hover:rounded-md md:hover:bg-green-100/20  md:hover:text-white'
+                                    : 'list_item_hover'
                             ]" to="/contact" @click="closeMenu">
                                 Contact</NuxtLink>
                         </li>
+                    
+                        <li class="
+                    relative
+                    ">
+                            <NuxtLink :class="[
+                                'list_item',
+                                $route.path === ''
+                                    ? 'activeRoute'
+                                    : 'list_item_hover'
+                            ]" to="" @click="closeMenu">
+                                Book an Appointment</NuxtLink>
+                        </li>
                     </ul>
+                    
                 </div>
 
             </nav>
@@ -149,11 +228,11 @@
 </template>
 
 <script lang="ts" setup>
+import logo from '~/assets/images/logo.webp';
+
 const route = useRoute();
-
 const isOpen = ref(false);
-
-
+const logoMain = ref(logo);
 
 const toggleMenu = () => {
     const menu = document.querySelector('#menu');
