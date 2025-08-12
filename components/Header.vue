@@ -1,8 +1,6 @@
 <template>
-    <!---- Topbar -->
     <div class="
     bg-white
-    py-6
     md:py-0
     shadow-md
     border-b
@@ -10,27 +8,95 @@
     md:border-b-0
     md:shadow-none
     ">
-        <div class="container w-11/12 mx-auto">
+
+        <div class="
+        border-b-[1px]
+        border-gray-300
+        py-2
+       
+        ">
+            <!--topbar main-->
+            <div class="
+            container
+            w-11/12
+            mx-auto
+            flex
+            items-center
+            justify-between
+            md:flex-row-reverse
+            ">
+                <!--social icons-->
+                <ul class="
+                    flex
+                    gap-2
+                    items-center
+                    justify-center
+                    ">
+                    <li v-for="item in socialIcons">
+                        <a class="
+                            social_icon
+                            " :href="item.href">
+                            <i :class="item.icon"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!--address & appointment-->
+                <ul class="
+                    flex
+                    md:gap-5
+                    ">
+                    <li class="
+                    relative
+                    md:hidden
+                    ">
+                        <NuxtLink :class="[
+                            'list_item appointment_btn ',
+                            $route.path === ap_btn.href
+                                ? 'ap_btn_active'
+                                : 'list_item_hover'
+                        ]" :to="ap_btn.href" @click="closeMenu">
+                            {{ ap_btn.name }}</NuxtLink>
+                    </li>
+                    
+                    <li v-for="item in details" class="
+                    hidden
+                    md:block
+                    ">
+                        <a class="
+                        text-sm
+                        text-gray-700
+                        " href="#">
+                            <i :class="item.icon"></i>
+                            <span class="ml-2">{{ item.title }}</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="md:hidden container w-11/12 mx-auto">
             <div class="
             flex
             items-center
             justify-between
+            py-5
             ">
                 <div class="md:hidden">
                     <img class="w-12" :src="logoMain" alt="">
-                </div>    
-            
+                </div>
+
                 <div class="icon 
                     md:hidden
                     ">
-                        <a href="javascript:void(0)" @click="toggleMenu">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="size-8">
-                                <path fill-rule="evenodd"
-                                    d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
+                    <a href="javascript:void(0)" @click="toggleMenu">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
+                            <path fill-rule="evenodd"
+                                d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -106,10 +172,10 @@
                         <p class="
                    text-[10px]
                    ">
-                        Study Abroad
-                    </p>
+                            Study Abroad
+                        </p>
                     </div>
-                    
+
                     <div class="hidden md:block">
                         <img class="w-20" :src="logoMain" alt="logo">
                     </div>
@@ -126,8 +192,8 @@
              text-md
              md:items-center
             ">
-            
-            
+
+
                         <li v-for="item in navItems" class="
                     relative
                     ">
@@ -140,22 +206,22 @@
                                 {{ item.name }}
                             </NuxtLink>
                         </li>
-                        
-                    
+
+
                         <li class="
                     relative
                     ">
                             <NuxtLink :class="[
-                                'list_item appointment_btn',
+                                'list_item appointment_btn mt-3',
                                 $route.path === ap_btn.href
                                     ? 'ap_btn_active'
                                     : 'list_item_hover'
                             ]" :to="ap_btn.href" @click="closeMenu">
                                 {{ ap_btn.name }}</NuxtLink>
                         </li>
-                        
+
                     </ul>
-                    
+
                 </div>
 
             </nav>
@@ -184,6 +250,48 @@ const ap_btn = {
     href: '/contact',
 };
 
+const details = [
+    {
+        title: 'Panthapath, Dhaka',
+        icon: 'fa-solid fa-location-dot',
+    },
+    {
+        title: 'support@care2training.com',
+        icon: 'fa-solid fa-envelope',
+    },
+    {
+        title: '+8801712345678',
+        icon: 'fa-solid fa-phone',
+    },
+    {
+        title: '+8801712345678',
+        icon: 'fa-solid fa-phone',
+    },
+];
+
+const socialIcons = [
+    {
+        name: 'facebook',
+        icon: 'fa-brands fa-facebook-f',
+        href: '#',
+    },
+    {
+        name: 'twitter',
+        icon: 'fa-brands fa-twitter',
+        href: '#',
+    },
+    {
+        name: 'instagram',
+        icon: 'fa-brands fa-instagram',
+        href: '#',
+    },
+    {
+        name: 'linkedin',
+        icon: 'fa-brands fa-linkedin',
+        href: '#',
+    },
+];
+
 const toggleMenu = () => {
     const menu = document.querySelector('#menu');
     if (!menu) return;
@@ -209,28 +317,4 @@ const closeMenu = () => {
 
 </script>
 
-<style>
-.carousel__item {
-  padding: 0 10px;
-  min-height: 120px; /* Adjust based on your content */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Adjust carousel navigation buttons if needed */
-.carousel__prev,
-.carousel__next {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: none;
-}
-
-.carousel__prev:hover,
-.carousel__next:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-</style>
+<style></style>
