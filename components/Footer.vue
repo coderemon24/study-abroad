@@ -1,94 +1,272 @@
 <template>
-  <div class="
-  bg-white
-  border-t
-  border-gray-400
+    <div class="
+  bg-black
+  text-white
+  pt-5
   ">
-    <div class="container w-11/12 mx-auto">
-        <div class="wrapper
-        text-md
-        py-6
+        <footer class="container w-11/12 mx-auto">
+            <!-- footer top -->
+            <div class="
+        py-4
+        border-b
+        border-gray-400
         ">
-            <p class="
-            text-center
-            ">
-                স্বত্ব &copy; {{ year }} 
-                <NuxtLink class="text-green-700" to="/">হিলফুল ফুজুল ফাউন্ডেশন</NuxtLink> - সর্ব স্বত্ব সংরক্ষিত | কারিগরি সহায়তায় - <a href="https://temdevs.com/" class="
-                text-green-700
-                underline
-                font-semibold
-                "
-                target="_blank"
-                >TemDevs</a>.
-            </p>
-            <p class="
-            flex gap-3
-            items-center
-            text-center
-            justify-center
-            mt-3
-            ">
-                <NuxtLink class="
-                text-green-700
-                " to="#">পরিষেবার শর্তাবলী </NuxtLink>| 
-                <NuxtLink class="
-                text-green-700
-                " to="#">গোপনীয়তা নীতি</NuxtLink>
-            </p>
-        </div>
-        
-        <div class="">
-            <a href="#body" class="
-            h-[50px]
-            w-[50px]
-            bg-green-600
-            text-white
-            rounded-full
-            flex
-            items-center
-            justify-center
-            fixed
-            bottom-5
-            right-5
-            " 
-            @click="scrollToTop"
-            v-show="scrollButton"
-            >
-                <i class="fa-solid fa-angle-up"></i>
-            </a>
-        </div>
-        
+                <!---- man with msg --->
+                <div class="
+                flex
+                items-center
+                justify-center
+                flex-col
+                gap-2
+                w-[80%]
+                md:w-[100%]
+                mx-auto
+                md:flex-row
+                
+                ">
+                    <img class="
+                        w-12
+                        h-12
+                        rounded-full
+                        ring-2
+                        ring-blue-900
+                        " :src="officer" alt="image">
+
+                    <p class="
+                    text-sm
+                    text-gray-500
+                    text-center
+                    ">
+                        Work with us to secure your future. Schedule a call to learn more about our services.
+                    </p>
+                </div>
+
+                <div class="
+                flex
+                items-center
+                justify-center
+                gap-5
+                pt-3
+                py-2
+                ">
+                    <i class="fa-solid text-blue-700 text-3xl fa-comments"></i>
+                    <div>
+                        <p class="text-gray-500">Have any queries?</p>
+                        <p>
+                            <span class="text-gray-500">Call: </span>
+                            <a class="text-gray-300" href="#">+880 2 555 5555</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- footer middle -->
+            <div class="
+             py-5
+             ">
+                <div class="mb-5">
+                    <img class="w-20" :src="logo" alt="main-logo">
+
+                    <p class="
+                    text-justify
+                    text-sm
+                    text-gray-300
+                    mt-4
+                    ">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet id aliquam eligendi quod, cum, non
+                        quidem similique, maiores architecto laborum veniam? Provident eum molestias laudantium libero
+                        obcaecati laboriosam reprehenderit recusandae.
+                    </p>
+
+                    <!--social icons-->
+                    <ul class="
+                    flex
+                    gap-2
+                    items-center
+                    justify-start
+                    mt-4
+                    ">
+                        <li v-for="item in socialIcons">
+                            <a class="
+                            social_icon
+                            text-white!
+                            ring-white!
+                            " :href="item.href">
+                                <i :class="item.icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="
+                    text-gray-100
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Quick Links</h4>
+
+                    <ul>
+                        <li v-for="item in quickLinks"><a href="">{{ item.name }}</a></li>
+                    </ul>
+                </div>
+
+                <div class="
+                mt-4
+                ">
+                    <h4 class="
+                    text-gray-100
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Contact Information</h4>
+
+                    <ul>
+                        <li v-for="item in addrInfo">
+                            <a class="
+                            flex
+                            items-center
+                            gap-5
+                            " href="">
+                                <i :class="item.icon"></i>
+                                {{ item.title }}
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <!-- subscribe -->
+                    <div class="
+                    py-4
+                    relative
+                    ">
+                        <input class="
+                        bg-white
+                        text-black
+                        placeholder:text-gray-600
+                        py-3
+                        px-4
+                        rounded-full
+                        
+                        " type="text" placeholder="example@gmail.com">
+                        <button class="
+                        bg-blue-700
+                        text-white
+                        py-3
+                        px-4
+                        rounded-full
+                        hover:bg-blue-600
+                        hover:text-white
+                        cursor-pointer
+                        transition-all
+                        ease-in-out
+                        duration-300
+                        absolute
+                        right-0
+                        rounded-r-full;
+                        z-10
+                        ">Subscribe</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </footer>
     </div>
-  </div>
 </template>
 
 <script lang="ts" setup>
-    const year = new Date().getFullYear();
+import manImg from '~/assets/images/officer.jpg';
+import mainLogo from '~/assets/images/logo.webp';
 
-    const scrollButton = ref(false);
+const officer = ref(manImg);
+const logo = ref(mainLogo);
 
-    onMounted(() => {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                scrollButton.value = true;
-            } else {
-                scrollButton.value = false;
-            }
-        });
+const socialIcons = [
+    {
+        name: 'facebook',
+        icon: 'fa-brands fa-facebook-f',
+        href: '#',
+    },
+    {
+        name: 'twitter',
+        icon: 'fa-brands fa-twitter',
+        href: '#',
+    },
+    {
+        name: 'instagram',
+        icon: 'fa-brands fa-instagram',
+        href: '#',
+    },
+    {
+        name: 'linkedin',
+        icon: 'fa-brands fa-linkedin',
+        href: '#',
+    },
+];
+
+const quickLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Events', href: '/events' },
+    { name: 'Blogs', href: '/blogs' },
+    { name: 'Book Appointment', href: '/contact' },
+];
+
+const addrInfo = [
+    {
+        title: 'Panthapath, Dhaka',
+        icon: 'fa-solid fa-location-dot',
+    },
+    {
+        title: 'support@care2training.com',
+        icon: 'fa-solid fa-envelope',
+    },
+    {
+        title: '+880 2 555 5555',
+        icon: 'fa-solid fa-phone',
+    },
+];
+
+
+const year = new Date().getFullYear();
+const scrollButton = ref(false);
+
+onMounted(() => {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            scrollButton.value = true;
+        } else {
+            scrollButton.value = false;
+        }
     });
-    
-    onUnmounted(() => {
-        window.removeEventListener('scroll', () => {});
-    })
-    
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', () => { });
+})
+
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
 
-<style>
-
-</style>
+<style></style>
