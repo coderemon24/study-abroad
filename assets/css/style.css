@@ -103,7 +103,7 @@ body {
    after:content-['']
    after:w-0
    after:h-[1.5px]
-    after:bg-blue-700
+   after:bg-blue-700
    after:bottom-0
    after:left-0
    hover:after:w-full
@@ -112,6 +112,5 @@ body {
    after:ease-linear
     hover:text-blue-700
    transition-all
-   duration-300
-   ease    
+   duration-300   
 }

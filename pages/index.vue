@@ -1,6 +1,11 @@
 <template>
    <div>
-     
+    <!-- hero section-->
+     <section class="
+     mb-4
+     ">
+          <AppSwiper />
+     </section>
  
    </div>
  </template>

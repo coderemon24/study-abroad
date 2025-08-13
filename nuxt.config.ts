@@ -5,12 +5,17 @@ export default defineNuxtConfig({
   debug: true,
   ssr: true,
   devtools: { enabled: true },
-  css: ['~/assets/css/style.css'],
+
+  css: [
+    '~/assets/css/style.css',
+  ],
+
   vite: {
     plugins: [
-      tailwindcss()
+      tailwindcss(),
     ]
   },
+
   app: {
     head: {
       link: [
@@ -23,5 +28,7 @@ export default defineNuxtConfig({
       mode: 'out-in',
       appear: true
     }
-  }
+  },
+
+  modules: ['nuxt-swiper']
 })
