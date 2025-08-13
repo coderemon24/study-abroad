@@ -9,7 +9,9 @@
             <div class="
         py-4
         border-b
-        border-gray-400
+        border-gray-700
+        md:flex
+        md:justify-between
         ">
                 <!---- man with msg --->
                 <div class="
@@ -19,10 +21,12 @@
                 flex-col
                 gap-2
                 w-[80%]
-                md:w-[100%]
                 mx-auto
                 md:flex-row
-                
+                md:justify-start
+                md:gap-8
+                md:w-1/2
+                md:mx-0
                 ">
                     <img class="
                         w-12
@@ -36,6 +40,8 @@
                     text-sm
                     text-gray-500
                     text-center
+                    md:text-left
+                    md:text-[1rem]
                     ">
                         Work with us to secure your future. Schedule a call to learn more about our services.
                     </p>
@@ -63,9 +69,12 @@
 
             <!-- footer middle -->
             <div class="
-             py-5
+             py-8
+             md:grid
+             md:grid-cols-4
+             md:gap-10
              ">
-                <div class="mb-5">
+                <div class="mb-1">
                     <img class="w-20" :src="logo" alt="main-logo">
 
                     <p class="
@@ -92,6 +101,8 @@
                             social_icon
                             text-white!
                             ring-white!
+                            hover:bg-white!
+                            hover:text-blue-700!
                             " :href="item.href">
                                 <i :class="item.icon"></i>
                             </a>
@@ -115,12 +126,38 @@
                     ">Quick Links</h4>
 
                     <ul>
-                        <li v-for="item in quickLinks"><a href="">{{ item.name }}</a></li>
+                        <li v-for="item in quickLinks"><a class="
+                            item_hover
+                            " href="">{{ item.name }}</a></li>
+                    </ul>
+                </div>
+                
+                <div class="
+                mt-4
+                md:mt-0
+                ">
+                    <h4 class="
+                    text-gray-100
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Countries</h4>
+
+                    <ul>
+                        <li v-for="item in countries"><a class="item_hover" href="#">{{ item.name }}</a></li>
                     </ul>
                 </div>
 
                 <div class="
                 mt-4
+                md:mt-0
                 ">
                     <h4 class="
                     text-gray-100
@@ -160,29 +197,70 @@
                         placeholder:text-gray-600
                         py-3
                         px-4
-                        rounded-full
-                        
+                        md:py-2
+                        md:px-3
+                        rounded-tl-full
+                        rounded-bl-full
+                        focus:outline-none
+                        text-sm
                         " type="text" placeholder="example@gmail.com">
                         <button class="
-                        bg-blue-700
+                        bg-blue-800
                         text-white
                         py-3
                         px-4
-                        rounded-full
-                        hover:bg-blue-600
+                        md:py-2
+                        md:px-3
+                        rounded-tr-full
+                        rounded-br-full
+                        hover:bg-blue-700
                         hover:text-white
                         cursor-pointer
                         transition-all
                         ease-in-out
                         duration-300
                         absolute
-                        right-0
-                        rounded-r-full;
+                        right-[31%]
+                        md:right-[0%]
                         z-10
+                        text-sm
                         ">Subscribe</button>
                     </div>
                 </div>
 
+            </div>
+            
+            <!-- footer bottom -->
+            <div class="
+            text-gray-300
+            py-4
+            flex
+            items-center
+            justify-between
+            gap-2
+            border-t
+            border-gray-700
+            text-xs
+            md:text-sm
+            ">
+                <p>
+                    Copyright &copy; 2023 Care2Training - All Rights Reserved.
+                </p>
+                <ul class="
+                flex
+                gap-2
+                ">
+                    <li><a class="
+                        hover:text-blue-700
+                        transition-all
+                        duration-300
+                        " href="#">Terms & Conditions</a></li>
+                    <li><a class="
+                        transition-all
+                        duration-300
+                        hover:text-blue-700
+                        " href="#">Privacy Policy</a></li>
+                </ul>
             </div>
 
         </footer>
@@ -227,6 +305,33 @@ const quickLinks = [
     { name: 'Blogs', href: '/blogs' },
     { name: 'Book Appointment', href: '/contact' },
 ];
+
+const countries = [
+    {
+        name: 'United States',
+        href: '#',
+    },
+    {
+        name: 'United Kingdom',
+        href: '#',
+    },
+    {
+        name: 'Canada',
+        href: '#',
+    },
+    {
+        name: 'Australia',
+        href: '#',
+    },
+    {
+        name: 'New Zealand',
+        href: '#',
+    },
+    {
+        name: 'South Africa',
+        href: '#',
+    },
+]
 
 const addrInfo = [
     {
