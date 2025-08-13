@@ -103,6 +103,9 @@
                             ring-white!
                             hover:bg-white!
                             hover:text-blue-700!
+                            w-10!
+                            h-10!
+                            text-[1rem]!
                             " :href="item.href">
                                 <i :class="item.icon"></i>
                             </a>
@@ -110,7 +113,10 @@
                     </ul>
                 </div>
 
-                <div>
+                <div class="
+                mt-4
+                md:mt-0
+                ">
                     <h4 class="
                     text-gray-100
                     font-semibold
