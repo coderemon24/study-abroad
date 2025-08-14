@@ -121,6 +121,32 @@
           <HowWeWork />
         </div>
       </section>
+      
+      <!-- our partners -->
+      <section class="
+      py-12
+      bg-gray-10
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+        <div class="mb-10">
+            <h4 class="
+            text-gray-500
+            capitalize
+            mb-1
+            ">Our Partners</h4>
+            <h2 class="
+            title-design
+            text-3xl
+            text-black/90
+            ">Building Future Together</h2>
+          </div>
+        
+          <Partners />
+        </div>
+      </section>
      
    </div>
  </template>

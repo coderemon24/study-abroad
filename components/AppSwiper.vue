@@ -69,6 +69,7 @@ onMounted(() => {
         <ClientOnly>
             <swiper-container ref="containerRef" :init="false">
                 <swiper-slide class="
+                swiper-slide
                 h-[100%]!
                 md:h-[80vh]!
                 " v-for="(slide, idx) in slides" :key="idx">
@@ -152,7 +153,7 @@ onMounted(() => {
 </template>
 
 <style lang="css">
-swiper-slide {
+.swiper-slide {
     display: flex;
     justify-content: center;
     gap: 1rem;
