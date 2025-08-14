@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import slide1 from '~/assets/images/slider/slide-1.jpeg'
+import slide2 from '~/assets/images/slider/slide-2.jpeg'
+import slide3 from '~/assets/images/slider/slide-3.jpeg'
+import slide4 from '~/assets/images/slider/slide-4.jpeg'
+
 const containerRef = ref(null)
 const slides = ref([
     {
         title: 'Slide 1',
-        image: 'https://swiperjs.com/demos/images/nature-1.jpg',
+        image: slide1,
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
                                 dolores
                                 voluptate
@@ -13,7 +18,7 @@ const slides = ref([
     },
     {
         title: 'Slide 2',
-        image: 'https://swiperjs.com/demos/images/nature-2.jpg',
+        image: slide2,
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
                                 dolores
                                 voluptate
@@ -23,7 +28,7 @@ const slides = ref([
     },
     {
         title: 'Slide 3',
-        image: 'https://swiperjs.com/demos/images/nature-3.jpg',
+        image: slide3,
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
                                 dolores
                                 voluptate
@@ -33,27 +38,7 @@ const slides = ref([
     },
     {
         title: 'Slide 4',
-        image: 'https://swiperjs.com/demos/images/nature-4.jpg',
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate`
-    },
-    {
-        title: 'Slide 5',
-        image: 'https://swiperjs.com/demos/images/nature-5.jpg',
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate`
-    },
-    {
-        title: 'Slide 6',
-        image: 'https://swiperjs.com/demos/images/nature-6.jpg',
+        image: slide4,
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
                                 dolores
                                 voluptate
