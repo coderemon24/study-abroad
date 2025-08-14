@@ -31,12 +31,25 @@
           </div>
         </div>
       </section>
+      
+      <!-- about us -->
+      <section class="
+      py-12
+      bg-blue-100/20
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+          <About />
+        
+        </div>
+      </section>
      
    </div>
  </template>
  
  <script lang="ts" setup>
-import { OfferCard } from '#components';
 
 const cardItems = ref([
     {

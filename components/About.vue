@@ -1,71 +1,191 @@
 <template>
-    <div>
-        <div class="container mx-auto w-11/12">
-            <div class="wrapper
+    <div class="
+    grid
+    grid-cols-1
+    gap-8
+    md:grid-cols-2
+    ">
+        <div class="
+        w-3/4
+        md:w-3/5
+        mx-auto
+        relative
+        ">
+            <img class="
+            w-1/3
+            absolute
+            -top-9
+            -left-10
+            -z-1
+            
+            " :src="pattern" alt="about">
+            
+            <div class="
+            bg-white
+            p-3
+            rounded-lg
             flex
-            flex-col
             items-center
-            md:flex-row
-            md:justify-between
-            md:items-center
-            py-5
-            pb-8
+            gap-4
+            w-5/6
+            absolute
+            top-0
+            md:top-4
+            left-[73%]
+            -translate-x-1/2
+            -translate-y-1/2
+            shadow-lg
             ">
-                <div class="
-                
+                <span class="
+                bg-blue-700/10
+                w-15
+                h-15
+                flex
                 items-center
                 justify-center
-                pb-5
-                w-2/5
-                hidden
-                md:flex
+                rounded-full
+                text-blue-800/40
+                text-3xl
                 ">
-                    <img class="
-                    w-[200px]
-                    md:w-[20rem]
-                    " src="assets/images/logo/logo-main.png" alt="">
-                </div>
-                <div class="
-                md:w-3/5
-                w-full
-                ">
-                    <h2 class="
-                    border-b-2
-                    border-gray-400
-                    pb-1
-                    mb-4
-                    space
-                    text-green-700
-                    text-md
+                    <i class="fa-solid fa-quote-left"></i>
+                </span>
+                <div class="w-5/8">
+                    <h3 class="
                     font-semibold
-                    md:text-xl
-                    lg:text-2xl
-                    ">আমাদের সম্পর্কে</h2>
-                    <p class="
+                    text-gray-600
+                    mb-1
                     text-sm
-                    lg:text-lg
+                    ">Accommodation</h3>
+                    <p class="
+                    text-xs
+                    text-gray-500
                     ">
-                        হিলফুল ফুজুল ফাউন্ডেশন একটি মানবিক সংগঠন যা সমাজের সর্বস্তরের মানুষের কল্যাণে নিবেদিত। এই
-                        সংস্থার মূল উদ্দেশ্য হলো:
-                        মানবিক সহায়তা: খাদ্য, স্বাস্থ্য, শিক্ষা এবং অন্যান্য মৌলিক চাহিদার পূরণে সহায়তা প্রদান করা।
-                        উম্মাহর কল্যাণ: মুসলিম সম্প্রদায়ের ঐক্য ও সমৃদ্ধির জন্য কাজ করা এবং ধর্মীয় মূল্যবোধের ভিত্তিতে
-                        কার্যক্রম পরিচালনা করা।
-                        সহযোগিতা মূলক কাজ: স্থানীয় ও আন্তর্জাতিক স্তরে অন্যান্য মানবিক সংস্থা এবং সংগঠনের সাথে সমন্বয়
-                        করে বিভিন্ন প্রকল্প বাস্তবায়ন করা।
-                        সমাজ সেবা: শিক্ষা, স্বাস্থ্য, পরিবেশ এবং সামাজিক উন্নয়নে বিভিন্ন উদ্যোগ গ্রহণ করা।
-                        মানবসেবা: সুবিধাবঞ্চিত ও দরিদ্র মানুষের জীবনে ইতিবাচক পরিবর্তন আনা এবং তাদের উন্নয়নে সহায়তা
-                        করা।
-                        হিলফুল ফুজুল ফাউন্ডেশন সমাজে একটি ইতিবাচক পরিবর্তন আনতে এবং মানবতার সেবা নিশ্চিত করতে
-                        প্রতিশ্রুতিবদ্ধ।
+                        Graduate will help you with accommodation.
+                    </p>
+                </div>
+            </div>    
+        
+            <img class="
+            w-full
+            rounded-lg
+            " :src="img1" alt="about">
+            
+            <div class="
+            bg-white
+            p-3
+            rounded-lg
+            flex
+            items-center
+            gap-3
+            w-5/6
+            absolute
+            -bottom-10
+            md:-bottom-0
+            left-[25%]
+            md:left-[0%]
+            -translate-x-1/2
+            -translate-y-1/2
+            shadow-lg
+            ">
+                <span class="
+                bg-purple-700/10
+                w-15
+                h-15
+                flex
+                items-center
+                justify-center
+                rounded-full
+                text-purple-800/60
+                text-3xl
+                ">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </span>
+                <div class="w-5/8">
+                    <h3 class="
+                    font-semibold
+                    text-gray-600
+                    mb-1
+                    text-sm
+                    ">Career Counselling</h3>
+                    <p class="
+                    text-xs
+                    text-gray-500
+                    ">
+                        Graduate will help you with accommodation.
                     </p>
                 </div>
             </div>
+            
+            
+            <img class="
+            w-1/3
+            absolute
+            -bottom-9
+            -right-10
+            -z-1
+            
+            " :src="pattern" alt="about">
+        </div>
+        
+        <div class="
+        w-full
+        h-full
+        flex
+        flex-col
+        items-center
+        justify-center
+        ">
+            <div>
+                <p class="
+            text-gray-600
+            ">We are here to help you</p>
+            <h3 class="
+            capitalize
+            text-2xl
+            md:text-4xl
+            font-semibold
+            text-black/70
+            ">from career counselling to university admission</h3>
+            
+            <p class="
+            text-gray-500
+            mt-4
+            text-justify
+            text-sm
+            ">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit officiis maiores facilis fugit pariatur.
+            </p>
+            <p class="
+            text-gray-500
+            mt-4
+            text-justify
+            text-sm
+            ">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit officiis maiores facilis fugit pariatur.
+            </p>
+            <p class="
+            text-gray-500
+            mt-4
+            text-justify
+            text-sm
+            ">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit officiis maiores facilis fugit pariatur.
+            </p>
+            </div>
+            
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
+import aboutImg from '~/assets/images/about.jpg'
+import patt from '~/assets/images/pattern-2.png'
+
+const img1 = ref(aboutImg)
+const pattern = ref(patt)
 
 </script>
 
-<style></style>
+<style scoped>
+
+</style>
