@@ -4,7 +4,7 @@
   flex-col-reverse
   gap-10
   md:flex-row
-  pb-24
+  md:pb-24
   ">
     <div class="
     w-full

@@ -188,7 +188,7 @@ body {
     relative
     before:absolute
     before:content-['']
-    before:w-[25%]
+    before:w-[7rem]
     before:h-[2px]
     before:bg-blue-700
     before:-bottom-1
@@ -208,7 +208,7 @@ body {
     after:bg-white
     after:rounded-full
     after:-bottom-2
-    after:left-[11%]
+    after:left-[3.2rem]
     after:transition-all
     after:ease-in-out
     after:duration-300
