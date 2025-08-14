@@ -3,13 +3,13 @@
       <div class="container w-11/12 mx-auto">
           <!----- Breadcrumb ------->
           <div class="breadcrumb flex items-center gap-2 text-sm mb-6">
-            <NuxtLink class="text-green-700 hover:underline" to="/">হোম</NuxtLink>
+            <NuxtLink class="text-blue-700 hover:underline" to="/">Home</NuxtLink>
             <i class="fa-solid fa-chevron-right text-gray-500"></i>
-            <span class="text-gray-600">যোগাযোগ</span>
+            <span class="text-gray-600">Contact</span>
           </div>
           <!---page title-->
           <div class="content bg-white p-3 rounded-lg shadow">
-            <h1 class="text-2xl font-bold text-gray-800 text-center">যোগাযোগ</h1>
+            <h1 class="text-3xl uppercase font-medium text-black/80 text-center">Contact Us</h1>
           </div>
           <!----- page contents ----->
           <div class="
@@ -34,29 +34,29 @@
                   <div class="
                   ">
                      <label for="name" class="">
-                        আপনার নাম <span class="text-red-600">*</span>
+                        Name <span class="text-red-600">*</span>
                      </label>
                      <input type="text" class="
                      w-full 
                      border
-                      border-green-700 p-2 
+                      border-blue-700 p-2 
                       rounded-md 
-                      focus:outline-green-700"
-                      placeholder="মোঃ ইমন আহমেদ"
+                      focus:outline-blue-700"
+                      placeholder="ex: John Doe"
                       >
                   </div>
                   
                   <div class="
                   ">
                      <label for="name" class="">
-                        আপনার মোবাইল <span class="text-red-600">*</span>
+                        Phone <span class="text-red-600">*</span>
                      </label>
                      <input type="number" class="
                      w-full 
                      border
-                      border-green-700 p-2 
+                      border-blue-700 p-2 
                       rounded-md 
-                      focus:outline-green-700
+                      focus:outline-blue-700
                       appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none 
               [&::-webkit-inner-spin-button]:m-0 [&::-webkit-outer-spin-button]:m-0
                       "
@@ -67,14 +67,14 @@
                   <div class="
                   ">
                      <label for="name" class="">
-                        আপনার ই-মেইল <span class="text-red-600"></span>
+                        Email <span class="text-red-600"></span>
                      </label>
                      <input type="text" class="
                      w-full 
                      border
-                      border-green-700 p-2 
+                      border-blue-700 p-2 
                       rounded-md 
-                      focus:outline-green-700"
+                      focus:outline-blue-700"
                       placeholder="ahmedemon.dev24@gmail.com"
                       >
                   </div>
@@ -82,30 +82,30 @@
                   <div class="
                   ">
                      <label for="name" class="">
-                        বিষয় <span class="text-red-600">*</span>
+                        Subject <span class="text-red-600">*</span>
                      </label>
                      <input type="text" class="
                      w-full 
                      border
-                      border-green-700 p-2 
+                      border-blue-700 p-2 
                       rounded-md 
-                      focus:outline-green-700"
-                      placeholder="বিষয় নির্বাচন করুন"
+                      focus:outline-blue-700"
+                      placeholder="ex: Software Development"
                       >
                   </div>
                   
                   <div class="
                   ">
                      <label for="name" class="">
-                        বার্তা <span class="text-red-600">*</span>
+                        Message <span class="text-red-600">*</span>
                      </label>
                      <textarea class="
                      w-full 
                      border
-                      border-green-700 p-2 
+                      border-blue-700 p-2 
                       rounded-md 
-                      focus:outline-green-700"
-                      placeholder="আপনার বার্তা লিখুন"
+                      focus:outline-blue-700"
+                      placeholder="What's on your mind?"
                       ></textarea>
                   </div>
                   
@@ -113,18 +113,18 @@
                   <div class="
                   ">
                      <button class="
-                     bg-green-700
+                     bg-blue-800
                      text-white
                      w-full
                      p-2
                      rounded-md
-                     hover:bg-green-600
+                     hover:bg-blue-700
                      hover:text-white
                      cursor-pointer
                      transition-all
                      ease-in-out
                      duration-300
-                     ">প্রেরণ করুন</button>
+                     ">Send</button>
                   </div>
                   
                </form>
@@ -136,7 +136,7 @@
             md:w-1/2
             ">
               <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3642.2718876048248!2d89.56152357508219!3d24.091932275579566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fe77742671ee09%3A0x4ed33605250c246a!2sSonatala%20High%20School!5e0!3m2!1sen!2sbd!4v1744865798538!5m2!1sen!2sbd" width="100%" style="border:0;"  class="
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.0085844141754!2d90.3868791!3d23.7507284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9ac5fce59cb%3A0xfd3e17cbaa2f7805!2sKaizen%20IT%20Ltd.!5e1!3m2!1sen!2sbd!4v1755167494499!5m2!1sen!2sbd" width="100%" style="border:0;"  class="
                 h-[400px]
                 md:h-[500px]
                 md:mt-4

@@ -3,13 +3,13 @@
     <div class="container w-11/12 mx-auto">
       <!----- Breadcrumb ------->
       <div class="breadcrumb flex items-center gap-2 text-sm mb-6">
-        <NuxtLink class="text-green-700 hover:underline" to="/">হোম</NuxtLink>
+        <NuxtLink class="text-blue-700 hover:underline" to="/">Home</NuxtLink>
         <i class="fa-solid fa-chevron-right text-gray-500"></i>
-        <span class="text-gray-600">আমাদের সম্পর্কে</span>
+        <span class="text-gray-600">About Us</span>
       </div>
       <!---page title-->
       <div class="content bg-white p-3 rounded-lg shadow">
-        <h1 class="text-2xl font-bold text-gray-800 text-center">আমাদের সম্পর্কে</h1>
+        <h1 class="text-3xl uppercase font-medium text-black/80 text-center">About Us</h1>
       </div>
       <!----- page contents ----->
       <div class="mt-5 flex">
@@ -25,7 +25,7 @@
               ]"
               @click="setActiveTab(tab.id)"
             >
-              <a href="#" class="group-hover:text-green-700
+              <a href="#" class="group-hover:text-blue-700
               group-hover:cursor-pointer
               ">{{ tab.title }}</a>
             </li>
@@ -40,8 +40,8 @@
             class="shadow-md bg-white p-6 rounded-lg mb-5"
             :class="{'hidden': activeTab !== tab.id}"
           >
-            <h2 class="text-md text-gray-800 text-left font-semibold mb-3">{{ tab.title }}</h2>
-            <p class="text-sm text-gray-600">
+            <h2 class="text-md md:text-2xl text-gray-800 text-left font-semibold mb-3">{{ tab.title }}</h2>
+            <p class="text-sm md:font-normal md:text-[17px] text-gray-400 md:leading-8">
               {{ tab.content }}
             </p>
           </div>
@@ -57,39 +57,24 @@ import { ref } from 'vue';
 const tabs = [
   {
     id: 'introduction',
-    title: 'পরিচিতি',
-    content: 'হিলফুল ফুজুল ফাউন্ডেশন একটি অরাজনৈতিক, অলাভজনক ও সেবামূলক প্রতিষ্ঠান যা শিক্ষা, দাওয়াহ, সমাজসেবা এবং মানব কল্যাণে নিবেদিতভাবে কাজ করে যাচ্ছে। প্রতিষ্ঠার পর থেকে এই ফাউন্ডেশন মানুষের নৈতিক উন্নয়ন, সামাজিক সচেতনতা এবং আত্মিক পরিশুদ্ধির লক্ষ্যে বিভিন্ন কার্যক্রম পরিচালনা করছে।এই সংগঠনটি কুরআন ও সুন্নাহর আদর্শকে ভিত্তি করে একটি ভারসাম্যপূর্ণ ও ন্যায়ভিত্তিক সমাজ গঠনের প্রয়াস চালিয়ে যাচ্ছে। সমাজের অবহেলিত ও পিছিয়ে পড়া জনগোষ্ঠীর পাশে দাঁড়িয়ে, শিক্ষা, স্বাস্থ্য ও মানবিক সহায়তা প্রদানের মাধ্যমে প্রতিষ্ঠানটি তার দায়িত্ব পালন করে চলেছে। হিলফুল ফুজুল ফাউন্ডেশন বিশ্বাস করে, মানুষকে আলোর পথে ফিরিয়ে আনার অন্যতম উপায় হল বিশুদ্ধ জ্ঞান প্রচার ও নৈতিকতা ভিত্তিক জীবন গঠনের পরিবেশ তৈরি করা। সেই লক্ষ্যেই এই ফাউন্ডেশন নিরলসভাবে কাজ করে যাচ্ছে — একটি কল্যাণময় ও নৈতিক মূল্যবোধসম্পন্ন সমাজ গঠনের প্রত্যয়ে।'
+    title: 'Introduction',
+    content: "Welcome to Care2Training, where professional expertise meets a genuine commitment to empowering individuals on their journey toward success. John is the Founder and CEO of Care2Training, bringing years of experience in guiding learners toward achieving their educational and professional goals. As a dedicated trainer and mentor, [he/she] specializes in delivering high-quality training programs designed to equip individuals with the knowledge and skills they need to thrive. With a deep passion for education and personal growth, [he/she] is committed to serving learners both locally and globally."
   },
   {
     id: 'policy',
-    title: 'নীতি ও আদর্শ',
-    content: 'এই অংশে নীতি ও আদর্শ সম্পর্কিত বিষয়বস্তু থাকবে।'
+    title: 'Our Policy',
+    content: 'Our policy is to provide a supportive environment that fosters personal growth and professional development for individuals who are seeking to excel in their educational and professional pursuits.  We believe that learning can transform lives, and our goal is to empower individuals with the knowledge and skills they need to succeed in their chosen fields.'
   },
   {
     id: 'goals',
-    title: 'লক্ষ ও উদ্দেশ্য',
-    content: 'এই অংশে লক্ষ ও উদ্দেশ্য সম্পর্কিত বিষয়বস্তু থাকবে।'
+    title: 'Our Mission',
+    content: 'Our mission is to empower individuals with the knowledge and skills they need to succeed in their educational and professional pursuits. We believe that learning can transform lives, and our goal is to provide a supportive environment that fosters personal growth and professional development.'
   },
   {
     id: 'activities',
-    title: 'কার্যক্রম',
-    content: 'এই অংশে কার্যক্রম সম্পর্কিত বিষয়বস্তু থাকবে।'
+    title: 'Our Vision',
+    content: ' Our vision is to be a leading provider of training programs that empower individuals to achieve their educational and professional goals. We strive to provide high-quality training programs that are tailored to the needs of our learners, ensuring that they receive the knowledge and skills they need to succeed in their chosen fields.'
   },
-  {
-    id: 'funding',
-    title: 'তহবিল ও আয়ের এর উৎস',
-    content: 'এই অংশে তহবিল ও আয়ের উৎস সম্পর্কিত বিষয়বস্তু থাকবে।'
-  },
-  {
-    id: 'expenditure',
-    title: 'ব্যয়ের নীতিমালা',
-    content: 'এই অংশে ব্যয়ের নীতিমালা সম্পর্কিত বিষয়বস্তু থাকবে।'
-  },
-  {
-    id: 'achievements',
-    title: 'অর্জনসমূহ',
-    content: 'এই অংশে অর্জনসমূহ সম্পর্কিত বিষয়বস্তু থাকবে।'
-  }
 ];
 
 const activeTab = ref('introduction');
@@ -101,7 +86,7 @@ const setActiveTab = (tabId) => {
 
 <style scoped>
 .activeTab a {
-  color: #166534; 
+  color: rgb(0, 0, 230); 
   font-weight: bold;
 }
 
@@ -112,12 +97,12 @@ const setActiveTab = (tabId) => {
 }
 
 .tabs li:hover {
-  background-color: #f0fdf4;
+  background-color: #0034e015;
 }
 
 .tabs li.activeTab {
-  background-color: #dcfce7;
-  border-left: 3px solid #166534;
+  background-color: rgba(0, 0, 207, 0.068);
+  border-left: 3px solid rgb(0, 0, 207);
 }
 
 </style>
