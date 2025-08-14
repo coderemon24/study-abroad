@@ -45,6 +45,18 @@
         
         </div>
       </section>
+      
+      <!-- about us -->
+      <section class="
+      py-12
+      bg-gray-50
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+          <About />
+        </div>
+      </section>
      
    </div>
  </template>
