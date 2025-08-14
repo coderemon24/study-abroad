@@ -95,6 +95,32 @@
           
         </div>
       </section>
+      
+      <!-- how we work -->
+      <section class="
+      py-12
+      bg-blue-100/30
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+        <div class="mb-10">
+            <h4 class="
+            text-gray-500
+            capitalize
+            mb-1
+            ">Our Process</h4>
+            <h2 class="
+            title-design
+            text-3xl
+            text-black/90
+            ">How We Work</h2>
+          </div>
+        
+          <HowWeWork />
+        </div>
+      </section>
      
    </div>
  </template>
