@@ -10,13 +10,36 @@
     w-full
     md:w-1/2
     ">
-        <h3>
+        <h3 class="
+        title-design
+        mb-4
+        uppercase
+        text-2xl
+        text-black/90
+        ">
             Get To Know About Us
         </h3>
-        <h3>
+        
+        <h3 class="
+        text-4xl
+        md:text-6xl
+        text-blue-900
+        capitalize
+        mb-4
+        md:mb-5
+        ">
             care to training institute
         </h3>
-        <div>
+        <div class="
+        text-gray-600
+        md:text-gray-500
+        text-justify
+        md:text-lg
+        md:leading-8
+        flex
+        flex-col
+        gap-4
+        ">
             <p>
                 Welcome to Care2Training, where professional expertise meets a genuine commitment to empowering individuals on their journey toward success.
             </p>

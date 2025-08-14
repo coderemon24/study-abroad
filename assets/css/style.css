@@ -182,3 +182,34 @@ body {
         transform: rotate(360deg);
     }
 }
+
+.title-design{
+    @apply
+    relative
+    before:absolute
+    before:content-['']
+    before:w-[25%]
+    before:h-[2px]
+    before:bg-blue-700
+    before:-bottom-1
+    before:left-0
+    before:transition-all
+    before:ease-in-out
+    before:duration-300
+    
+    after:absolute
+    after:content-['']
+    after:ring-3
+    after:ring-white
+    after:border-2
+    after:border-blue-700
+    after:w-3
+    after:h-3
+    after:bg-white
+    after:rounded-full
+    after:-bottom-2
+    after:left-[11%]
+    after:transition-all
+    after:ease-in-out
+    after:duration-300
+}
