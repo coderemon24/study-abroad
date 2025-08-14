@@ -171,6 +171,14 @@
             ">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit officiis maiores facilis fugit pariatur.
             </p>
+            
+            <a class="btn-outline" href="#">
+    <span class="relative z-10">
+        Get Started
+    </span>
+</a>
+
+            
             </div>
             
         </div>
