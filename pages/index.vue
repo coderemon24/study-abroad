@@ -32,7 +32,7 @@
         </div>
       </section>
       
-      <!-- about us -->
+      <!-- student counselling -->
       <section class="
       py-12
       bg-blue-100/20
@@ -41,7 +41,7 @@
         container mx-auto w-11/12
         ">
         
-          <About />
+          <Counselling />
         
         </div>
       </section>
@@ -50,6 +50,8 @@
  </template>
  
  <script lang="ts" setup>
+import Counselling from '~/components/Counselling.vue';
+
 
 const cardItems = ref([
     {
