@@ -149,9 +149,37 @@
         </div>
       </section>
       
+      <!-- Voice of achievers -->
+      <section class="
+      py-12
+      pb-22
+      bg-white
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+        <div class="mb-10">
+            <h4 class="
+            text-gray-500
+            capitalize
+            mb-1
+            ">Success Story</h4>
+            <h2 class="
+            title-design
+            text-3xl
+            text-black/90
+            ">Voice of Achievers</h2>
+          </div>
+        
+          <Achivers prevIcon="i-lucide-chevron-left" nextIcon="i-lucide-chevron-right" />
+        </div>
+      </section>
+      
       <!-- FAQ -->
       <section class="
       py-12
+      mb-12
       bg-gray-10/10
       ">
         <div class="
