@@ -148,12 +148,39 @@
           <HowWeWork />
         </div>
       </section>
+      
+      <!-- FAQ -->
+      <section class="
+      py-12
+      bg-gray-10/10
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+        <div class="mb-10">
+            <h4 class="
+            text-gray-500
+            capitalize
+            mb-1
+            ">FAQ</h4>
+            <h2 class="
+            title-design
+            text-3xl
+            text-black/90
+            ">Everything You Need to Know</h2>
+          </div>
+        
+          <FAQ />
+        </div>
+      </section>
      
    </div>
  </template>
  
  <script lang="ts" setup>
 import Counselling from '~/components/Counselling.vue';
+import FAQ from '~/components/FAQ.vue';
 
 
 const cardItems = ref([

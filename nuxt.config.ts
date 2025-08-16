@@ -29,6 +29,8 @@ export default defineNuxtConfig({
       appear: true
     }
   },
-
-  modules: ['nuxt-swiper']
+  modules: [
+    'nuxt-swiper',
+    '@nuxt/ui'
+  ]
 })
