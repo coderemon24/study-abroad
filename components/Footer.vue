@@ -1,7 +1,7 @@
 <template>
     <div class="
-  bg-black
-  text-white
+  bg-white
+  text-black/70
   pt-5
   ">
         <footer class="container w-11/12 mx-auto">
@@ -57,10 +57,10 @@
                 ">
                     <i class="fa-solid text-blue-700 text-3xl fa-comments"></i>
                     <div>
-                        <p class="text-gray-500">Have any queries?</p>
+                        <p class="">Have any queries?</p>
                         <p>
-                            <span class="text-gray-500">Call: </span>
-                            <a class="text-gray-300" href="#">+880 2 555 5555</a>
+                            <span class="">Call: </span>
+                            <a class="text-gray-600" href="#">+880 2 555 5555</a>
                         </p>
                     </div>
                 </div>
@@ -75,17 +75,37 @@
              md:gap-10
              ">
                 <div class="mb-1">
-                    <img class="w-20" :src="logo" alt="main-logo">
-
+                    <h4 class="
+                    text-black/90
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Address</h4>
+                    
                     <p class="
-                    text-justify
-                    text-sm
-                    text-gray-300
+                    
                     mt-4
                     ">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet id aliquam eligendi quod, cum, non
-                        quidem similique, maiores architecto laborum veniam? Provident eum molestias laudantium libero
-                        obcaecati laboriosam reprehenderit recusandae.
+                        Care2Training International
+                        Gazi Tower (3rd floor)
+                        House: 02, Green Road
+                        Dhanmondi, Dhaka 1205
+                    </p>
+                    <p class="
+                    
+                    mt-3
+                    ">
+                        Care2Training International
+                        Gazi Tower (3rd floor)
+                        House: 02, Green Road
+                        Dhanmondi, Dhaka 1205
                     </p>
 
                     <!--social icons-->
@@ -99,12 +119,12 @@
                         <li v-for="item in socialIcons">
                             <a class="
                             social_icon
-                            text-white!
-                            ring-white!
-                            hover:bg-white!
-                            hover:text-blue-700!
-                            w-10!
-                            h-10!
+                            text-blue-700!
+                            ring-blue-700!
+                            hover:bg-blue-700!
+                            hover:text-white!
+                            w-9!
+                            h-9!
                             text-[1rem]!
                             " :href="item.href">
                                 <i :class="item.icon"></i>
@@ -118,7 +138,7 @@
                 md:mt-0
                 ">
                     <h4 class="
-                    text-gray-100
+                    text-black/90
                     font-semibold
                     relative
                     before:absolute
@@ -129,76 +149,37 @@
                     before:bottom-0
                     mb-3
                     text-xl
-                    ">Quick Links</h4>
+                    ">Contact Us</h4>
 
                     <ul>
-                        <li v-for="item in quickLinks"><a class="
-                            item_hover
-                            " href="">{{ item.name }}</a></li>
-                    </ul>
-                </div>
-                
-                <div class="
-                mt-4
-                md:mt-0
-                ">
-                    <h4 class="
-                    text-gray-100
-                    font-semibold
-                    relative
-                    before:absolute
-                    before:content-['']
-                    before:h-[2px]
-                    before:w-12
-                    before:bg-blue-700
-                    before:bottom-0
-                    mb-3
-                    text-xl
-                    ">Countries</h4>
-
-                    <ul>
-                        <li v-for="item in countries"><a class="item_hover" href="#">{{ item.name }}</a></li>
-                    </ul>
-                </div>
-
-                <div class="
-                mt-4
-                md:mt-0
-                ">
-                    <h4 class="
-                    text-gray-100
-                    font-semibold
-                    relative
-                    before:absolute
-                    before:content-['']
-                    before:h-[2px]
-                    before:w-12
-                    before:bg-blue-700
-                    before:bottom-0
-                    mb-3
-                    text-xl
-                    ">Contact Information</h4>
-
-                    <ul>
-                        <li v-for="item in addrInfo">
-                            <a class="
-                            flex
-                            items-center
-                            gap-5
-                            " href="">
-                                <i :class="item.icon"></i>
-                                {{ item.title }}
-                            </a>
+                        <li>
+                            <p>
+                                <span class="text-gray-700 font-medium">Phone: </span>
+                                <a href="#">080 2 555 5555</a>
+                            </p>
+                            <p>
+                                <span class="text-gray-700 font-medium">Phone: </span>
+                                <a href="#">080 2 555 5555</a>
+                            </p>
+                            <p>
+                                <span class="text-gray-700 font-medium">Mail: </span>
+                                <a href="#">3fN2d@example.com</a>
+                            </p>
+                            <p>
+                                <span class="text-gray-700 font-medium">Skype: </span>
+                                <a href="#">3fN2d@example.com</a>
+                            </p>
                         </li>
                     </ul>
-                    
                     <!-- subscribe -->
                     <div class="
                     py-4
                     relative
                     ">
                         <input class="
-                        bg-white
+                        bg-gray-200
+                        ring-2
+                        ring-blue-700
                         text-black
                         placeholder:text-gray-600
                         py-3
@@ -213,9 +194,9 @@
                         <button class="
                         bg-blue-800
                         text-white
-                        py-3
+                        py-3.5
                         px-4
-                        md:py-2
+                        md:py-2.5
                         md:px-3
                         rounded-tr-full
                         rounded-br-full
@@ -227,11 +208,75 @@
                         duration-300
                         absolute
                         right-[31%]
-                        md:right-[0%]
+                        md:left-[12rem]
+                        md:right-auto
+                        top-3.5
+                        md:top-3.5
                         z-10
                         text-sm
                         ">Subscribe</button>
                     </div>
+                </div>
+                
+
+                <div class="
+                mt-4
+                md:mt-0
+                ">
+                    <h4 class="
+                    text-black/90
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Quick Links</h4>
+
+                    <ul>
+                        <li v-for="item in quickLinks">
+                            <a class="
+                            flex
+                            items-center
+                            gap-5
+                            " :href="item.href">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+
+                <div class="
+                mt-4
+                md:mt-0
+                ">
+                    <h4 class="
+                    text-black/90
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Map</h4>
+                    
+                    <div class="
+                    rounded
+                    overflow-hidden
+                    ">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.0085844141754!2d90.3868791!3d23.7507284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9ac5fce59cb%3A0xfd3e17cbaa2f7805!2sKaizen%20IT%20Ltd.!5e1!3m2!1sen!2sbd!4v1755320894241!5m2!1sen!2sbd" width="100%" height="225" style="border:0;"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    
                 </div>
 
             </div>
@@ -310,48 +355,6 @@ const quickLinks = [
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Book Appointment', href: '/contact' },
-];
-
-const countries = [
-    {
-        name: 'United States',
-        href: '#',
-    },
-    {
-        name: 'United Kingdom',
-        href: '#',
-    },
-    {
-        name: 'Canada',
-        href: '#',
-    },
-    {
-        name: 'Australia',
-        href: '#',
-    },
-    {
-        name: 'New Zealand',
-        href: '#',
-    },
-    {
-        name: 'South Africa',
-        href: '#',
-    },
-]
-
-const addrInfo = [
-    {
-        title: 'Panthapath, Dhaka',
-        icon: 'fa-solid fa-location-dot',
-    },
-    {
-        title: 'support@care2training.com',
-        icon: 'fa-solid fa-envelope',
-    },
-    {
-        title: '+880 2 555 5555',
-        icon: 'fa-solid fa-phone',
-    },
 ];
 
 

@@ -165,18 +165,17 @@ body {
     border-radius: 50%;
     background:linear-gradient(-60deg, #193cb8, #21054e);
     position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
+    top: 15rem;
+    left: 35%;
     z-index: -1;
-    animation: rotate 5s linear infinite alternate;
+    animation: rotate 3s linear infinite alternate;
 }
 
 @keyframes rotate {
     from {
         transform: rotate(0deg);
-        top: 45%;
-        left: 25%;
+        top: 17rem;
+        left: 45%;
     }
     to {
         transform: rotate(360deg);

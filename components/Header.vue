@@ -137,7 +137,7 @@
             text-md
             top-0
             fixed
-            z-50
+            z-100
             -left-60
             w-full
             flex

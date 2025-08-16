@@ -70,7 +70,7 @@
             
             <img class="
             md:w-[22rem]
-            mx-auto
+            float-end
             md:ml-[15rem]
             " :src="ceo" alt="ceo" >
             
@@ -93,7 +93,7 @@
             shadow-lg
             p-5
             absolute
-            top-4/5
+            top-[25rem]
             translate-y-[-50%]
             left-0
             border-l-7
@@ -101,7 +101,7 @@
             ex-shape
             overflow-hidden
             pl-10
-            md:left-[18rem]
+            md:left-[52%]
             md:top-[32rem]
             ">
                 <h3 class="
