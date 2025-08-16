@@ -136,6 +136,7 @@ onMounted(() => {
         px-6
         py-2
         cursor-pointer
+        text-black/80
         " @click="swiper.prev()">
                 <i class="fa-solid fa-arrow-left-long"></i>
             </button>
@@ -144,6 +145,7 @@ onMounted(() => {
         px-6
         py-2
         cursor-pointer
+        text-black/80
         " @click="swiper.next()">
                 <i class="fa-solid fa-arrow-right-long"></i>
             </button>

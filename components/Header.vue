@@ -90,7 +90,7 @@
                 <div class="icon 
                     md:hidden
                     ">
-                    <a href="javascript:void(0)" @click="toggleMenu">
+                    <a href="javascript:void(0)" @click="toggleMenu" class="text-black">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
                             <path fill-rule="evenodd"
                                 d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
@@ -147,7 +147,6 @@
             h-[100%]
             transition-all
             duration-500
-            overflow-hidden
             ease-in-out
             md:static
             md:flex-row
@@ -196,15 +195,55 @@
 
                         <li v-for="item in navItems" class="
                     relative
+                    group
                     ">
                             <NuxtLink :class="[
-                                'list_item',
+                                'list_item cursor-pointer',
                                 $route.path === item.href
                                     ? 'activeRoute'
                                     : 'list_item_hover'
                             ]" :to="item.href" @click="closeMenu">
                                 {{ item.name }}
                             </NuxtLink>
+                            
+                                <ul class="
+                                 absolute
+                                 z-50
+                                 bg-white
+                                 shadow-md
+                                 md:shadow-none
+                                 md:pt-7
+                                 p-4
+                                 border
+                                 border-gray-300
+                                 md:border-0
+                                 w-full
+                                 md:w-56
+                                 overflow-hidden
+                                 invisible
+                                 translate-y-[80%]
+                                 opacity-0
+                                 group-hover:visible
+                                 group-hover:translate-y-0
+                                 group-hover:opacity-100
+                                 transition-all
+                                 duration-300
+                                 ease-in-out
+                                " v-if="item.dropdown">
+                                    <li class="
+                                    relative
+                                    py-1
+                                    " v-for="dropdown in item.dropdown">
+                                        <NuxtLink :class="[
+                                'text-black/80 mb-1',
+                                $route.path === item.href
+                                    ? 'activeRoute'
+                                    : 'list_item_hover'
+                            ]" :to="dropdown.href">
+                                            {{ dropdown.name }}
+                                        </NuxtLink>
+                                    </li>
+                                </ul>
                         </li>
 
 
@@ -218,6 +257,8 @@
                                     : 'list_item_hover'
                             ]" :to="ap_btn.href" @click="closeMenu">
                                 {{ ap_btn.name }}</NuxtLink>
+                                
+                                
                         </li>
 
                     </ul>
@@ -238,8 +279,22 @@ const logoMain = ref(logo);
 const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Country', href: '/country' },
-    { name: 'Services', href: '/services' },
+    { 
+      dropdown: [
+          { name: 'Australia', href: '/australia' },
+          { name: 'Canada', href: '/canada' },
+          { name: 'United States', href: '/usa' },
+          { name: 'United Kingdom', href: '/uk' },
+          { name: 'New Zealand', href: '/new-zealand' },
+       ],
+       name: 'Country',
+    },
+    { name: 'Services', dropdown: [
+        { name: 'Study Abroad', href: '/study-abroad' },
+        { name: 'Visa Services', href: '/visa-services' },
+        { name: 'Admission Guidance', href: '/admission-guidance' },
+        { name: 'Career Counselling', href: '/career-counselling' },
+    ]},
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Contact', href: '/contact' },
