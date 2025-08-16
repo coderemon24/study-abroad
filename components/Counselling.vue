@@ -19,7 +19,7 @@
             -z-1
             
             " :src="pattern" alt="about">
-            
+
             <div class="
             bg-white
             p-3
@@ -63,13 +63,13 @@
                         Graduate will help you with accommodation.
                     </p>
                 </div>
-            </div>    
-        
+            </div>
+
             <img class="
             w-full
             rounded-lg
             " :src="img1" alt="about">
-            
+
             <div class="
             bg-white
             p-3
@@ -115,8 +115,8 @@
                     </p>
                 </div>
             </div>
-            
-            
+
+
             <img class="
             w-1/3
             absolute
@@ -126,7 +126,7 @@
             
             " :src="pattern" alt="about">
         </div>
-        
+
         <div class="
         w-full
         h-full
@@ -139,48 +139,54 @@
                 <p class="
             text-gray-600
             ">We are here to help you</p>
-            <h3 class="
+                <h3 class="
             capitalize
             text-2xl
             md:text-4xl
             font-semibold
             text-black/70
             ">from career counselling to university admission</h3>
-            
-            <p class="
-            text-gray-500
-            mt-4
-            text-justify
-            text-sm
-            ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit officiis maiores facilis fugit pariatur.
-            </p>
-            <p class="
-            text-gray-500
-            mt-4
-            text-justify
-            text-sm
-            ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit officiis maiores facilis fugit pariatur.
-            </p>
-            <p class="
-            text-gray-500
-            mt-4
-            text-justify
-            text-sm
-            ">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit officiis maiores facilis fugit pariatur.
-            </p>
-            
-            <a class="btn-outline" href="#">
-    <span class="relative z-10">
-        Get Started
-    </span>
-</a>
 
-            
+                <p class="
+            text-gray-500
+            mt-4
+            text-justify
+            text-sm
+            ">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
+                    quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
+                    officiis maiores facilis fugit pariatur.
+                </p>
+                <p class="
+            text-gray-500
+            mt-4
+            text-justify
+            text-sm
+            ">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
+                    quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
+                    officiis maiores facilis fugit pariatur.
+                </p>
+                <p class="
+            text-gray-500
+            mt-4
+            text-justify
+            text-sm
+            ">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
+                    quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
+                    officiis maiores facilis fugit pariatur.
+                </p>
+
+                <a class="btn-outline" href="#">
+                    <span class="relative z-10">
+                        Get Started
+                    </span>
+                </a>
+
+
             </div>
-            
+
         </div>
     </div>
 </template>
@@ -194,6 +200,4 @@ const pattern = ref(patt)
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
