@@ -297,7 +297,7 @@
             md:text-sm
             ">
                 <p>
-                    Copyright &copy; 2023 Care2Training - All Rights Reserved.
+                    Copyright &copy; {{  year  }} Care2Training - All Rights Reserved.
                 </p>
                 <ul class="
                 flex
@@ -315,6 +315,26 @@
                         " href="#">Privacy Policy</a></li>
                 </ul>
             </div>
+            
+            <!-- click to top -->
+            <button
+            v-if="scrollButton"
+            class="
+            fixed
+            bottom-10
+            right-10
+            bg-blue-700
+            w-12
+            h-12
+            rounded-full
+            flex
+            items-center
+            justify-center
+            z-50
+            cursor-pointer
+            " @click="scrollTop">
+                <i class="fa-solid fa-chevron-up text-white"></i>
+            </button>
 
         </footer>
     </div>
@@ -377,7 +397,7 @@ onUnmounted(() => {
     window.removeEventListener('scroll', () => { });
 })
 
-const scrollToTop = () => {
+const scrollTop = () => {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'

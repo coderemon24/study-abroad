@@ -1,5 +1,15 @@
 <template>
-    <div class="
+    <div>
+        <div class="
+        sticky_header 
+        w-full top-0 z-99
+        transition-all
+        duration-300
+        ease-in-out
+        bg-white
+        ">
+            
+            <div class="
     bg-white
     md:py-0
     shadow-md
@@ -9,14 +19,14 @@
     md:shadow-none
     ">
 
-        <div class="
-        border-b-[1px]
-        border-gray-300
-        py-2
+                <div v-if="topbar" class="
+            border-b-[1px]
+            border-gray-300
+            py-2
        
         ">
-            <!--topbar main-->
-            <div class="
+                    <!--topbar main-->
+                    <div class="
             container
             w-11/12
             mx-auto
@@ -25,91 +35,92 @@
             justify-between
             md:flex-row-reverse
             ">
-                <!--social icons-->
-                <ul class="
+                        <!--social icons-->
+                        <ul class="
                     flex
                     gap-2
                     items-center
                     justify-center
                     ">
-                    <li v-for="item in socialIcons">
-                        <a class="
+                            <li v-for="item in socialIcons">
+                                <a class="
                             social_icon
                             " :href="item.href">
-                            <i :class="item.icon"></i>
-                        </a>
-                    </li>
-                </ul>
+                                    <i :class="item.icon"></i>
+                                </a>
+                            </li>
+                        </ul>
 
-                <!--address & appointment-->
-                <ul class="
+                        <!--address & appointment-->
+                        <ul class="
                     flex
                     md:gap-5
                     ">
-                    <li class="
+                            <li class="
                     relative
                     md:hidden
                     ">
-                        <NuxtLink :class="[
-                            'list_item appointment_btn ',
-                            $route.path === ap_btn.href
-                                ? 'ap_btn_active'
-                                : 'list_item_hover'
-                        ]" :to="ap_btn.href" @click="closeMenu">
-                            {{ ap_btn.name }}</NuxtLink>
-                    </li>
-                    
-                    <li v-for="item in details" class="
+                                <NuxtLink :class="[
+                                    'list_item appointment_btn ',
+                                    $route.path === ap_btn.href
+                                        ? 'ap_btn_active'
+                                        : 'list_item_hover'
+                                ]" :to="ap_btn.href" @click="closeMenu">
+                                    {{ ap_btn.name }}</NuxtLink>
+                            </li>
+
+                            <li v-for="item in details" class="
                     hidden
                     md:block
                     ">
-                        <a class="
+                                <a class="
                         text-sm
                         text-gray-700
                         " href="#">
-                            <i :class="item.icon"></i>
-                            <span class="ml-2">{{ item.title }}</span>
-                        </a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
+                                    <i :class="item.icon"></i>
+                                    <span class="ml-2">{{ item.title }}</span>
+                                </a>
+                            </li>
 
-        <div class="md:hidden container w-11/12 mx-auto">
-            <div class="
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="md:hidden container w-11/12 mx-auto">
+                    <div class="
             flex
             items-center
             justify-between
             py-5
             ">
-                <div class="md:hidden">
-                    <img class="w-12" :src="logoMain" alt="">
-                </div>
+                        <div class="md:hidden">
+                            <img class="w-12" :src="logoMain" alt="">
+                        </div>
 
-                <div class="icon 
+                        <div class="icon 
                     md:hidden
                     ">
-                    <a href="javascript:void(0)" @click="toggleMenu" class="text-black">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
-                            <path fill-rule="evenodd"
-                                d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </a>
+                            <a href="javascript:void(0)" @click="toggleMenu" class="text-black">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="size-8">
+                                    <path fill-rule="evenodd"
+                                        d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!---- Header Menu -->
-    <div class="
+            <!---- Header Menu -->
+            <div class="
     bg-white
     md:bg-white
     md:border-b-0
     ">
-        <div class="header container w-11/12 mx-auto">
-            <nav class="
+                <div class="header container w-11/12 mx-auto">
+                    <nav class="
             block
             w-full
             md:flex
@@ -118,7 +129,7 @@
             md:py-3
             ">
 
-                <div class="
+                        <div class="
                 bg-black
                 w-full
                 h-[100%]
@@ -130,7 +141,7 @@
                 opacity-50
                 md:hidden
                 " @click="closeMenu" v-show="isOpen"></div>
-                <div id="menu" class="
+                        <div id="menu" class="
             bg-white
             text-green-700
             md:text-white
@@ -157,29 +168,29 @@
             md:gap-4
             ">
 
-                    <div class="
+                            <div class="
                 md:hidden
                 text-center
                 shadow-md
                 p-3
                 ">
-                        <h2 class="
+                                <h2 class="
                    font-bold
                    text-black
                    mb-1
                    ">Care2Training</h2>
-                        <p class="
+                                <p class="
                    text-[10px]
                    ">
-                            Study Abroad
-                        </p>
-                    </div>
+                                    Study Abroad
+                                </p>
+                            </div>
 
-                    <div class="hidden md:block">
-                        <img class="w-20" :src="logoMain" alt="logo">
-                    </div>
+                            <div class="hidden md:block">
+                                <img class="w-20" :src="logoMain" alt="logo">
+                            </div>
 
-                    <ul class="
+                            <ul class="
              py-2
              px-6
              flex
@@ -193,20 +204,20 @@
             ">
 
 
-                        <li v-for="item in navItems" class="
+                                <li v-for="item in navItems" class="
                     relative
                     group
                     ">
-                            <NuxtLink :class="[
-                                'list_item cursor-pointer',
-                                $route.path === item.href
-                                    ? 'activeRoute'
-                                    : 'list_item_hover'
-                            ]" :to="item.href" @click="closeMenu">
-                                {{ item.name }}
-                            </NuxtLink>
-                            
-                                <ul class="
+                                    <NuxtLink :class="[
+                                        'list_item cursor-pointer',
+                                        $route.path === item.href
+                                            ? 'activeRoute'
+                                            : 'list_item_hover'
+                                    ]" :to="item.href" @click="closeMenu">
+                                        {{ item.name }}
+                                    </NuxtLink>
+
+                                    <ul class="
                                  absolute
                                  z-50
                                  bg-white
@@ -230,42 +241,44 @@
                                  duration-300
                                  ease-in-out
                                 " v-if="item.dropdown">
-                                    <li class="
+                                        <li class="
                                     relative
                                     py-1
                                     " v-for="dropdown in item.dropdown">
-                                        <NuxtLink :class="[
-                                'text-black/80 mb-1',
-                                $route.path === item.href
-                                    ? 'activeRoute'
-                                    : 'list_item_hover'
-                            ]" :to="dropdown.href">
-                                            {{ dropdown.name }}
-                                        </NuxtLink>
-                                    </li>
-                                </ul>
-                        </li>
+                                            <NuxtLink :class="[
+                                                'text-black/80 mb-1',
+                                                $route.path === item.href
+                                                    ? 'activeRoute'
+                                                    : 'list_item_hover'
+                                            ]" :to="dropdown.href">
+                                                {{ dropdown.name }}
+                                            </NuxtLink>
+                                        </li>
+                                    </ul>
+                                </li>
 
 
-                        <li class="
+                                <li class="
                     relative
                     ">
-                            <NuxtLink :class="[
-                                'list_item appointment_btn mt-3',
-                                $route.path === ap_btn.href
-                                    ? 'ap_btn_active'
-                                    : 'list_item_hover'
-                            ]" :to="ap_btn.href" @click="closeMenu">
-                                {{ ap_btn.name }}</NuxtLink>
-                                
-                                
-                        </li>
+                                    <NuxtLink :class="[
+                                        'list_item appointment_btn mt-3',
+                                        $route.path === ap_btn.href
+                                            ? 'ap_btn_active'
+                                            : 'list_item_hover'
+                                    ]" :to="ap_btn.href" @click="closeMenu">
+                                        {{ ap_btn.name }}</NuxtLink>
 
-                    </ul>
 
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </nav>
                 </div>
-
-            </nav>
+            </div>
         </div>
     </div>
 </template>
@@ -279,22 +292,24 @@ const logoMain = ref(logo);
 const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { 
-      dropdown: [
-          { name: 'Australia', href: '/australia' },
-          { name: 'Canada', href: '/canada' },
-          { name: 'United States', href: '/usa' },
-          { name: 'United Kingdom', href: '/uk' },
-          { name: 'New Zealand', href: '/new-zealand' },
-       ],
-       name: 'Country',
+    {
+        dropdown: [
+            { name: 'Australia', href: '/australia' },
+            { name: 'Canada', href: '/canada' },
+            { name: 'United States', href: '/usa' },
+            { name: 'United Kingdom', href: '/uk' },
+            { name: 'New Zealand', href: '/new-zealand' },
+        ],
+        name: 'Country',
     },
-    { name: 'Services', dropdown: [
-        { name: 'Study Abroad', href: '/study-abroad' },
-        { name: 'Visa Services', href: '/visa-services' },
-        { name: 'Admission Guidance', href: '/admission-guidance' },
-        { name: 'Career Counselling', href: '/career-counselling' },
-    ]},
+    {
+        name: 'Services', dropdown: [
+            { name: 'Study Abroad', href: '/study-abroad' },
+            { name: 'Visa Services', href: '/visa-services' },
+            { name: 'Admission Guidance', href: '/admission-guidance' },
+            { name: 'Career Counselling', href: '/career-counselling' },
+        ]
+    },
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Contact', href: '/contact' },
@@ -369,6 +384,25 @@ const closeMenu = () => {
     menu.classList.remove('left-0');
 };
 
+const topbar = ref(true);
+
+const stickyNav = () => {
+    const header = document.querySelector('.sticky_header');
+    if (!header) return;
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('fixed');
+            topbar.value = false;
+        } else {
+            header.classList.remove('fixed');
+            topbar.value = true;
+        }
+    });
+};
+
+onMounted(() => {
+    stickyNav();
+});
 
 </script>
 
