@@ -8,15 +8,15 @@
     <div>
       <UAccordion :items="items" />
     </div>
-    <div>
-      <img class="w-full" :src="faqImg" alt="">
+    <div class="hidden md:block">
+      <img class="w-[50%] mx-auto" :src="faqImg" alt="">
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { AccordionItem } from '@nuxt/ui';
-import faqImg from '~/assets/images/faq.avif';
+import faqImg from '~/assets/images/faq.png';
 
 const items = ref<AccordionItem[]>([
   {

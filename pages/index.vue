@@ -179,7 +179,7 @@
       <!-- FAQ -->
       <section class="
       py-12
-      mb-12
+      pb-12
       bg-gray-10/10
       ">
         <div class="
@@ -200,6 +200,33 @@
           </div>
         
           <FAQ />
+        </div>
+      </section>
+      
+      <!-- Contact Us -->
+      <section class="
+      py-12
+      pb-22
+      bg-blue-300/10
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+        <div class="mb-10">
+            <h4 class="
+            text-gray-500
+            capitalize
+            mb-1
+            ">Contact</h4>
+            <h2 class="
+            title-design
+            text-3xl
+            text-black/90
+            ">Get in Touch</h2>
+          </div>
+        
+          <ContactForm />
         </div>
       </section>
      
