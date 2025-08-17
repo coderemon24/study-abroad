@@ -1,5 +1,5 @@
 <template>
- <div class="bg-white shadow-md text-black/70 p-8 rounded-md flex flex-col md:flex-row gap-10 items-center">
+ <div class="bg-white shadow-md text-black/70 p-8 rounded-md flex flex-col md:flex-row gap-10 items-center" >
   
   <!-- Contact Form -->
   <form action="#" class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-1 w-full">
@@ -76,7 +76,7 @@
   </form>
 
   <!-- Contact Image -->
-  <div class="hidden md:flex flex-1 justify-center">
+  <div v-if="!contactPage" class="hidden md:flex flex-1 justify-center">
     <img 
       class="w-[80%] object-fit" 
       :src="contactImg" 
