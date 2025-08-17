@@ -16,6 +16,19 @@ body {
     @apply bg-gray-100 font-poppins
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Replace white with your background */
+    -webkit-text-fill-color: #000 !important; /* Replace with your text color */
+    transition: background-color 5000s ease-in-out 0s; /* Optional: prevents flash */
+    outline: 2px solid rgb(0, 0, 189) !important;
+}
+
+input:-internal-autofill-selected {
+    background-color: transparent !important; 
+    color: #000 !important; 
+    outline: 2px solid rgb(43, 43, 43) !important;
+}
+
 .list_item{
     @apply
     transition-all 

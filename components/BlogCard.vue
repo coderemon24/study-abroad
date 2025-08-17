@@ -6,19 +6,46 @@
      shadow-md
      overflow-hidden
      block
-     ">
-       <img class="w-full h-70 object-cover" :src="image" alt="">
+     hover:-translate-y-2
+     transition-all
+     duration-300
+     ease-in-out
+     group
+     "
+     :class="sidebar === true ? sidebarClass : 'block'"
+     >
        <div class="
+       overflow-hidden
+       ">
+        
+        <img 
+       :class="sidebar === true ? 'w-25! h-20!' : ''"
+       class="w-full h-70 object-cover
+       group-hover:scale-105
+       transition-all
+       duration-300
+       ease-in-out
+       " :src="image" alt="">
+        
+       </div>
+       
+       <div 
+       :class="sidebar === true ? 'p-0! px-3! py-2' : ''"
+       class="
        p-5
        pt-3
        ">
        
-          <div v-if="tags" class="
+          <div v-if="tags" 
+          :class="sidebar === true ? 'hidden' : 'block'"
+          class="
           mb-3
           flex
           gap-2
           ">
-            <span v-for="tag in tags" class="
+            <span v-for="tag in tags" 
+            
+            class="
             text-[12px]
             bg-blue-700/20
             text-blue-700
@@ -34,20 +61,26 @@
             ">{{ tag }}</span>
           </div>
        
-         <h2 class="
+         <h2 
+         :class="sidebar === true ? 'text-lg! p-0!' : ''"
+         class="
          text-xl
          font-medium
          mb-2
          ">
            {{ title }}
          </h2>
-         <p class="
+         <p 
+         :class="sidebar === true ? 'hidden' : 'block'"
+         class="
          text-sm
          text-gray-500
          ">
           {{ description }}</p>
          
-         <div class="
+         <div 
+         :class="sidebar === true ? 'hidden' : 'block'"
+         class="
          flex
          justify-between
          mt-4
@@ -104,8 +137,17 @@ defineProps({
   path: {
     type: String,
     default: '#'
+  },
+  sidebar: {
+    type: Boolean,
+    default: false
   }
 })
+
+
+const sidebarClass = [
+  'flex'
+]
 
 </script>
 
