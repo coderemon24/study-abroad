@@ -74,6 +74,86 @@
             text-gray-500
             capitalize
             mb-1
+            ">Our Team</h4>
+            <h2 class="
+            title-design
+            text-3xl
+            text-black/90
+            ">The People Behind Our Success</h2>
+          </div>
+        
+          <div class="
+          grid
+          grid-cols-1
+          md:grid-cols-3
+          lg:grid-cols-4
+          place-items-center
+          gap-3
+          mx-auto
+          ">
+          
+            <div v-for="item in teams" class="
+            bg-white
+            px-3
+            rounded-lg
+            text-center
+            flex
+            flex-col
+            items-center
+            py-5
+            mx-auto
+            ">
+              
+              <img class="
+              w-30
+              h-30
+              rounded-full
+              object-fit
+              border-3
+              border-blue-800
+              " :src="item.image" alt="">
+              
+              <p class="
+              text-black/80
+              text-2xl
+              mt-3
+              ">{{ item.name }}</p>
+              <span>{{ item.role }}</span>
+              <ul v-if="item.socials" class="
+              flex
+              gap-4
+              items-center
+              justify-center
+              mt-3
+              ">
+                <li v-for="social in item.socials">
+                  <NuxtLink  :to="social.link">
+                    <i :class="social.icon"></i>
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+          
+        </div>
+      </section>
+      
+    <!-- our reach -->
+      <section class="
+      py-12
+      pb-22
+      bg-white
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+        <div class="mb-10">
+            <h4 class="
+            text-gray-500
+            capitalize
+            mb-1
             ">Our Reach</h4>
             <h2 class="
             title-design
@@ -132,12 +212,12 @@
             text-gray-500
             capitalize
             mb-1
-            ">Our Services</h4>
+            ">Mission & Vision</h4>
             <h2 class="
             title-design
             text-3xl
             text-black/90
-            ">What We Do</h2>
+            ">Roadmap To Success</h2>
           </div>
         
           
@@ -204,6 +284,7 @@
 
 <script lang="ts" setup>
 import consulting from "~/assets/images/consulting.jpg"
+import john from "~/assets/images/team/john.jpg"
 
 const reaches = [
   {
@@ -222,47 +303,212 @@ const reaches = [
 
 const tabs = [
   {
-    id: 'counselling',
-    title: 'Free Counselling',
+    id: 'mission',
+    title: 'Our Mission',
     content_title: 'We want the best for you!',
     image: consulting,
     content: 'Consultation sessions aim to help you find the right program and university. Our Team will walk you through all the ins and outs of the entire study abroad process. And it’s completely free.'
   },
   {
-    id: 'admission_process',
-    title: 'Admission Process',
+    id: 'vision',
+    title: 'Our Vision',
     content_title: 'We offer a wide choice of courses and institutions',
     image: consulting,
     content: 'We assist you to find the best program and universities according to your requirements. Our admissions team will take care of the application and admission process to help you secure your place at your preferred institution.'
   },
   {
-    id: 'visa_support',
-    title: 'Visa Application Support',
-    content_title: 'We are here to help you secure your visa',
-    image: consulting,
-    content: 'We will simplify and guide you to prepare your visa documents. Our Team will take care of your visa application and help you obtain your Student Visa/ Permit.'
-  },
-  {
-    id: 'predeparture',
-    title: 'Pre-Departure Support',
+    id: 'values',
+    title: 'Values',
     content_title: 'We will help you prepare for your trip',
     image: consulting,
     content: 'To help you be well-prepared for your journey overseas we will provide: pre-departure briefings, help you arrange accommodations, airport pickup, etc.'
   },
-  {
-    id: 'postdeparture',
-    title: 'Post-Departure Support',
-    content_title: 'We will help you prepare for your trip',
-    image: consulting,
-    content: 'We at Executive continue to provide our support and help even when you reach a new country. We’ll assist you with: open bank account overseas, university enrollment, etc.'
-  },
 ];
 
-const activeTab = ref('counselling');
+const activeTab = ref('mission');
 
 const setActiveTab = (tabId) => {
   activeTab.value = tabId;
 };
+
+const teams = [
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+  {
+    name: "John Doe",
+    role: "Software Developer",
+    image: john,
+    socials: [
+      {
+        icon: "fa-brands fa-square-facebook",
+        name: "facebook",
+        link: "https://www.facebook.com/",
+      },
+      {
+        icon: "fa-brands fa-square-x-twitter",
+        name: "twitter",
+        link: "https://twitter.com/",
+      },
+      {
+        icon: "fa-brands fa-linkedin",
+        name: "linkedin",
+        link: "https://www.linkedin.com/",
+      },
+    ],
+  },
+];
 
 
 

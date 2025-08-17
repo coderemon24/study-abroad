@@ -1,12 +1,22 @@
 <template>
   <div class="
+  grid
+  grid-cols-1
+  gap-5
+  md:grid-cols-2
   ">
-    <UAccordion :items="items" />
+    <div>
+      <UAccordion :items="items" />
+    </div>
+    <div>
+      <img class="w-full" :src="faqImg" alt="">
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { AccordionItem } from '@nuxt/ui';
+import faqImg from '~/assets/images/faq.avif';
 
 const items = ref<AccordionItem[]>([
   {
