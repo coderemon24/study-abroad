@@ -3,13 +3,15 @@
   bg-white
   text-black/70
   pt-5
+  border-t
+  border-blue-700/20
   ">
         <footer class="container w-11/12 mx-auto">
             <!-- footer top -->
             <div class="
         py-4
         border-b
-        border-gray-700
+        border-gray-300
         md:flex
         md:justify-between
         ">
@@ -283,14 +285,14 @@
             
             <!-- footer bottom -->
             <div class="
-            text-gray-300
+            text-black/60
             py-4
             flex
             items-center
             justify-between
             gap-2
             border-t
-            border-gray-700
+            border-gray-300
             text-xs
             md:text-sm
             ">
