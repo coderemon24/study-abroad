@@ -175,6 +175,43 @@
             
         </div>
      </section>
+     
+     <section class="relative bg-gradient-to-r from-purple-700 to-blue-500 py-16 px-6">
+    <div class="max-w-5xl mx-auto text-center text-white">
+      <!-- Heading -->
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+        How Much Does it Cost to Study in <span class="text-yellow-300">Australia?</span>
+      </h2>
+      <p class="text-lg opacity-90 mb-10">
+        Here’s a quick breakdown of tuition fees for international students in Australia.
+      </p>
+
+      <!-- Cards Layout -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Bachelor’s Degree Card -->
+        <div class="bg-white text-gray-800 shadow-lg rounded-2xl p-6 hover:scale-105 transition transform duration-300">
+          <h3 class="text-xl font-semibold mb-3">🎓 Undergrad Bachelor’s Degree</h3>
+          <p class="text-lg font-bold text-blue-600">A$15,000 – 49,500 / Annually</p>
+        </div>
+
+        <!-- Master’s Degree Card -->
+        <div class="bg-white text-gray-800 shadow-lg rounded-2xl p-6 hover:scale-105 transition transform duration-300">
+          <h3 class="text-xl font-semibold mb-3">📘 Post-Graduate Master’s Degree</h3>
+          <p class="text-lg font-bold text-blue-600">A$20,000 – 50,000 / Annually</p>
+        </div>
+      </div>
+
+      <!-- Link -->
+      <div class="mt-10">
+        <a
+          href="#"
+          class="inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-yellow-300 transition"
+        >
+          Learn More About Costs →
+        </a>
+      </div>
+    </div>
+  </section>
     
   </div>
 </template>
