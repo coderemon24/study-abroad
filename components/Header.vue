@@ -319,7 +319,7 @@ const navItems = [
 
 const ap_btn = {
     name: 'Book an appointment',
-    href: '/book-an-appointment',
+    href: '/book-appointment',
 };
 
 const details = [

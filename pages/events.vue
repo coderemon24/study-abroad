@@ -3,7 +3,7 @@
   text-black/70
   py-8
   ">
-  
+  <!-- breadcrumb -->
    <section class="container mx-auto w-11/12">
         <!----- Breadcrumb ------->
       <div class="breadcrumb flex items-center gap-2 text-sm mb-6">
@@ -13,6 +13,7 @@
       </div>
     </section>
   
+    <!-- events -->
     <section class="container mx-auto w-11/12">
       
       <div class="mb-10 mt-10">
@@ -46,6 +47,7 @@
        </div>
     </section>
     
+    <!-- join our community -->
     <section class="container mx-auto w-11/12">
       <div class="
       mt-10
