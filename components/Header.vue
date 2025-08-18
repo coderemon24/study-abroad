@@ -296,13 +296,13 @@ const navItems = [
     { name: 'About', href: '/about' },
     {
         dropdown: [
-            { name: 'Australia', href: '/australia' },
+            { name: 'Australia', href: 'country/australia' },
             { name: 'Canada', href: '/canada' },
             { name: 'United States', href: '/usa' },
             { name: 'United Kingdom', href: '/uk' },
             { name: 'New Zealand', href: '/new-zealand' },
         ],
-        name: 'Country',
+        name: 'Study Destinations',
     },
     {
         name: 'Services', dropdown: [
