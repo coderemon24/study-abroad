@@ -296,7 +296,7 @@ const navItems = [
     { name: 'About', href: '/about' },
     {
         dropdown: [
-            { name: 'Australia', href: 'country/australia' },
+            { name: 'Australia', href: '/country/australia' },
             { name: 'Canada', href: '/canada' },
             { name: 'United States', href: '/usa' },
             { name: 'United Kingdom', href: '/uk' },
@@ -306,10 +306,10 @@ const navItems = [
     },
     {
         name: 'Services', dropdown: [
-            { name: 'Study Abroad', href: '/study-abroad' },
-            { name: 'Visa Services', href: '/visa-services' },
-            { name: 'Admission Guidance', href: '/admission-guidance' },
-            { name: 'Career Counselling', href: '/career-counselling' },
+            { name: 'Study Abroad', href: '/services/study-abroad' },
+            { name: 'Visa Services', href: '/services/visa-services' },
+            { name: 'Admission Guidance', href: '/services/admission-guidance' },
+            { name: 'Career Counselling', href: '/services/career-counseling' },
         ]
     },
     { name: 'Events', href: '/events' },
