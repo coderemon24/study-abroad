@@ -91,7 +91,11 @@
         </div>
      </section>
      
-     <section>
+    <!-- our partners -->
+     <section class="
+     py-12
+     bg-white
+     ">
         <div class="
         container
         mx-auto
@@ -137,6 +141,37 @@
             ease-in-out
             " :src="utas" alt="">
           </div>
+            
+        </div>
+     </section>
+     
+    <!-- our partners -->
+     <section class="
+     bg-blue-100/10
+     py-12
+     pb-0
+     ">
+        <div class="
+        container
+        mx-auto
+        w-11/12
+        ">
+        <div class="mb-10">
+            <h4 class="
+            text-gray-500
+            capitalize
+            mb-1
+            ">Choose Your University</h4>
+            <h2 class="
+            title-design
+            text-3xl
+            text-black/90
+            ">
+                Why Study in Australia
+            </h2>
+          </div>
+          
+          <WhyStudyCountry />
             
         </div>
      </section>
