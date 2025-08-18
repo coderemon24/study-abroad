@@ -33,8 +33,6 @@ const items = [
   >
     <img :src="item" width="100%" height="320" class="
     shadow-md
-    ring-2
-    ring-blue-700
     rounded-lg">
   </UCarousel>
 </template>
