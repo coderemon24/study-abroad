@@ -316,13 +316,38 @@
                 </ul>
             </div>
             
+            <a 
+            href="#"
+            class="
+            bg-green-500
+            text-white
+            fixed
+            bottom-10
+            right-8
+            w-14
+            h-14
+            flex
+            items-center
+            justify-center
+            rounded-full
+            text-4xl
+            p-3
+            z-50
+            "
+            :class="[
+                scrollButton ? 'bottom-25' : ''
+            ]"
+            >
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            
             <!-- click to top -->
             <button
             v-if="scrollButton"
             class="
             fixed
             bottom-10
-            right-10
+            right-9
             bg-blue-700
             w-12
             h-12
