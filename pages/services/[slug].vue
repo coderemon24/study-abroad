@@ -49,28 +49,21 @@
       <!-- Process -->
       <section class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
         <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Process</h2>
-        <div class="space-y-6">
-          <div class="flex items-start space-x-4">
-            <div class="h-10 w-10 flex items-center justify-center rounded-full bg-cyan-500 text-white font-bold">1</div>
-            <p class="text-gray-700"><span class="font-semibold">Initial Consultation:</span> We analyze your goals, profile, and preferences.</p>
-          </div>
-          <div class="flex items-start space-x-4">
-            <div class="h-10 w-10 flex items-center justify-center rounded-full bg-cyan-500 text-white font-bold">2</div>
-            <p class="text-gray-700"><span class="font-semibold">Documentation:</span> Assistance in preparing and reviewing documents.</p>
-          </div>
-          <div class="flex items-start space-x-4">
-            <div class="h-10 w-10 flex items-center justify-center rounded-full bg-cyan-500 text-white font-bold">3</div>
-            <p class="text-gray-700"><span class="font-semibold">Submission & Follow-up:</span> We submit applications and keep track of progress.</p>
-          </div>
-          <div class="flex items-start space-x-4">
-            <div class="h-10 w-10 flex items-center justify-center rounded-full bg-cyan-500 text-white font-bold">4</div>
-            <p class="text-gray-700"><span class="font-semibold">Final Support:</span> From approval to post-service guidance.</p>
-          </div>
+        <div>
+          <UTimeline 
+          class="" 
+          color="info"
+          :ui="{
+            indicator: 'bg-blue-700/80 text-white',
+            separator: 'bg-blue-700/80',
+            title: 'text-blue-800',
+          }"
+          :items="process" />
         </div>
       </section>
 
       <!-- Why Choose Us -->
-      <section class="bg-gradient-to-r from-cyan-500 to-blue-500 p-12 rounded-3xl shadow-lg text-white">
+      <section class="bg-gradient-to-r from-blue-700/80 to-blue-500 p-12 rounded-3xl shadow-lg text-white">
         <h2 class="text-3xl font-bold mb-6">Why Choose Us?</h2>
         <p class="text-lg leading-relaxed mb-6">
           With years of proven expertise and successful cases, we are committed to 
@@ -103,8 +96,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts" >
 import { useRoute } from 'vue-router'
+import type { TimelineItem } from '@nuxt/ui'
 
 const route = useRoute()
 
@@ -134,6 +128,29 @@ const allServices = {
     details: "We provide training for IELTS, TOEFL, SAT, GRE, and other entrance exams with expert coaching."
   },
 }
+
+const process = ref<TimelineItem[]>([
+   {
+    title: 'Project Kickoff',
+    description: 'Kicked off the project with team alignment. Set up project milestones and allocated resources.',
+    icon: 'i-lucide-rocket'
+  },
+  {
+    title: 'Design Phase',
+    description: 'User research and design workshops. Created wireframes and prototypes for user testing.',
+    icon: 'i-lucide-palette'
+  },
+  {
+    title: 'Development Sprint',
+    description: 'Frontend and backend development. Implemented core features and integrated with APIs.',
+    icon: 'i-lucide-code'
+  },
+  {
+    title: 'Testing & Deployment',
+    description: 'QA testing and performance optimization. Deployed the application to production.',
+    icon: 'i-lucide-check-circle'
+  }
+]);
 
 const service = allServices[route.params.slug]
 </script>
