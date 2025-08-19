@@ -69,7 +69,7 @@ const blogs = [
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
     tags: ['Canada','UK', 'USA'],
     date: '03 July 2023',
-    path: '#'
+    path: '/blog/study-in-australia-with-scholarship'
   },
   
   {

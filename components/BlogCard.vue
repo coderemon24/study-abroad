@@ -1,6 +1,6 @@
 <template>
   <div>
-     <NuxtLink to="#" class="
+     <NuxtLink :to="path" class="
      bg-white
      rounded-lg
      shadow-md
