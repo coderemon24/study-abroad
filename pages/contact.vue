@@ -37,8 +37,10 @@
             </p>
             <NuxtLink class="
             btn-outline
-            " to="#contact">
-               <span class="relative z-10">Get Started</span>
+            w-[15rem]!
+            py-3!
+            " to="book-appointment">
+               <span class="relative z-10">Book an Appointment</span>
             </NuxtLink>
          </div>
 

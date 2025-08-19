@@ -199,10 +199,12 @@
 
                 <!-- Link -->
                 <div class="mt-10">
-                    <a href="#"
-                        class="inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-yellow-300 transition">
-                        Learn More About Costs →
-                    </a>
+                    <NuxtLink to="/book-appointment"
+                        class="inline-block
+                        cursor-pointer
+                         bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-yellow-300 transition">
+                        Book an Appointment
+                    </NuxtLink>
                 </div>
             </div>
         </section>

@@ -1,45 +1,15 @@
 <script setup lang="ts">
-import slide1 from '~/assets/images/slider/slide-1.jpeg'
-import slide2 from '~/assets/images/slider/slide-2.jpeg'
-import slide3 from '~/assets/images/slider/slide-3.jpeg'
-import slide4 from '~/assets/images/slider/slide-4.jpeg'
-import slide5 from '~/assets/images/slider/slide-5.png'
+import slide1 from '~/assets/images/slider/slide-1.png'
+import slide2 from '~/assets/images/slider/slide-2.png'
+import slide3 from '~/assets/images/slider/slide-3.png'
 
 const containerRef = ref(null)
 const slides = ref([
-    {
-        image: slide5,
-    },
-    {
-        image: slide2,
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate`
-    },
-    {
-        title: 'Slide 3',
-        image: slide3,
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate`
-    },
-    {
-        title: 'Slide 4',
-        image: slide4,
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-                                dolores
-                                voluptate`
-    },
+    {image: slide1,},
+    {image: slide2,},
+    {image: slide3,},
 ])
+
 const swiper = useSwiper(containerRef, {
     effect: 'slide',
     speed: 2000,
@@ -110,34 +80,44 @@ onMounted(() => {
         <div class="
         flex
         gap-2
-        flex-row
-        md:flex-col
+        flex-col
         absolute
-        top-[80%]
-        md:top-1/2
+        top-1/2
         md:translate-y-[-50%]
-        right-1/2
-        translate-x-1/2
-        md:translate-x-0
+        translate-y-[-100%]
+        translate-x-0
+        right-5
         md:right-16
         z-50
         text-lg
         ">
             <button class="
-        bg-gray-200/60
-        px-6
+        md:bg-gray-200/60
+        bg-black/70
+        md:px-6
+        p-3
+        rounded-full
+        md:rounded-none
         py-2
+        md:py-2
         cursor-pointer
-        text-black/80
+        md:text-black/80
+        text-white
         " @click="swiper.prev()">
                 <i class="fa-solid fa-arrow-left-long"></i>
             </button>
             <button class="
-        bg-gray-200/60
-        px-6
+        md:bg-gray-200/60
+        bg-black/70
+        md:px-6
+        p-3
+        rounded-full
+        md:rounded-none
         py-2
+        md:py-2
         cursor-pointer
-        text-black/80
+        md:text-black/80
+        text-white
         " @click="swiper.next()">
                 <i class="fa-solid fa-arrow-right-long"></i>
             </button>
