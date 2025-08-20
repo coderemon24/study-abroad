@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import slide1 from '~/assets/images/slider/slide-1.png'
-import slide2 from '~/assets/images/slider/slide-2.png'
-import slide3 from '~/assets/images/slider/slide-3.png'
+import slide1 from '~/assets/images/slider/uk.jpg'
+import slide2 from '~/assets/images/slider/australia.jpg'
+import slide3 from '~/assets/images/slider/canada.jpg'
 
 const containerRef = ref(null)
 const slides = ref([
