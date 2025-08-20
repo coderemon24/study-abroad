@@ -229,6 +229,11 @@
           <ContactForm />
         </div>
       </section>
+      
+      <!-- modal form-->
+       <section>
+          <ModalForm />
+       </section>
      
    </div>
  </template>
@@ -288,6 +293,8 @@ const serviceItems = ref([
         description: 'Providing uninterrupted support to assist you anytime, every day.',
     },
 ])
+
+
 
  </script>
  
