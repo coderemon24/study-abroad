@@ -16,7 +16,9 @@
     <!-- book appointment -->
     <section>
       <div class="container mx-auto w-11/12">
-        <h1 class="
+        <h1 
+        data-aos="fade-up"
+        class="
         text-3xl
         font-semibold
         md:text-4xl
@@ -25,7 +27,9 @@
         ">Book an Appointment</h1>
 
 
-        <div class="
+        <div 
+        data-aos="fade-up"
+        class="
       grid
       grid-cols-1
       md:grid-cols-3
@@ -281,6 +285,18 @@
 
 <script lang="ts" setup>
 import img from '~/assets/images/appointment.jpg'
+import AOS from 'aos';
+
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
 
 </script>
 

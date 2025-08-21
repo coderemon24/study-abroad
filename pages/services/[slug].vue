@@ -4,16 +4,23 @@
 
       <!-- Service Hero Section -->
       <div class="text-center">
-        <h1 class="text-5xl font-extrabold text-gray-900 mb-4">
+        <h1 
+        data-aos="fade-up"
+        class="text-5xl font-extrabold text-gray-900 mb-4">
           {{ service.title }}
         </h1>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        <p 
+        data-aos="fade-up"
+        data-aos-delay="200"
+        class="text-lg text-gray-600 max-w-3xl mx-auto">
           {{ service.details }}
         </p>
       </div>
 
       <!-- Overview -->
-      <section class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
+      <section 
+      data-aos="fade-left"
+      class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Overview</h2>
         <p class="text-gray-600 leading-relaxed">
           Our <span class="font-semibold">{{ service.title }}</span> program ensures that students receive
@@ -24,7 +31,9 @@
       </section>
 
       <!-- Benefits -->
-      <section class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
+      <section 
+      data-aos="fade-right"
+      class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
         <h2 class="text-3xl font-bold text-gray-900 mb-6">Key Benefits</h2>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
           <li class="p-5 rounded-xl bg-gradient-to-r from-blue-50 to-cyan-50 border border-cyan-100 shadow-sm">
@@ -47,7 +56,9 @@
       </section>
 
       <!-- Process -->
-      <section class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
+      <section 
+      data-aos="fade-up"
+      class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
         <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Process</h2>
         <div>
           <UTimeline 
@@ -63,7 +74,7 @@
       </section>
 
       <!-- Why Choose Us -->
-      <section class="bg-gradient-to-r from-blue-700/80 to-blue-500 p-12 rounded-3xl shadow-lg text-white">
+      <section data-aos="fade-up" class="bg-gradient-to-r from-blue-700/80 to-blue-500 p-12 rounded-3xl shadow-lg text-white">
         <h2 class="text-3xl font-bold mb-6">Why Choose Us?</h2>
         <p class="text-lg leading-relaxed mb-6">
           With years of proven expertise and successful cases, we are committed to 
@@ -84,7 +95,7 @@
       </section>
 
       <!-- Back Button -->
-      <div class="text-center">
+      <div data-aos="fade-up" data-aos-delay="200" class="text-center">
         <NuxtLink 
           to="/"
           class="inline-block mt-6 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 
@@ -99,6 +110,18 @@
 <script setup lang="ts" >
 import { useRoute } from 'vue-router'
 import type { TimelineItem } from '@nuxt/ui'
+import AOS from 'aos';
+
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
 
 const route = useRoute()
 

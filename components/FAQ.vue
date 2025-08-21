@@ -6,9 +6,9 @@
   md:grid-cols-2
   ">
     <div>
-      <UAccordion :items="items" />
+      <UAccordion data-aos="fade-left" :items="items" />
     </div>
-    <div class="hidden md:block">
+    <div data-aos="fade-right" class="hidden md:block">
       <img class="w-[50%] mx-auto" :src="faqImg" alt="">
     </div>
   </div>

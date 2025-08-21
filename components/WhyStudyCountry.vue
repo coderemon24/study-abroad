@@ -7,6 +7,7 @@
         <div class="absolute left-5 top-0 bottom-0 w-1 bg-gradient-to-tr from-indigo-600 to-purple-500 rounded-full"></div>
         
         <div
+        data-aos="fade-up"
           v-for="(fact, index) in facts"
           :key="index"
           class="relative mb-5 pl-16"
@@ -35,6 +36,7 @@
         bottom-0
         ">
           <img
+          data-aos="fade-right"
             src="~/assets/images/country/australian.webp"
             alt="Student"
             class="w-full h-full object-cover -mb-8"

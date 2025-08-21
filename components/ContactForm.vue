@@ -2,7 +2,10 @@
  <div class="bg-white shadow-md text-black/70 p-8 rounded-md flex flex-col md:flex-row gap-10 items-center" >
   
   <!-- Contact Form -->
-  <form action="#" class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-1 w-full">
+  <form 
+  data-aos="fade-left"
+  data-aos-delay="400"
+  action="#" class="grid grid-cols-1 md:grid-cols-2 gap-5 flex-1 w-full">
     
     <!-- Full Name -->
     <div>
@@ -76,7 +79,10 @@
   </form>
 
   <!-- Contact Image -->
-  <div v-if="!contactPage" class="hidden md:flex flex-1 justify-center">
+  <div 
+  data-aos="fade-right"
+  data-aos-delay="400"
+  v-if="!contactPage" class="hidden md:flex flex-1 justify-center">
     <img 
       class="w-[80%] object-fit" 
       :src="contactImg" 

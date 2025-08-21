@@ -10,7 +10,9 @@
     w-full
     md:w-1/2
     ">
-        <h3 class="
+        <h3 
+        data-aos="fade-up"
+        class="
         title-design
         mb-4
         uppercase
@@ -20,7 +22,10 @@
             Get To Know About Us
         </h3>
         
-        <h3 class="
+        <h3 
+        data-aos="fade-up"
+        data-aos-delay="200"
+        class="
         text-4xl
         md:text-6xl
         text-blue-900
@@ -40,11 +45,16 @@
         flex-col
         gap-4
         ">
-            <p>
+            <p data-aos="fade-up"
+            data-aos-delay="400"
+            >
                 Welcome to Care2Training, where professional expertise meets a genuine commitment to empowering individuals on their journey toward success.
             </p>
             
-            <p>
+            <p
+            data-aos="fade-up"
+            data-aos-delay="600"
+            >
                 John is the Founder and CEO of Care2Training, bringing years of experience in guiding learners toward achieving their educational and professional goals. As a dedicated trainer and mentor, [he/she] specializes in delivering high-quality training programs designed to equip individuals with the knowledge and skills they need to thrive. With a deep passion for education and personal growth, [he/she] is committed to serving learners both locally and globally.
             </p>
         </div>
@@ -61,14 +71,18 @@
         left-1/2
         -translate-x-1/2
         ">
-            <img class="
+            <img 
+            data-aos="fade-down"
+            class="
             hidden
             md:block
             w-1/4
             absolute
             " :src="logo" alt="logo" >
             
-            <img class="
+            <img 
+            data-aos="fade-right"
+            class="
             md:w-[22rem]
             float-end
             md:ml-[15rem]
@@ -78,7 +92,9 @@
             circle-shape
             "></div>
             
-            <img class="
+            <img 
+            data-aos="fade-up"
+            class="
             hidden
             md:block
             w-[22rem]
@@ -88,7 +104,9 @@
             z-[-1]
             " :src="passport" alt="passport" >
             
-            <div class="
+            <div 
+            data-aos="fade-up"
+            class="
             bg-white
             shadow-lg
             p-5

@@ -17,7 +17,9 @@
           md:flex-col
           md:items-center
           ">
-            <h1 class="
+            <h1 
+            data-aos="fade-up"
+            class="
             text-2xl
             font-semibold
             text-blue-800
@@ -26,7 +28,10 @@
             ">
                Get Started With Free Consultancy!
             </h1>
-            <p class="
+            <p 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             text-gray-500
             mt-3
             text-justify
@@ -35,7 +40,10 @@
                Get expert guidance for free! Explore your options and plan your next steps with personalized
                consultancy—no cost, no obligation.
             </p>
-            <NuxtLink class="
+            <NuxtLink
+            data-aos="fade-up"
+            data-aos-delay="400"
+            class="
             btn-outline
             w-[15rem]!
             py-3!
@@ -49,7 +57,9 @@
           pb-10
           ">
             <div class="mt-6">
-               <h2 class="
+               <h2 
+               data-aos="fade-up"
+               class="
               text-2xl
               title-design
               ">Contact Information</h2>
@@ -62,7 +72,10 @@
             gap-5
             mt-10
             ">
-               <div v-for="item in contactInfos" class="
+               <div
+               data-aos="fade-up"
+               data-aos-delay="200"
+               v-for="item in contactInfos" class="
               bg-white
               p-6
               rounded-lg
@@ -118,10 +131,12 @@
             w-full
             md:w-1/2
             ">
-               <ContactForm :contactPage="true" />
+               <ContactForm data-aos="fade-left" :contactPage="true" />
             </div>
 
-            <div class="
+            <div 
+            data-aos="fade-right"
+            class="
             py-6
             md:pt-8.5
             w-full
@@ -144,6 +159,18 @@
 </template>
 
 <script lang="ts" setup>
+import AOS from 'aos';
+
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
 
 const contactInfos = [
    {

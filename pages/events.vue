@@ -17,12 +17,17 @@
     <section class="container mx-auto w-11/12">
       
       <div class="mb-10 mt-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Events</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
@@ -36,7 +41,7 @@
        gap-10
        ">
        
-        <EventCard v-for="(item, index) in events" 
+        <EventCard data-aos="fade-up" v-for="(item, index) in events" 
         :key="index" 
         :image="item.image" 
         :title="item.title" 
@@ -48,7 +53,7 @@
     </section>
     
     <!-- join our community -->
-    <section class="container mx-auto w-11/12">
+    <section dta-aos="fade-up" class="container mx-auto w-11/12">
       <JoinCommunity />
     </section>
     
@@ -57,6 +62,18 @@
 
 <script lang="ts" setup>
 import eventImage from '~/assets/images/events/event1.jpg'
+import AOS from 'aos';
+
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
 
 const events = [
   {

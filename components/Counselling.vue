@@ -17,10 +17,11 @@
             -top-9
             -left-10
             -z-1
-            
             " :src="pattern" alt="about">
 
-            <div class="
+            <div
+            data-aos="fade-down"
+            class="
             bg-white
             p-3
             rounded-lg
@@ -35,6 +36,7 @@
             -translate-x-1/2
             -translate-y-1/2
             shadow-lg
+            z-10
             ">
                 <span class="
                 bg-blue-700/10
@@ -65,7 +67,9 @@
                 </div>
             </div>
 
-            <img class="
+            <img
+            data-aos="fade-right"
+            class="
             w-full
             rounded-lg
             " :src="img1" alt="about">
@@ -127,7 +131,9 @@
             " :src="pattern" alt="about">
         </div>
 
-        <div class="
+        <div
+        data-aos="fade-up"
+        class="
         w-full
         h-full
         flex
@@ -138,21 +144,26 @@
             <div>
                 <p class="
             text-gray-600
-            ">We are here to help you</p>
+            " data-aos="fade-up">We are here to help you</p>
                 <h3 class="
             capitalize
             text-2xl
             md:text-4xl
             font-semibold
             text-black/70
-            ">from career counselling to university admission</h3>
+            " data-aos="fade-up" 
+            data-aos-delay="200"
+            >from career counselling to university admission</h3>
 
                 <p class="
             text-gray-500
             mt-4
             text-justify
             text-sm
-            ">
+            "
+            data-aos="fade-up"
+            data-aos-delay="400"
+            >
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
                     quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
                     officiis maiores facilis fugit pariatur.
@@ -162,7 +173,10 @@
             mt-4
             text-justify
             text-sm
-            ">
+            "
+            data-aos="fade-up"
+            data-aos-delay="600"
+            >
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
                     quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
                     officiis maiores facilis fugit pariatur.
@@ -172,13 +186,19 @@
             mt-4
             text-justify
             text-sm
-            ">
+            "
+            data-aos="fade-up"
+            data-aos-delay="800"
+            >
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
                     quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
                     officiis maiores facilis fugit pariatur.
                 </p>
 
-                <a class="btn-outline" href="#">
+                <a 
+                data-aos="fade-up"
+                data-aos-delay="900"
+                class="btn-outline" href="#">
                     <span class="relative z-10">
                         Get Started
                     </span>

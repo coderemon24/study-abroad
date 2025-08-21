@@ -15,12 +15,17 @@
         text-4xl
         font-semibold
         ">
-          <h1 class="
+          <h1 
+          data-aos="fade-up"
+          class="
           mb-2
           text-blue-800
           md:text-6xl
           ">Study Abroad!</h1>
-          <h2 class="
+          <h2 
+          data-aos="fade-up"
+          data-aos-delay="200"
+          class="
           text-2xl
           mb-6
           md:text-4xl
@@ -28,7 +33,10 @@
             Plan with a team who knows the way and cares for you.
           </h2>
           
-          <img class="
+          <img 
+          data-aos="fade-up"
+          data-aos-delay="400"
+          class="
           w-full
           mb-6
           " :src="consulting" alt="consulting image">
@@ -39,7 +47,9 @@
         mt-6
         md:mb-12
         ">
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            class="
             text-2xl
             mb-5
             font-semibold
@@ -48,7 +58,10 @@
             md:text-4xl
             uppercase
             ">About Care2Training</h2>
-            <p class="
+            <p 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             text-gray-500
             leading-7
             ">
@@ -70,12 +83,17 @@
         ">
         
         <div class="mb-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Our Team</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
@@ -92,7 +110,10 @@
           mx-auto
           ">
           
-            <div v-for="item in teams" class="
+            <div 
+            v-for="item in teams"
+            data-aos="fade-up"
+             class="
             bg-white
             px-3
             rounded-lg
@@ -150,12 +171,17 @@
         ">
         
         <div class="mb-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Our Reach</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
@@ -168,7 +194,10 @@
           md:grid-cols-3
           gap-8
           ">
-            <div v-for="item in reaches" class="
+            <div 
+            data-aos="fade-up"
+            data-aos-delay="300"
+            v-for="item in reaches" class="
             shadow
             bg-blue-700/10
             px-7
@@ -208,12 +237,17 @@
         ">
         
         <div class="mb-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Mission & Vision</h4>
-            <h2 class="
+            <h2
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
@@ -229,7 +263,9 @@
         ">
         <!----- tabs ----->
         <div class="tabs w-full md:w-1/5 md:min-w-1/5 pb-8">
-          <ul class="
+          <ul 
+          data-aos="fade-left"
+          class="
           flex 
           flex-row 
           md:gap-6 text-md
@@ -253,7 +289,9 @@
           </ul>
         </div>
         <!----- contents ----->
-        <div class="md:border-l border-gray-300 md:pl-5 md:w-4/5 w-full pb-8">
+        <div
+        data-aos="fade-right"
+        class="md:border-l border-gray-300 md:pl-5 md:w-4/5 w-full pb-8">
           <!----- Dynamic content based on active tab -->
           <div 
             v-for="(tab, index) in tabs" 
@@ -285,6 +323,7 @@
 <script lang="ts" setup>
 import consulting from "~/assets/images/consulting.jpg"
 import john from "~/assets/images/team/john.jpg"
+import AOS from 'aos';
 
 const reaches = [
   {
@@ -511,7 +550,16 @@ const teams = [
 ];
 
 
-
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
 
 </script>
 

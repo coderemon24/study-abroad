@@ -17,7 +17,10 @@
           md:flex-col
           md:items-center
           ">
-            <h1 class="
+            <h1 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             text-2xl
             font-semibold
             text-blue-800
@@ -26,7 +29,10 @@
             ">
                Join Our Community of Students.
             </h1>
-            <p class="
+            <p 
+            data-aos="fade-up"
+            data-aos-delay="400"
+            class="
             text-gray-500
             mt-3
             text-justify
@@ -34,7 +40,10 @@
             ">
                Connect with like-minded learners, share experiences, and grow together in a supportive student community.
             </p>
-            <NuxtLink class="
+            <NuxtLink 
+            data-aos="fade-up"
+            data-aos-delay="600"
+            class="
             btn-outline
             " to="#contact">
                <span class="relative z-10">Join Now</span>
@@ -45,7 +54,18 @@
 </template>
 
 <script lang="ts" setup>
+import AOS from 'aos';
 
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
 </script>
 
 <style>

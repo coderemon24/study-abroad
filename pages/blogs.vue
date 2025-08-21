@@ -30,7 +30,7 @@
           md:col-span-2
           ">
           
-            <BlogCard v-for="item in blogs"
+            <BlogCard data-aos="fade-up" v-for="item in blogs"
             :image="item.image"
             :title="item.title"
             :description="item.description"
@@ -42,7 +42,9 @@
           </div>
           
           <!-- sidebar -->
-        <div class="
+        <div 
+        data-aos="fade-right"
+        class="
           hidden
           md:block
           md:col-span-1
@@ -61,6 +63,18 @@
 <script lang="ts" setup>
 import blogImg from '~/assets/images/slider/slide-2.jpeg'
 import blogImg1 from '~/assets/images/slider/slide-1.jpeg'
+import AOS from 'aos';
+
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
 
 const blogs = [
   {

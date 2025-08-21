@@ -21,10 +21,12 @@
           md:gap-15
           ">
             <OfferCard
-            v-for="item in cardItems"
+            v-for="(item, index) in cardItems"
             :icon="item.icon" 
             :title="item.title"
             :description="item.description"
+            data-aos="fade-up"
+            :data-aos-delay="200 * index + 1"
             class="
             bg-white
             shadow-xl
@@ -42,20 +44,25 @@
         container mx-auto w-11/12
         ">
         
-        <div class="mb-10">
+        <div class="mb-10" >
             <h4 class="
             text-gray-500
             capitalize
             mb-1
-            ">Our Partners</h4>
+            "
+            data-aos="fade-up"
+            >Our Partners</h4>
             <h2 class="
             title-design
             text-3xl
             text-black/90
-            ">Building Future Together</h2>
+            "
+            data-aos="fade-up"
+            data-aos-delay="200"
+            >Building Future Together</h2>
           </div>
         
-          <Partners />
+          <Partners data-aos="fade-up" />
         </div>
       </section>
       
@@ -94,12 +101,17 @@
         container mx-auto w-11/12
         ">
           <div class="mb-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Services</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
@@ -113,7 +125,9 @@
           items-center
           gap-5
           ">
-            <ServiceCard v-for="source in serviceItems" 
+            <ServiceCard 
+          data-aos="fade-up"  
+          v-for="source in serviceItems" 
           :icon="source.icon"
           :title="source.title"
           :description="source.description"
@@ -133,12 +147,17 @@
         ">
         
         <div class="mb-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Our Process</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
@@ -160,19 +179,24 @@
         ">
         
         <div class="mb-10">
-            <h4 class="
+            <h4
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Success Story</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
             ">Voice of Achievers</h2>
           </div>
         
-          <Achivers prevIcon="i-lucide-chevron-left" nextIcon="i-lucide-chevron-right" />
+          <Achivers data-aos="fade-up" prevIcon="i-lucide-chevron-left" nextIcon="i-lucide-chevron-right" />
         </div>
       </section>
       
@@ -187,12 +211,17 @@
         ">
         
         <div class="mb-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">FAQ</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
@@ -214,19 +243,24 @@
         ">
         
         <div class="mb-10">
-            <h4 class="
+            <h4 
+            data-aos="fade-up"
+            class="
             text-gray-500
             capitalize
             mb-1
             ">Contact</h4>
-            <h2 class="
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
             title-design
             text-3xl
             text-black/90
             ">Get in Touch</h2>
           </div>
         
-          <ContactForm />
+          <ContactForm data-aos="fade-up" data-aos-delay="200" />
         </div>
       </section>
       
@@ -241,6 +275,7 @@
  <script lang="ts" setup>
 import Counselling from '~/components/Counselling.vue';
 import FAQ from '~/components/FAQ.vue';
+import AOS from 'aos';
 
 
 const cardItems = ref([
@@ -295,7 +330,16 @@ const serviceItems = ref([
 ])
 
 
-
+onMounted(() => {
+  nextTick(() => {
+    AOS.init({
+      once: true, // animation once on scroll
+      duration: 800
+    });
+  });
+  
+  AOS.refresh();
+});
  </script>
  
  <style scoped>

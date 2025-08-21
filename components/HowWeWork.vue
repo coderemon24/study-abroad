@@ -6,7 +6,9 @@
   md:grid-cols-3
   ">
   
-    <div class="
+    <div
+    data-aos="fade-left"
+    class="
     text-center
     p-5
     ">
@@ -67,7 +69,10 @@
       
     </div>
   
-    <div class="
+    <div
+    data-aos="fade-down"
+    data-aos-delay="200"
+    class="
     text-center
     p-5
     ">
@@ -128,7 +133,10 @@
       
     </div>
   
-    <div class="
+    <div 
+    data-aos="fade-right"
+    data-aos-delay="400"
+    class="
     text-center
     p-5
     ">
