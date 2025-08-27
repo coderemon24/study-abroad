@@ -111,7 +111,7 @@
           ">
           
             <div 
-            v-for="item in teams"
+            v-for="(item, index) in teams" :key="index"
             data-aos="fade-up"
              class="
             bg-white
@@ -132,7 +132,7 @@
               object-fit
               border-3
               border-blue-800
-              " :src="item.image" alt="">
+              " :src="getImageUrl(item.image)" alt="">
               
               <p class="
               text-black/80
@@ -140,16 +140,26 @@
               mt-3
               ">{{ item.name }}</p>
               <span>{{ item.role }}</span>
-              <ul v-if="item.socials" class="
+              <ul class="
               flex
               gap-4
               items-center
               justify-center
               mt-3
               ">
-                <li v-for="social in item.socials">
-                  <NuxtLink  :to="social.link">
-                    <i :class="social.icon"></i>
+                <li>
+                  <NuxtLink  :to="item.facebook">
+                    <i class="fa-brands fa-square-facebook"></i>
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink  :to="item.twitter">
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink  :to="item.linkedin">
+                    <i class="fa-brands fa-linkedin"></i>
                   </NuxtLink>
                 </li>
               </ul>
@@ -325,6 +335,10 @@ import consulting from "~/assets/images/consulting.jpg"
 import john from "~/assets/images/team/john.jpg"
 import AOS from 'aos';
 
+const config = useRuntimeConfig();
+const apiBase = config.public.apiBase;
+const baseUrl = config.public.baseUrl;
+
 const reaches = [
   {
     name: "University Partnered",
@@ -370,187 +384,14 @@ const setActiveTab = (tabId) => {
   activeTab.value = tabId;
 };
 
-const teams = [
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-  {
-    name: "John Doe",
-    role: "Software Developer",
-    image: john,
-    socials: [
-      {
-        icon: "fa-brands fa-square-facebook",
-        name: "facebook",
-        link: "https://www.facebook.com/",
-      },
-      {
-        icon: "fa-brands fa-square-x-twitter",
-        name: "twitter",
-        link: "https://twitter.com/",
-      },
-      {
-        icon: "fa-brands fa-linkedin",
-        name: "linkedin",
-        link: "https://www.linkedin.com/",
-      },
-    ],
-  },
-];
+const { data: teams, pending, error } = await useFetch(`${apiBase}/teams`);
 
+const getImageUrl = (image) => {
+  return `${baseUrl}/${image}`;
+};
 
 onMounted(() => {
+  
   nextTick(() => {
     AOS.init({
       once: true, // animation once on scroll
@@ -559,6 +400,7 @@ onMounted(() => {
   });
   
   AOS.refresh();
+
 });
 
 </script>
