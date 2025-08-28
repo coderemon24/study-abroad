@@ -57,12 +57,12 @@
                     text-gray-600
                     mb-1
                     text-sm
-                    ">Accommodation</h3>
+                    ">{{ props.data.accommodation }}</h3>
                     <p class="
                     text-xs
                     text-gray-500
                     ">
-                        Graduate will help you with accommodation.
+                        {{ props.data.accommodation_des }}
                     </p>
                 </div>
             </div>
@@ -72,7 +72,7 @@
             class="
             w-full
             rounded-lg
-            " :src="img1" alt="about">
+            " :src=" getImgUrl(props.data.counselling) " :alt="props.data.counselling_subtitle">
 
             <div class="
             bg-white
@@ -110,12 +110,12 @@
                     text-gray-600
                     mb-1
                     text-sm
-                    ">Career Counselling</h3>
+                    ">{{ props.data.career_counselling }}</h3>
                     <p class="
                     text-xs
                     text-gray-500
                     ">
-                        Graduate will help you with accommodation.
+                        {{ props.data.career_des }}
                     </p>
                 </div>
             </div>
@@ -144,7 +144,7 @@
             <div>
                 <p class="
             text-gray-600
-            " data-aos="fade-up">We are here to help you</p>
+            " data-aos="fade-up">{{ props.data.counselling_subtitle }}</p>
                 <h3 class="
             capitalize
             text-2xl
@@ -153,56 +153,27 @@
             text-black/70
             " data-aos="fade-up" 
             data-aos-delay="200"
-            >from career counselling to university admission</h3>
+            >{{ props.data.counselling_title }}</h3>
 
                 <p class="
             text-gray-500
             mt-4
-            text-justify
             text-sm
             "
             data-aos="fade-up"
             data-aos-delay="400"
             >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
-                    quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
-                    officiis maiores facilis fugit pariatur.
-                </p>
-                <p class="
-            text-gray-500
-            mt-4
-            text-justify
-            text-sm
-            "
-            data-aos="fade-up"
-            data-aos-delay="600"
-            >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
-                    quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
-                    officiis maiores facilis fugit pariatur.
-                </p>
-                <p class="
-            text-gray-500
-            mt-4
-            text-justify
-            text-sm
-            "
-            data-aos="fade-up"
-            data-aos-delay="800"
-            >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus iusto molestiae harum
-                    quibusdam nulla maiores unde repellat totam animi. Autem facere saepe cupiditate accusantium sit
-                    officiis maiores facilis fugit pariatur.
+                    <div v-html="props.data.counselling_des"></div>
                 </p>
 
-                <a 
+                <NuxtLink to="/book-appointment"
                 data-aos="fade-up"
                 data-aos-delay="900"
                 class="btn-outline" href="#">
                     <span class="relative z-10">
                         Get Started
                     </span>
-                </a>
+                </NuxtLink>
 
 
             </div>
@@ -215,8 +186,19 @@
 import aboutImg from '~/assets/images/about.jpg'
 import patt from '~/assets/images/pattern-2.png'
 
+const props = defineProps({
+    data: Object,
+    default: () => ({})
+})
+
 const img1 = ref(aboutImg)
 const pattern = ref(patt)
+
+const baseUrl = useRuntimeConfig().public.baseUrl
+
+const getImgUrl = (url: string) => {
+    return `${baseUrl}/${url}`
+}
 
 </script>
 

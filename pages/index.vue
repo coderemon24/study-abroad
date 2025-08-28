@@ -75,7 +75,7 @@
         container mx-auto w-11/12
         ">
         
-          <Counselling />
+          <Counselling :data="homePage"/>
         
         </div>
       </section>
@@ -88,7 +88,7 @@
         <div class="
         container mx-auto w-11/12
         ">
-          <About />
+          <About :data="homePage" />
         </div>
       </section>
       
@@ -164,7 +164,7 @@
             ">How We Work</h2>
           </div>
         
-          <HowWeWork />
+          <HowWeWork :data="homePage" />
         </div>
       </section>
       
@@ -228,7 +228,7 @@
             ">Everything You Need to Know</h2>
           </div>
         
-          <FAQ />
+          <FAQ :imageProp="homePage?.faq" />
         </div>
       </section>
       
@@ -260,7 +260,7 @@
             ">Get in Touch</h2>
           </div>
         
-          <ContactForm data-aos="fade-up" data-aos-delay="200" />
+          <ContactForm :contactImg="homePage?.contact" data-aos="fade-up" data-aos-delay="200" />
         </div>
       </section>
       
@@ -277,24 +277,49 @@ import Counselling from '~/components/Counselling.vue';
 import FAQ from '~/components/FAQ.vue';
 import AOS from 'aos';
 
+const apiBase = useRuntimeConfig().public.apiBase
 
 const cardItems = ref([
-    {
-        icon: 'fa-solid fa-graduation-cap',
-        title: 'Up To 100% Scholarship',
-        description: 'You might be eligible for a scholarship, grant, or funding.',
-    },
-    {
-        icon: 'fa-solid fa-user-graduate',
-        title: 'Free Consultations',
-        description: 'Book a complimentary appointment and discuss your needs over a cup of coffee.',
-    },
-    {
-        icon: 'fa-solid fa-headset',
-        title: '24/7 Support',
-        description: 'Providing uninterrupted support to assist you anytime, every day.',
-    },
+  {
+    icon: 'fa-solid fa-graduation-cap',
+    title: '',
+    description: '',
+  },
+  {
+    icon: 'fa-solid fa-user-graduate',
+    title: '',
+    description: '',
+  },
+  {
+    icon: 'fa-solid fa-headset',
+    title: '',
+    description: '',
+  },
 ])
+
+const homePage = ref([]);
+
+const getPage = async () => {
+  try {
+    const response: any = await $fetch(`${apiBase}/home-page`);
+    if (response && response.data) {
+      homePage.value = response.data;
+
+      // Safely set titles and descriptions
+      cardItems.value[0].title = response.data.ss_title || '';
+      cardItems.value[0].description = response.data.ss_description || '';
+      cardItems.value[1].title = response.data.consultation_title || '';
+      cardItems.value[1].description = response.data.consultation_description || '';
+      cardItems.value[2].title = response.data.support_title || '';
+      cardItems.value[2].description = response.data.support_description || '';
+    }
+  } catch (error) {
+    console.error("Error fetching home page:", error);
+  }
+}
+
+
+
 
 const serviceItems = ref([
     {
@@ -339,6 +364,9 @@ onMounted(() => {
   });
   
   AOS.refresh();
+  
+  getPage();
+  
 });
  </script>
  

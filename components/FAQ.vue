@@ -9,7 +9,7 @@
       <UAccordion data-aos="fade-left" :items="items" />
     </div>
     <div data-aos="fade-right" class="hidden md:block">
-      <img class="w-[50%] mx-auto" :src="faqImg" alt="">
+      <img class="w-[50%] mx-auto" :src="getImgUrl(imageProp)"  alt="faq">
     </div>
   </div>
 </template>
@@ -17,6 +17,17 @@
 <script lang="ts" setup>
 import type { AccordionItem } from '@nuxt/ui';
 import faqImg from '~/assets/images/faq.png';
+
+defineProps({
+  imageProp: {
+    type: Object,
+    default: faqImg
+  }
+})
+const baseUrl = useRuntimeConfig().public.baseUrl
+const getImgUrl = (img: any) => {
+  return `${baseUrl}/${img}`
+}
 
 const items = ref<AccordionItem[]>([
   {

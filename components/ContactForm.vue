@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import contactImg from '~/assets/images/contact.png'
+// import contactImg from '~/assets/images/contact.png'
 
 defineProps({
   contactImg: {
     type: String,
-    default: contactImg
+    default: ''
   },
   contactPage: {
     type: Boolean,
@@ -15,6 +15,10 @@ defineProps({
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase
 const baseUrl = config.public.baseUrl
+
+const getImgUrl = (url: string) => {
+  return `${baseUrl}/${url}`
+}
 
 const successMessage = ref('')
 let successTimer: any = null // timer
@@ -250,7 +254,7 @@ const clearFieldError = (field: string) => {
       v-if="!contactPage"
       class="hidden md:flex flex-1 justify-center"
     >
-      <img class="w-[80%] object-fit" :src="contactImg" alt="contact-image" />
+      <img class="w-[80%] object-fit" :src="getImgUrl(contactImg)" alt="contact-image" />
     </div>
   </div>
 </template>

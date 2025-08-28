@@ -32,13 +32,12 @@
       text-black/90
       mb-1
       ">
-        Get Consultation
+        {{ props.data?.get_consultation }}
       </h2>
       <p class="
       text-gray-600
       ">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae
-        repellat.
+        {{ props.data?.consultation_des }}
       </p>
       
       <div class="
@@ -96,13 +95,12 @@
       text-black/90
       mb-1
       ">
-        Book Appointment
+       {{ props.data?.book_appointment }}
       </h2>
       <p class="
       text-gray-600
       ">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae
-        repellat.
+        {{ props.data?.app_des }}
       </p>
       
       <div class="
@@ -160,13 +158,12 @@
       text-black/90
       mb-1
       ">
-        Fly To Destination
+        {{ props.data?.fly_destination }}
       </h2>
       <p class="
       text-gray-600
       ">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae
-        repellat.
+        {{ props.data?.destination_des }}
       </p>
     </div>
     
@@ -174,6 +171,10 @@
 </template>
 
 <script lang="ts" setup>
+const props = defineProps({
+  data: Object,
+  default: () => ({})
+})
 
 </script>
 

@@ -33,7 +33,7 @@
         mb-4
         md:mb-5
         ">
-            care to training institute
+            {{ props.data?.about_title }}
         </h3>
         <div class="
         text-gray-600
@@ -48,14 +48,7 @@
             <p data-aos="fade-up"
             data-aos-delay="400"
             >
-                Welcome to Care2Training, where professional expertise meets a genuine commitment to empowering individuals on their journey toward success.
-            </p>
-            
-            <p
-            data-aos="fade-up"
-            data-aos-delay="600"
-            >
-                John is the Founder and CEO of Care2Training, bringing years of experience in guiding learners toward achieving their educational and professional goals. As a dedicated trainer and mentor, [he/she] specializes in delivering high-quality training programs designed to equip individuals with the knowledge and skills they need to thrive. With a deep passion for education and personal growth, [he/she] is committed to serving learners both locally and globally.
+                <div v-html="props.data?.about_des"></div>
             </p>
         </div>
     </div>
@@ -86,7 +79,7 @@
             md:w-[22rem]
             float-end
             md:ml-[15rem]
-            " :src="ceo" alt="ceo" >
+            " :src="getImgUrl(props.data?.man)" alt="ceo" >
             
             <div class="
             circle-shape
@@ -102,7 +95,7 @@
             right-[9rem]
             top-[19rem]
             z-[-1]
-            " :src="passport" alt="passport" >
+            " :src="getImgUrl(props.data?.passport)" alt="passport" >
             
             <div 
             data-aos="fade-up"
@@ -128,13 +121,13 @@
                 font-[900]
                 text-blue-800
                 font-plus
-                ">23+</h3>
+                ">{{ props.data?.experience }}</h3>
                 
                 <p class="
                 text-xl
                 font-semibold
                 text-black/90
-                ">Years of Experience</p>
+                ">{{ props.data?.ex_title }}</p>
             </div>
         </div>
     </div>
@@ -145,6 +138,16 @@
 import logo from '~/assets/images/logo.webp';
 import ceo from '~/assets/images/ceo.jpg';
 import passport from '~/assets/images/visa-passport.png'
+const props = defineProps({
+    data: Object,
+    default: () => ({})
+})
+
+const baseUrl = useRuntimeConfig().public.baseUrl
+
+const getImgUrl = (url: string) => {
+  return `${baseUrl}/${url}`
+}
 
 </script>
 
