@@ -2,13 +2,22 @@
 import client1 from '~/assets/images/clients/partner-1.webp'
 
 const containerRef = ref(null)
-const slides = ref([
-  {image: client1,},
-  {image: client1,},
-  {image: client1,},
-  {image: client1,},
-  {image: client1,},
-])
+const apiBase = useRuntimeConfig().public.apiBase
+const baseUrl = useRuntimeConfig().public.baseUrl
+
+const slides = ref([])
+
+const getPartners = async () => {
+  const response: any = await $fetch(`${apiBase}/partners`);
+  if (response) {
+    slides.value = response.data;
+  }
+}
+
+const getImgUrl = (url: string) => {
+  return `${baseUrl}/${url}`
+}
+
 const swiper = useSwiper(containerRef, {
   effect: 'slide',
   slidesPerView: 1,
@@ -43,7 +52,7 @@ const swiper = useSwiper(containerRef, {
 })
 
 onMounted(() => {
-  console.log(swiper.instance)
+  getPartners();
 })
 </script>
 
@@ -74,7 +83,7 @@ onMounted(() => {
                         ">
             <img class="
                             w-1/2
-                            " :src="slide.image">
+                            " :src="getImgUrl(slide.image)">
           </div>
         </swiper-slide>
       </swiper-container>
