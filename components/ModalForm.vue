@@ -36,11 +36,9 @@
           left-1/2
           -translate-x-1/2
           -translate-y-1/2
-          md:w-10/12
+          md:w-[70rem]
           w-full
       ">
-
-
 
                 <div class="p-8
          md:col-span-2
