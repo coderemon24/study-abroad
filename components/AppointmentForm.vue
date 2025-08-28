@@ -23,7 +23,7 @@ const startSuccessTimer = () => {
   if (successTimer) clearTimeout(successTimer);
   successTimer = setTimeout(() => {
     successMessage.value = '';
-  }, 30000); // 30 sec
+  }, 10000); // 10 sec
 };
 
 // submit form
@@ -143,7 +143,7 @@ const clearFieldError = (field: string) => {
         </label>
         <input type="text" 
         @input="clearFieldError('phone')"
-        v-model="formData.phone" placeholder="ex: John Doe" class="
+        v-model="formData.phone" placeholder="ex: 018xx-xxxxxx" class="
                ring-1
                ring-blue-700
                focus:ring-2
