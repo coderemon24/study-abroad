@@ -249,11 +249,11 @@
                                     " v-for="dropdown in item.dropdown">
                                             <NuxtLink :class="[
                                                 'text-black/80 mb-1',
-                                                $route.path === item.href
+                                                $route.path === '/services/' + item.slug
                                                     ? 'activeRoute'
                                                     : 'list_item_hover'
-                                            ]" :to="dropdown.href">
-                                                {{ dropdown.name }}
+                                            ]" :to="'/services/' + dropdown?.slug">
+                                                {{ dropdown.title }}
                                             </NuxtLink>
                                         </li>
                                     </ul>
@@ -291,10 +291,11 @@ import logo from '~/assets/images/logo.webp';
 const isOpen = ref(false);
 const logoMain = ref(logo);
 
-const navItems = [
+const navItems = ref([
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     {
+        name: 'Study Destinations',
         dropdown: [
             { name: 'Australia', href: '/country/australia' },
             { name: 'Canada', href: '/canada' },
@@ -302,20 +303,28 @@ const navItems = [
             { name: 'United Kingdom', href: '/uk' },
             { name: 'New Zealand', href: '/new-zealand' },
         ],
-        name: 'Study Destinations',
     },
     {
-        name: 'Services', dropdown: [
-            { name: 'Study Abroad', href: '/services/study-abroad' },
-            { name: 'Visa Services', href: '/services/visa-services' },
-            { name: 'Admission Guidance', href: '/services/admission-guidance' },
-            { name: 'Career Counselling', href: '/services/career-counseling' },
+        name: 'Services', 
+        dropdown: [
+            // { name: 'Study Abroad', href: '/services/study-abroad' },
+            // { name: 'Visa Services', href: '/services/visa-services' },
+            // { name: 'Admission Guidance', href: '/services/admission-guidance' },
+            // { name: 'Career Counselling', href: '/services/career-counseling' },
         ]
     },
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Contact', href: '/contact' },
-];
+]);
+
+const apiBase = useRuntimeConfig().public.apiBase
+const getServices = async () => {
+    const response: any = await $fetch(`${apiBase}/services`);
+    if (response) {
+        navItems.value[3].dropdown = response.data
+    }
+}
 
 const ap_btn = {
     name: 'Book an appointment',
@@ -414,6 +423,7 @@ const stickyNav = () => {
 
 onMounted(() => {
     stickyNav();
+    getServices();
 });
 
 </script>
