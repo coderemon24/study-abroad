@@ -2,13 +2,24 @@
 import slide1 from '~/assets/images/slider/uk.jpg'
 import slide2 from '~/assets/images/slider/australia.jpg'
 import slide3 from '~/assets/images/slider/canada.jpg'
+import { get } from '@nuxt/ui/runtime/utils/index.js'
 
+const apiBase = useRuntimeConfig().public.apiBase
+const baseUrl = useRuntimeConfig().public.baseUrl
 const containerRef = ref(null)
-const slides = ref([
-    {image: slide1,},
-    {image: slide2,},
-    {image: slide3,},
-])
+const slides = ref([])
+
+const getSliders = async () => {
+    const response: any = await $fetch(`${apiBase}/sliders`);
+    if (response) {
+        slides.value = response.data;
+    }
+}
+
+const getImgUrl = (url: string) => {
+    return `${baseUrl}/${url}`
+}
+
 
 const swiper = useSwiper(containerRef, {
     effect: 'slide',
@@ -20,7 +31,7 @@ const swiper = useSwiper(containerRef, {
 })
 
 onMounted(() => {
-    console.log(swiper.instance)
+    getSliders()
 })
 </script>
 
@@ -40,7 +51,7 @@ onMounted(() => {
                     w-full
                     relative
                     ">
-                        <img width="100%" :src="slide.image" :alt="slide.title">
+                        <img width="100%" :src="getImgUrl(slide.image)" :alt="slide.title">
 
                         <div class="
                         w-full
@@ -54,11 +65,14 @@ onMounted(() => {
                         md:w-1/2
                         absolute
                         top-1/2
-                        translate-y-[-50%]
+                        translate-y-[-30%]
                         px-10
-                        md:left-32
+                        md:left-1/2
+                        left-1/2
+                        transform
+                        -translate-x-1/2
                         text-white
-        
+                        text-center
                         ">
                             <h3 class="
                             text-5xl
@@ -67,10 +81,30 @@ onMounted(() => {
                             <p class="
                             text-lg
                             fw-thin
-                            text-justify
+                            text-center
+                            mb-[-1.2rem]
                             " style="font-weight: 300;">
                                 {{ slide.description }}
                             </p>
+                            <NuxtLink v-if="slide.button_text" :to="slide.button_link"
+                                class="
+                                text-lg
+                                font-normal
+                                text-blue-700
+                                bg-white
+                                py-2.5
+                                px-7
+                                rounded-full
+                                hover:bg-transparent
+                                hover:ring-2
+                                hover:ring-white
+                                hover:text-white
+                                transition-all
+                                duration-300
+                                ease-in-out
+                                ">
+                                {{ slide.button_text }}
+                            </NuxtLink>
                         </div>
                     </div>
                 </swiper-slide>
