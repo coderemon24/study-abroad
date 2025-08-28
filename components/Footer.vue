@@ -174,11 +174,15 @@
                         </li>
                     </ul>
                     <!-- subscribe -->
-                    <div class="
+                    <form 
+                    @submit.prevent="submitForm"
+                    class="
                     py-4
                     relative
                     ">
-                        <input class="
+                        <input 
+                        v-model="formData.email"
+                        class="
                         bg-gray-200
                         ring-2
                         ring-blue-700
@@ -217,7 +221,9 @@
                         z-10
                         text-sm
                         ">Subscribe</button>
-                    </div>
+                    
+                    <p v-if="errors.email" class="text-red-600 text-sm mt-1">{{ errors.email[0] }}</p>
+                </form>
                 </div>
                 
 
@@ -367,11 +373,10 @@
 
 <script lang="ts" setup>
 import manImg from '~/assets/images/officer.jpg';
-import mainLogo from '~/assets/images/logo.webp';
+import mainLogo from '~/assets/images/logo.webp'
 
 const officer = ref(manImg);
 const logo = ref(mainLogo);
-
 const socialIcons = [
     {
         name: 'facebook',
@@ -428,6 +433,34 @@ const scrollTop = () => {
         behavior: 'smooth'
     });
 }
+
+const apiBase = useRuntimeConfig().public.apiBase
+
+const formData = ref({
+    email:'',
+});
+
+const errors = ref<Record<string, string[]>>({});
+
+const submitForm = async () => {
+    try {
+        const {data, error} = await useFetch(`${apiBase}/subscribe`, {
+            method:'POST',
+            body: formData.value
+        });
+        
+        formData.value={
+            email:''
+        }
+        
+    } catch (err: any) {
+        if (err?.data?.errors) {
+            errors.value = err.data.errors
+        }
+    }
+}
+
+
 </script>
 
 <style></style>

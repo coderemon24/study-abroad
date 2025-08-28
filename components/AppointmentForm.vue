@@ -69,6 +69,18 @@ const clearFieldError = (field: string) => {
     if (successTimer) clearTimeout(successTimer);
   }
 };
+
+const countries = ref([]);
+
+onMounted(async () => {
+  const response: any = await $fetch(`${apiBase}/get-countries`);
+  if (response) {
+    countries.value = response.data;
+  }
+});
+
+
+
 </script>
 <template>
   <div>
@@ -180,11 +192,7 @@ const clearFieldError = (field: string) => {
                 :class="errors.country ? 'ring-red-600' : ''"
                 >
           <option value="">—Please choose an option—</option>
-          <option value="us">United States</option>
-          <option value="uk">United Kingdom</option>
-          <option value="australia">Australia</option>
-          <option value="malta">Malta</option>
-          <option value="finland">Finland</option>
+          <option v-for="country in countries" :key="country.id" :value="country.name">{{ country.name }}</option>
         </select>
 
         <p v-if="errors.country" class="text-red-600 text-sm mt-1">{{ errors.country[0] }}</p>
