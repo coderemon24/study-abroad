@@ -131,6 +131,7 @@
           :icon="source.icon"
           :title="source.title"
           :description="source.description"
+          :path="'/services/' + source.slug"
           />
           </div>
           
@@ -321,38 +322,18 @@ const getPage = async () => {
 
 
 
-const serviceItems = ref([
-    {
-        icon: 'fa-solid fa-graduation-cap',
-        title: 'Admission Guidance',
-        description: 'You might be eligible for a scholarship, grant, or funding.',
-    },
-    {
-        icon: 'fa-solid fa-graduation-cap',
-        title: 'Career Counseling',
-        description: 'Book a complimentary appointment and discuss your needs over a cup of coffee.',
-    },
-    {
-        icon: 'fa-solid fa-headset',
-        title: 'Visa Application Support',
-        description: 'Providing uninterrupted support to assist you anytime, every day.',
-    },
-    {
-        icon: 'fa-solid fa-graduation-cap',
-        title: 'Scholarship Assistance',
-        description: 'Providing uninterrupted support to assist you anytime, every day.',
-    },
-    {
-        icon: 'fa-solid fa-user-graduate',
-        title: 'Job Placement Service',
-        description: 'Providing uninterrupted support to assist you anytime, every day.',
-    },
-    {
-        icon: 'fa-solid fa-headset',
-        title: 'Language Coaching',
-        description: 'Providing uninterrupted support to assist you anytime, every day.',
-    },
-])
+const serviceItems = ref([]);
+
+const getServices = async () => {
+  try {
+    const response: any = await $fetch(`${apiBase}/services`);
+    if (response && response.data) {
+      serviceItems.value = response.data;
+    }
+  } catch (error) {
+    console.error("Error fetching services:", error);
+  }
+}
 
 
 onMounted(() => {
@@ -366,6 +347,7 @@ onMounted(() => {
   AOS.refresh();
   
   getPage();
+  getServices();
   
 });
  </script>

@@ -64,7 +64,9 @@
       {{ description }}
      </p>
      
-     <a class="
+     <NuxtLink 
+     :to="path"
+     class="
     text-blue-700
     bg-blue-700/10
     py-2
@@ -91,7 +93,7 @@
     <span class="inline-block transition-all duration-300 ease-in-out">
         <i class="fa-solid fa-arrow-right-long"></i>
     </span>
-     </a>
+     </NuxtLink>
 
 
 
@@ -113,6 +115,10 @@ defineProps({
     description:{
       type: String,
       default: 'Our experts offer personalized career advice to help you choose the right path whether it\'s higher education, vocational training, or employment aligned'
+    },
+    path: {
+      type: String,
+      default: '#'
     }
 });
 

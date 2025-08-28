@@ -22,7 +22,7 @@
       </section>
 
       <!-- Benefits -->
-      <section v-if="service?.benefits" data-aos="fade-right"
+      <section v-if="service?.benefits && service?.benefits.length>0" data-aos="fade-right"
         class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
         <h2 class="text-3xl font-bold text-gray-900 mb-6">Key Benefits</h2>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
@@ -35,7 +35,7 @@
       </section>
 
       <!-- Process -->
-      <section v-if="service?.process" data-aos="fade-up"
+      <section v-if="service?.process && service?.process.length>0" data-aos="fade-up"
         class="bg-white p-10 rounded-3xl shadow-lg border border-gray-200">
         <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Process</h2>
         <div>
