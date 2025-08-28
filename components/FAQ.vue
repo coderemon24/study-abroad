@@ -6,7 +6,18 @@
   md:grid-cols-2
   ">
     <div>
-      <UAccordion data-aos="fade-left" :items="items" />
+      <UAccordion data-aos="fade-left"
+      :ui="{
+        header: 'text-black/90 px-3 bg-blue-700/10 border-b border-blue-700/20',
+        body: 'text-black/90 px-4 bg-white py-3 leading-7 font-poppins font-thin ',
+      }"
+      :items="items" >
+        
+          <template #item="{ item }">
+            <div v-html="item.content"></div>
+          </template>
+      
+      </UAccordion>
     </div>
     <div data-aos="fade-right" class="hidden md:block">
       <img class="w-[50%] mx-auto" :src="getImgUrl(imageProp)"  alt="faq">
@@ -20,50 +31,32 @@ import faqImg from '~/assets/images/faq.png';
 
 defineProps({
   imageProp: {
-    type: Object,
+    type: String,
     default: faqImg
   }
 })
+const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
+
 const getImgUrl = (img: any) => {
   return `${baseUrl}/${img}`
 }
 
-const items = ref<AccordionItem[]>([
-  {
-    class: 'text-black/90 border-b border-blue-700/20',
-    label: 'What services does Care2Training provide?',
-    icon: 'i-lucide-circle-question-mark',
-    ui: {
-        header: 'text-black/90 px-3 bg-blue-700/10 border-b border-blue-700/20',
-        body: 'text-black/90 px-4 bg-white py-3 leading-7 font-poppins font-thin ',
-        
-    },
-    content: 'Care2Training offers a wide range of professional development and consultancy services, including counseling, study abroad guidance, skills training, workshops, and career development support. Our goal is to help individuals and organizations achieve growth and success through structured learning and expert advice.'
-  },
-  {
-    class: 'text-black/90 border-b border-blue-700/20',
-    ui: {
-        header: 'text-black/90 px-3 bg-blue-700/10 border-b border-blue-700/20',
-        body: 'text-black/90 px-4 bg-white py-3 leading-7 font-poppins font-thin ',
-        
-    },
-    label: 'Does Care2Training offer international study support?',
-    icon: 'i-lucide-circle-question-mark',
-    content: 'Yes. We provide complete guidance for students who want to study abroad. This includes admission counseling, documentation support, visa guidance, scholarship information, and career planning to ensure a smooth transition into international education.'
-  },
-  {
-    class: 'text-black/90 border-b border-gray-700/20',
-    ui: {
-        header: 'text-black/90 px-3 bg-blue-700/10 border-b border-blue-700/20',
-        body: 'text-black/90 px-4 bg-white py-3 leading-7 font-poppins font-thin ',
-        
-    },
-    label: 'Are the trainers qualified?',
-    icon: 'i-lucide-circle-question-mark',
-    content: 'Absolutely. All of our trainers are industry experts and certified professionals with years of experience in their respective fields. We carefully select trainers who can deliver practical, real-world knowledge instead of just theory.'
-  }
-])
+const items = ref<AccordionItem[]>([])
+
+const getFaq = async () => {
+  const response: any = await $fetch(`${apiBase}/faq`);
+  if (response && response.data) {
+      items.value = response.data.map((faq: any) => ({
+        label: faq.question,   // UAccordion expects `label`
+        content: faq.answer    // UAccordion expects `content`
+      }))
+    }
+}
+
+onMounted(() => {
+  getFaq()
+})
 
 </script>
 

@@ -24,7 +24,7 @@
             class="bg-white/20 backdrop-blur-xl p-6 rounded-2xl shadow-md hover:translate-x-2 transition-transform"
           >
             <p class="text-black/70 text-lg font-medium leading-relaxed">
-              {{ fact }}
+              {{ fact.title }}
             </p>
           </div>
         </div>
@@ -50,12 +50,18 @@
 </template>
 
 <script setup>
-const facts = [
-  "Australia is currently home to nearly 700,000 international students.",
-  "7 of the best student cities are located in Australia.",
-  "Australian universities rank in the world’s top 50 across many study areas.",
-  "The Australian Government has invested over AUD $300 million in scholarships for international students.",
-  "You can gain work experience while you study in Australia.",
-  "An Australian qualification will attract potential employers globally."
-];
+const props = defineProps({
+  data: Object,
+  default: () => ({}),
+})
+
+const facts = ref([
+  'ddadfadsf'
+]);
+
+onMounted(() => {
+  facts.value = props.data.studies
+});
+
+
 </script>

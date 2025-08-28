@@ -247,12 +247,22 @@
                                     relative
                                     py-1
                                     " v-for="dropdown in item.dropdown">
-                                            <NuxtLink :class="[
+                                            <NuxtLink v-if="dropdown.name" :class="[
                                                 'text-black/80 mb-1',
                                                 $route.path === '/services/' + item.slug
                                                     ? 'activeRoute'
                                                     : 'list_item_hover'
-                                            ]" :to="'/services/' + dropdown?.slug">
+                                            ]" :to="'/country/' + dropdown.slug">
+                                                {{ dropdown.name }}
+                                            </NuxtLink>
+                                            
+                                            <!-- services -->
+                                            <NuxtLink v-if="dropdown.title" :class="[
+                                                'text-black/80 mb-1',
+                                                $route.path === '/services/' + item.slug
+                                                    ? 'activeRoute'
+                                                    : 'list_item_hover'
+                                            ]" :to="'/services/' + dropdown.slug">
                                                 {{ dropdown.title }}
                                             </NuxtLink>
                                         </li>
@@ -297,11 +307,7 @@ const navItems = ref([
     {
         name: 'Study Destinations',
         dropdown: [
-            { name: 'Australia', href: '/country/australia' },
-            { name: 'Canada', href: '/canada' },
-            { name: 'United States', href: '/usa' },
-            { name: 'United Kingdom', href: '/uk' },
-            { name: 'New Zealand', href: '/new-zealand' },
+            // { title: 'Australia', slug: '/country/australia' },
         ],
     },
     {
@@ -323,6 +329,13 @@ const getServices = async () => {
     const response: any = await $fetch(`${apiBase}/services`);
     if (response) {
         navItems.value[3].dropdown = response.data
+    }
+}
+
+const getCountries = async () => {
+    const response: any = await $fetch(`${apiBase}/get-countries`);
+    if (response) {
+        navItems.value[2].dropdown = response.data
     }
 }
 
@@ -424,6 +437,7 @@ const stickyNav = () => {
 onMounted(() => {
     stickyNav();
     getServices();
+    getCountries();
 });
 
 </script>

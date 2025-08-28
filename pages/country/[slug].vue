@@ -11,12 +11,12 @@
                 <i class="fa-solid fa-chevron-right text-gray-500"></i>
                 <span class="text-gray-600">Country</span>
                 <i class="fa-solid fa-chevron-right text-gray-500"></i>
-                <span class="text-gray-600">Australia</span>
+                <span class="text-gray-600">{{ countryPage.name }}</span>
             </div>
         </section>
 
         <!-- country hero -->
-        <section class="
+        <section v-if="countryPage?.contents" class="
      relative
      before:content-['']
      before:absolute
@@ -28,7 +28,7 @@
      before:to-blue-700/80
      before:from-purple-700
      country_hero
-     ">
+     " :style="`background-image: url(${getImgUrl(countryPage?.contents?.hero_bg_img)})`">
             <div class="container mx-auto w-11/12 
         relative z-10
         top-0
@@ -39,44 +39,33 @@
         grid-cols-2
         items-end
         ">
-                <div 
-                data-aos="fade-left"
-                class="
+                <div data-aos="fade-left" class="
            pb-12
            md:pb-[12rem]
            ">
-                    <h1 
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    class="
+                    <h1 data-aos="fade-up" data-aos-delay="200" class="
              text-4xl
              md:text-8xl
              md:font-extrabold
              font-semibold
              mb-2
-             ">Study in Australia</h1>
-                    <p 
-                    
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                    class="
+             ">{{ countryPage?.contents?.hero_title }}</h1>
+                    <p data-aos="fade-up" data-aos-delay="400" class="
              
-             ">Apply for August 2025 Session</p>
+             ">{{ countryPage?.contents?.hero_subtitle }}</p>
                 </div>
 
-                <div 
-                data-aos="fade-right"
-                >
+                <div data-aos="fade-right">
                     <img class="
              w-full
              md:w-3/4
-             " :src="girl" alt="">
+             " :src="getImgUrl(countryPage?.contents?.hero_st_img)" :alt="countryPage?.contents?.hero_subtitle">
                 </div>
             </div>
         </section>
 
         <!-- offer cards -->
-        <section class="
+        <section v-if="countryPage?.contents" class="
      py-12
      ">
             <div class="
@@ -89,9 +78,7 @@
         gap-8
         md:gap-15
         ">
-                <OfferCard 
-                data-aos="fade-up"
-                v-for="item in cardItems" :icon="item.icon" :title="item.title"
+                <OfferCard data-aos="fade-up" v-for="item in cardItems" :icon="item.icon" :title="item.title"
                     :description="item.description" class="
             bg-white
             shadow-xl
@@ -100,7 +87,7 @@
         </section>
 
         <!-- our partners -->
-        <section class="
+        <section v-if="partners" class="
      py-12
      bg-white
      ">
@@ -110,22 +97,17 @@
         w-11/12
         ">
                 <div class="mb-10">
-                    <h4 
-                    data-aos="fade-up"
-                    class="
+                    <h4 data-aos="fade-up" class="
             text-gray-500
             capitalize
             mb-1
             ">Country Partners</h4>
-                    <h2 
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    class="
+                    <h2 data-aos="fade-up" data-aos-delay="200" class="
             title-design
             text-3xl
             text-black/90
             ">
-                        Our Australian University Partners
+                        Our {{ countryPage?.name }}i University Partners
                     </h2>
                 </div>
 
@@ -138,9 +120,7 @@
           items-center
           md:gap-5
           ">
-                    <img 
-                    data-aos="fade-up"
-                    v-for="(item, index) in Array(40)" class="
+                    <img data-aos="fade-up" v-for="(item, index) in partners" class="
             w-1/3
             md:w-1/5
             lg:w-1/6
@@ -152,14 +132,14 @@
             transition-all
             duration-300
             ease-in-out
-            " :src="utas" alt="">
+            " :src="getImgUrl(item.image)" :alt="item.name">
                 </div>
 
             </div>
         </section>
 
         <!-- why study in australia -->
-        <section class="
+        <section v-if="countryPage?.studies" class="
      bg-blue-100/10
      py-12
      pb-0
@@ -170,17 +150,12 @@
         w-11/12
         ">
                 <div class="mb-10">
-                    <h4 
-                    data-aos="fade-up"
-                    class="
+                    <h4 data-aos="fade-up" class="
             text-gray-500
             capitalize
             mb-1
             ">Choose Your University</h4>
-                    <h2 
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    class="
+                    <h2 data-aos="fade-up" data-aos-delay="200" class="
             title-design
             text-3xl
             text-black/90
@@ -189,51 +164,42 @@
                     </h2>
                 </div>
 
-                <WhyStudyCountry />
+                <WhyStudyCountry :data="countryPage" />
 
             </div>
         </section>
 
         <!-- how much does it cost to study in australia -->
-        <section class="relative bg-gradient-to-r from-purple-700 to-blue-500 py-16 px-6">
+        <section v-if="countryPage?.contents" class="relative bg-gradient-to-r from-purple-700 to-blue-500 py-16 px-6">
             <div class="max-w-5xl mx-auto text-center text-white">
                 <!-- Heading -->
-                <h2 
-                data-aos="fade-up"
-                class="text-3xl md:text-4xl font-extrabold mb-4">
+                <h2 data-aos="fade-up" class="text-3xl md:text-4xl font-extrabold mb-4">
                     How Much Does it Cost to Study in <span class="text-yellow-300">Australia?</span>
                 </h2>
-                <p 
-                data-aos="fade-up"
-                data-aos-delay="200"
-                class="text-lg opacity-90 mb-10">
+                <p data-aos="fade-up" data-aos-delay="200" class="text-lg opacity-90 mb-10">
                     Here’s a quick breakdown of tuition fees for international students in Australia.
                 </p>
 
                 <!-- Cards Layout -->
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Bachelor’s Degree Card -->
-                    <div
-                        data-aos="fade-left"
+                    <div data-aos="fade-left"
                         class="bg-white text-gray-800 shadow-lg rounded-2xl p-6 hover:scale-105 transition transform duration-300">
                         <h3 class="text-xl font-semibold mb-3">🎓 Undergrad Bachelor’s Degree</h3>
-                        <p class="text-lg font-bold text-blue-600">A$15,000 – 49,500 / Annually</p>
+                        <p class="text-lg font-bold text-blue-600">{{ countryPage?.contents?.under_cost }}</p>
                     </div>
 
                     <!-- Master’s Degree Card -->
-                    <div
-                    data-aos="fade-right"
+                    <div data-aos="fade-right"
                         class="bg-white text-gray-800 shadow-lg rounded-2xl p-6 hover:scale-105 transition transform duration-300">
                         <h3 class="text-xl font-semibold mb-3">📘 Post-Graduate Master’s Degree</h3>
-                        <p class="text-lg font-bold text-blue-600">A$20,000 – 50,000 / Annually</p>
+                        <p class="text-lg font-bold text-blue-600">{{ countryPage?.contents?.post_cost }}</p>
                     </div>
                 </div>
 
                 <!-- Link -->
                 <div class="mt-10">
-                    <NuxtLink
-                    data-aos="fade-up"
-                    to="/book-appointment"
+                    <NuxtLink data-aos="fade-up" to="/book-appointment"
                         class="inline-block
                         cursor-pointer
                          bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-medium hover:bg-yellow-300 transition">
@@ -244,7 +210,7 @@
         </section>
 
         <!-- why care2training -->
-        <section class="relative bg-blue-100/20  text-black/70 py-16 overflow-hidden">
+        <section v-if="countryPage?.contents" class="relative bg-blue-100/20  text-black/70 py-16 overflow-hidden">
             <!-- Background shapes -->
             <div class="absolute inset-0">
                 <div class="absolute top-10 left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
@@ -256,50 +222,29 @@
 
                 <!-- Left Content -->
                 <div data-aos="fade-right">
-                    <h2 
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                    <h2 data-aos="fade-up" data-aos-delay="200"
+                        class="text-4xl md:text-5xl font-bold leading-tight mb-6">
                         Why <span class="text-blue-800">Care2Training?</span>
                     </h2>
-                    <p 
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                    class="text-lg text-black/70 leading-relaxed mb-6">
-                        For nearly <span class="font-semibold">25 years</span>, we’ve been helping students achieve
-                        their higher education dreams abroad. With a <span class="font-semibold">99% success
-                            rate</span>, we proudly stand as one of Bangladesh’s leading education consultants.
-                    </p>
-                    <p 
-                    data-aos="fade-up"
-                    data-aos-delay="600"
-                    class="text-lg text-black/70 leading-relaxed">
-                        Partnering with top-ranked universities across <span
-                            class="underline decoration-blue-600">Australia, Canada, Malaysia, UK, and the USA</span>,
-                        we provide award-winning guidance every step of the way.
+                    <p data-aos="fade-up" data-aos-delay="400" class="text-lg text-black/70 leading-relaxed mb-6">
+                       <div v-html="countryPage?.contents?.why_description"></div>
                     </p>
 
                     <!-- Stats -->
                     <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        <div
-                            data-aos="fade-left"
-                            data-aos-delay="200"
+                        <div data-aos="fade-left" data-aos-delay="200"
                             class="bg-white/10 backdrop-blur-md p-6 rounded-2xl text-center shadow-lg hover:scale-105 transition">
-                            <div class="text-3xl font-bold text-blue-800">20K+</div>
+                            <div class="text-3xl font-bold text-blue-800">{{ countryPage?.contents?.st_recruited }}</div>
                             <div class="text-sm mt-2">Students Recruited</div>
                         </div>
-                        <div
-                        data-aos="fade-up"
-                            data-aos-delay="200"
+                        <div data-aos="fade-up" data-aos-delay="200"
                             class="bg-white/10 backdrop-blur-md p-6 rounded-2xl text-center shadow-lg hover:scale-105 transition">
-                            <div class="text-3xl font-bold text-blue-800">60+</div>
+                            <div class="text-3xl font-bold text-blue-800">{{ countryPage?.contents?.pgs_award }}</div>
                             <div class="text-sm mt-2">Prestigious Awards</div>
                         </div>
-                        <div
-                        data-aos="fade-right"
-                            data-aos-delay="200"
+                        <div data-aos="fade-right" data-aos-delay="200"
                             class="bg-white/10 backdrop-blur-md p-6 rounded-2xl text-center shadow-lg hover:scale-105 transition">
-                            <div class="text-3xl font-bold text-blue-800">200+</div>
+                            <div class="text-3xl font-bold text-blue-800">{{ countryPage?.contents?.u_partner }}</div>
                             <div class="text-sm mt-2">Universities Partnered</div>
                         </div>
                     </div>
@@ -323,17 +268,12 @@
         ">
 
                 <div class="mb-10">
-                    <h4 
-                    data-aos="fade-up"
-                    class="
+                    <h4 data-aos="fade-up" class="
             text-gray-500
             capitalize
             mb-1
             ">Success Story</h4>
-                    <h2 
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                    class="
+                    <h2 data-aos="fade-up" data-aos-delay="200" class="
             title-design
             text-3xl
             text-black/90
@@ -352,41 +292,92 @@ import girl from '~/assets/images/country/australian.webp';
 import utas from '~/assets/images/country/utas.png';
 import AOS from 'aos';
 
+const route = useRoute()
+const slug = route.params.slug
+const apiBase = useRuntimeConfig().public.apiBase
+const baseUrl = useRuntimeConfig().public.baseUrl
+
 const cardItems = ref([
     {
         icon: 'fa-solid fa-graduation-cap',
-        title: 'Scholarship',
-        description: 'Up to 50% grant or scholarship among the best universities.',
+        title: '',
+        description: '',
     },
     {
         icon: 'fa-solid fa-briefcase',
-        title: 'Work Rights',
-        description: 'Up to 5-Years of post-study work rights',
+        title: '',
+        description: '',
     },
     {
         icon: 'fa-solid fa-earth-europe',
-        title: 'Quick Visa',
-        description: 'Personalized VISA service tailored to your individual need',
+        title: '',
+        description: '',
     },
 ])
+
+const countryPage = ref([])
+const getCountryPage = async () => {
+    const response: any = await $fetch(`${apiBase}/country/${slug}`);
+    if (response && response.data) {
+        countryPage.value = response.data
+
+        cardItems.value = [
+            {
+                icon: 'fa-solid fa-graduation-cap',
+                title: response.data?.contents?.ss_title || '',
+                description: response.data?.contents?.ss_description || '',
+            },
+            {
+                icon: 'fa-solid fa-briefcase',
+                title: response.data?.contents?.rights_title || '',
+                description: response.data?.contents?.rights_description || '',
+            },
+            {
+                icon: 'fa-solid fa-earth-europe',
+                title: response.data?.contents?.visa_title || '',
+                description: response.data?.contents?.visa_description || '',
+            },
+        ]
+
+    }
+
+}
+
+const partners = ref([]);
+const getPartners = async () => {
+    const response: any = await $fetch(`${apiBase}/partners`);
+    if (response) {
+        partners.value = response.data;
+    }
+}
+
+
+
+
+const getImgUrl = (url: string) => {
+    return `${baseUrl}/${url}`
+}
 
 
 
 onMounted(() => {
-  nextTick(() => {
-    AOS.init({
-      once: true, // animation once on scroll
-      duration: 800
+    nextTick(() => {
+        AOS.init({
+            once: true, // animation once on scroll
+            duration: 800
+        });
     });
-  });
-  
-  AOS.refresh();
+
+    AOS.refresh();
+
+    getCountryPage();
+    getPartners();
 });
 </script>
 
 <style>
 .country_hero {
-    background-image: url('~/assets/images/country/australia.jpg');
+    /* background-image: url('~/assets/images/country/australia.jpg'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
