@@ -1,6 +1,6 @@
 <template>
   <div>
-     <NuxtLink to="#" class="
+     <NuxtLink :to="path" class="
      bg-white
      rounded-lg
      shadow-md
@@ -47,7 +47,8 @@
          text-sm
          text-gray-500
          ">
-          {{ description }}</p>
+          <p v-html="description"></p>
+        </p>
          
          <div 
          class="

@@ -7,7 +7,7 @@
         <i class="fa-solid fa-chevron-right text-gray-500"></i>
         <span class="text-gray-600">Blogs</span>
         <i class="fa-solid fa-chevron-right text-gray-500"></i>
-        <span class="text-gray-600">Study in Australia</span>
+        <span class="text-gray-600">{{ blog.title }}</span>
       </div>
     </div>
 
@@ -72,7 +72,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import blogImg1 from '~/assets/images/slider/slide-1.jpeg'
 
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl

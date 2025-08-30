@@ -43,11 +43,11 @@
        
         <EventCard data-aos="fade-up" v-for="(item, index) in events" 
         :key="index" 
-        :image="item.image" 
+        :image="getImgUrl(item.thumbnail)" 
         :title="item.title" 
-        :description="item.description" 
-        :date="item.date" 
-        :path="item.path" />
+        :description="limitWords(item.description, 10)" 
+        :date="formatDate(item.date)" 
+        :path="'/event/' + item.slug" />
         
        </div>
     </section>
@@ -61,8 +61,45 @@
 </template>
 
 <script lang="ts" setup>
-import eventImage from '~/assets/images/events/event1.jpg'
 import AOS from 'aos';
+
+const apiBase = useRuntimeConfig().public.apiBase
+const baseUrl = useRuntimeConfig().public.baseUrl
+
+const events = ref([]);
+const getEvents = async () => {
+  try {
+    const response = await $fetch(`${apiBase}/events`);
+    
+    if(response)
+    {
+      events.value = response.data
+    }
+    
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+const getImgUrl = (url: string) => {
+  return `${baseUrl}/${url}`
+}
+
+const limitWords = (text: string, count: number) => {
+  if (!text) return '';
+  const clean = text.replace(/(<([^>]+)>)/gi, "");
+  return clean.split(" ").slice(0, count).join(" ") + "...";
+};
+
+const formatDate = (dateString: string) => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  return new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(date)
+}
 
 onMounted(() => {
   nextTick(() => {
@@ -73,52 +110,11 @@ onMounted(() => {
   });
   
   AOS.refresh();
+  
+  getEvents();
+  
 });
 
-const events = [
-  {
-    image: eventImage,
-    title: 'Study in Australia with scholarship',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    date: '01 Jan 2023, 10:00 AM',
-    path: '#'
-  },
-  {
-    image: eventImage,
-    title: 'Study in Australia with scholarship',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    date: '01 Jan 2023, 10:00 AM',
-    path: '#'
-  },
-  {
-    image: eventImage,
-    title: 'Study in Australia with scholarship',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    date: '01 Jan 2023, 10:00 AM',
-    path: '#'
-  },
-  {
-    image: eventImage,
-    title: 'Study in Australia with scholarship',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    date: '01 Jan 2023, 10:00 AM',
-    path: '#'
-  },
-  {
-    image: eventImage,
-    title: 'Study in Australia with scholarship',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    date: '01 Jan 2023, 10:00 AM',
-    path: '#'
-  },
-  {
-    image: eventImage,
-    title: 'Study in Australia with scholarship',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    date: '01 Jan 2023, 10:00 AM',
-    path: '#'
-  },
-]
 
 </script>
 
