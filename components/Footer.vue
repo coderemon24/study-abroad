@@ -309,16 +309,20 @@
                 flex
                 gap-2
                 ">
-                    <li><a class="
+                    <li><NuxtLink class="
                         hover:text-blue-700
                         transition-all
                         duration-300
-                        " href="#">Terms & Conditions</a></li>
-                    <li><a class="
+                        " 
+                        to="/terms-and-conditions"
+                        >Terms & Conditions</NuxtLink></li>
+                    <li><NuxtLink class="
                         transition-all
                         duration-300
                         hover:text-blue-700
-                        " href="#">Privacy Policy</a></li>
+                        " 
+                        to="/privacy-policy"
+                        >Privacy Policy</NuxtLink></li>
                 </ul>
             </div>
             
