@@ -36,7 +36,7 @@
             :description="item.description"
             :tags="item?.category?.category_name"
             :date="item.created_at"
-            :path="item?.slug"
+            :path="'/blog/' + item?.slug"
             />
             
           </div>
