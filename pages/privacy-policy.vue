@@ -15,13 +15,17 @@
     <section class="container mx-auto w-11/12">
        <div class="
        my-10
+        bg-white
+       p-10 
+       rounded-lg
+       shadow
        ">
           <h1 class="
           title-design
           text-3xl
           md:text-4xl
           font-semibold
-          mb-6
+          mb-5
           text-blue-800
           ">
             Privacy Policy

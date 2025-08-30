@@ -94,7 +94,7 @@
             py-5
             ">
                         <div class="md:hidden">
-                            <img class="w-12" :src="logoMain" alt="">
+                            <img class="w-12" :src="getImgUrl(generalSettings?.site_logo)" alt="main-logo">
                         </div>
 
                         <div class="icon 
@@ -178,7 +178,7 @@
                    font-bold
                    text-black
                    mb-1
-                   ">Care2Training</h2>
+                   ">{{ generalSettings?.site_name }}</h2>
                                 <p class="
                    text-[10px]
                    ">
@@ -187,7 +187,7 @@
                             </div>
 
                             <div class="hidden md:block">
-                                <img class="w-20" :src="logoMain" alt="logo">
+                                <img class="w-20" :src="getImgUrl(generalSettings?.site_logo)" alt="logo">
                             </div>
 
                             <ul class="
@@ -296,10 +296,8 @@
 </template>
 
 <script lang="ts" setup>
-import logo from '~/assets/images/logo.webp';
 
 const isOpen = ref(false);
-const logoMain = ref(logo);
 
 const navItems = ref([
     { name: 'Home', href: '/' },
@@ -325,6 +323,24 @@ const navItems = ref([
 ]);
 
 const apiBase = useRuntimeConfig().public.apiBase
+const baseUrl = useRuntimeConfig().public.baseUrl
+
+const generalSettings = ref({});
+
+const getGeneralSettings = async () => {
+    const response: any = await $fetch(`${apiBase}/general-settings`);
+    if(response)
+    {
+        generalSettings.value = response.data;
+    }
+}
+
+
+
+const getImgUrl = (url: string) => {
+    return `${baseUrl}/${url}`
+}
+
 const getServices = async () => {
     const response: any = await $fetch(`${apiBase}/services`);
     if (response) {
@@ -344,7 +360,7 @@ const ap_btn = {
     href: '/book-appointment',
 };
 
-const details = [
+const details = ref([
     {
         title: 'Panthapath, Dhaka',
         icon: 'fa-solid fa-location-dot',
@@ -357,11 +373,17 @@ const details = [
         title: '+8801712345678',
         icon: 'fa-solid fa-phone',
     },
+]);
+
+const getContactInfos = async () => {
+    const response: any = await $fetch(`${apiBase}/contact-infos`);
+    if(response)
     {
-        title: '+8801712345678',
-        icon: 'fa-solid fa-phone',
-    },
-];
+        details.value[0].title = response.data.address
+        details.value[1].title = response.data.email
+        details.value[2].title = response.data.phone
+    }
+}
 
 const socialIcons = [
     {
@@ -385,6 +407,9 @@ const socialIcons = [
         href: '#',
     },
 ];
+
+
+
 
 const toggleMenu = () => {
     const menu = document.querySelector('#menu');
@@ -438,6 +463,9 @@ onMounted(() => {
     stickyNav();
     getServices();
     getCountries();
+    getGeneralSettings();
+    getContactInfos();
+    
 });
 
 </script>
