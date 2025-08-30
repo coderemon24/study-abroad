@@ -31,12 +31,12 @@
           ">
           
             <BlogCard data-aos="fade-up" v-for="item in blogs"
-            :image="item.image"
+            :image="getImgUrl(item.image)"
             :title="item.title"
             :description="item.description"
-            :tags="item.tags"
-            :date="item.date"
-            :path="item?.path"
+            :tags="item?.category?.category_name"
+            :date="item.created_at"
+            :path="item?.slug"
             />
             
           </div>
@@ -50,7 +50,7 @@
           md:col-span-1
         ">
         <div class="sticky top-10">
-          <BlogSidebar :blogs="blogs" />
+          <BlogSidebar :blogs="latestBlogs" />
           </div>
         </div>
 
@@ -61,9 +61,33 @@
 </template>
 
 <script lang="ts" setup>
-import blogImg from '~/assets/images/slider/slide-2.jpeg'
-import blogImg1 from '~/assets/images/slider/slide-1.jpeg'
 import AOS from 'aos';
+
+const apiBase = useRuntimeConfig().public.apiBase
+const baseUrl = useRuntimeConfig().public.baseUrl
+
+const blogs = ref([]);
+const latestBlogs = ref([]);
+
+const getBlogs = async () => {
+  const response: any = await $fetch(`${apiBase}/blogs`);
+  if (response) {
+    blogs.value = response.data;
+  }
+}
+
+const getLatestBlogs = async () => {
+  const response: any = await $fetch(`${apiBase}/latest-blogs`);
+  if (response) {
+    latestBlogs.value = response.data;
+  }
+}
+
+const getImgUrl = (url: string) => {
+  return `${baseUrl}/${url}`
+}
+
+
 
 onMounted(() => {
   nextTick(() => {
@@ -74,46 +98,11 @@ onMounted(() => {
   });
   
   AOS.refresh();
+  
+  getBlogs();
+  getLatestBlogs();
+  
 });
-
-const blogs = [
-  {
-    image: blogImg,
-    title: 'Study in Australia with scholarship 2',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    tags: ['Canada','UK', 'USA'],
-    date: '03 July 2023',
-    path: '/blog/study-in-australia-with-scholarship'
-  },
-  
-  {
-    image: blogImg1,
-    title: 'Study in Australia with scholarship 2',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    tags: ['Canada','UK', 'USA'],
-    date: '03 July 2023',
-    path: '#'
-  },
-  {
-    image: blogImg,
-    title: 'Study in Australia with scholarship 2',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    tags: ['Canada','UK', 'USA'],
-    date: '03 July 2023',
-    path: '#'
-  },
-  
-  {
-    image: blogImg1,
-    title: 'Study in Australia with scholarship 2',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolores voluptate Lorem ipsum dolor sit amet consectetur adipisicing elit...',
-    tags: ['Canada','UK', 'USA'],
-    date: '03 July 2023',
-    path: '#'
-  },
-]
-
-
 
 </script>
 

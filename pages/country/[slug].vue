@@ -107,7 +107,7 @@
             text-3xl
             text-black/90
             ">
-                        Our {{ countryPage?.name }}i University Partners
+                        Our {{ countryPage?.name }} University Partners
                     </h2>
                 </div>
 

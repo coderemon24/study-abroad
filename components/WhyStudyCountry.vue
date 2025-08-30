@@ -37,7 +37,7 @@
         ">
           <img
           data-aos="fade-right"
-            src="~/assets/images/country/australian.webp"
+            :src="getImgUrl(props.data.contents.study_in_img)"
             alt="Student"
             class="w-full h-full object-cover -mb-8"
           />
@@ -49,8 +49,8 @@
   </section>
 </template>
 
-<script setup>
-const props = defineProps({
+<script lang="ts" setup>
+const props :any = defineProps({
   data: Object,
   default: () => ({}),
 })
@@ -58,6 +58,10 @@ const props = defineProps({
 const facts = ref([
   'ddadfadsf'
 ]);
+const baseUrl = useRuntimeConfig().public.baseUrl
+const getImgUrl = (url: string) => {
+  return `${baseUrl}/${url}`
+}
 
 onMounted(() => {
   facts.value = props.data.studies

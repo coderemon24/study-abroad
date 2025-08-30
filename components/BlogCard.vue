@@ -36,14 +36,14 @@
        pt-3
        ">
        
-          <div v-if="tags" 
+          <div  
           :class="sidebar === true ? 'hidden' : 'block'"
           class="
           mb-3
           flex
           gap-2
           ">
-            <span v-for="tag in tags" 
+            <span 
             
             class="
             text-[12px]
@@ -58,7 +58,7 @@
             transition-all
             duration-300
             linear
-            ">{{ tag }}</span>
+            ">{{ tags }}</span>
           </div>
        
          <h2 
@@ -71,13 +71,15 @@
            {{ title }}
          </h2>
          <p 
-         :class="sidebar === true ? 'hidden' : 'block'"
+         :class="sidebar === false ? 'hidden' : 'block'"
          class="
          text-sm
          text-gray-500
          ">
-          {{ description }}</p>
+          <div v-html="limitWords(description, 10)"></div>  
+        </p>
          
+        <!--sidebar-->
          <div 
          :class="sidebar === true ? 'hidden' : 'block'"
          class="
@@ -90,7 +92,7 @@
          ">
            <p>
             <i class="fa-regular fa-calendar mr-2"></i>
-            <span class="text-sm ">{{ date }}</span>
+            <span class="text-sm ">{{ formatDate(date) }}</span>
            </p>
            <NuxtLink :to="path" class="
            text-sm
@@ -119,7 +121,7 @@ defineProps({
     default: blogImg
   },
   tags: {
-    type: Array,
+    type: String,
     default: 'USA'
   },
   title: {
@@ -144,6 +146,22 @@ defineProps({
   }
 })
 
+
+const limitWords = (text: string, count: number) => {
+  if (!text) return '';
+  const clean = text.replace(/(<([^>]+)>)/gi, "");
+  return clean.split(" ").slice(0, count).join(" ") + "...";
+};
+
+const formatDate = (dateString: string) => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+  return new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  }).format(date)
+}
 
 const sidebarClass = [
   'flex'
