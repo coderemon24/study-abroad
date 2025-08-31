@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   hooks: {
     async 'nitro:config'(nitroConfig) {
       let routes = []
-      const apiBase = process.env.NUXT_PUBLIC_API_BASE || 'http://127.0.0.1:8000/api'
+      const apiBase = process.env.NUXT_PUBLIC_API_BASE || 'https://admin.care2training.com/api'
 
       async function fetchRoutes(url, prefix) {
         try {
@@ -45,8 +45,8 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   runtimeConfig: {
       public: {
-        apiBase: process.env.NUXT_PUBLIC_API_BASE_URL || 'http://localhost:8000',
-        baseUrl: process.env.NUXT_PUBLIC_BASE_URL
+        apiBase: process.env.NUXT_PUBLIC_API_BASE_URL || 'https://admin.care2training.com/api',
+        baseUrl: process.env.NUXT_PUBLIC_BASE_URL || 'https://admin.care2training.com',
       }
     },
   css: [
