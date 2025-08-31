@@ -144,7 +144,7 @@
             ">
                <div>
                   <iframe
-                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.0085844141754!2d90.3868791!3d23.7507284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9ac5fce59cb%3A0xfd3e17cbaa2f7805!2sKaizen%20IT%20Ltd.!5e1!3m2!1sen!2sbd!4v1755167494499!5m2!1sen!2sbd"
+                     :src="defContact.map"
                      width="100%" style="border:0;" class="
                 h-[400px]
                 md:h-[500px]
@@ -161,6 +161,68 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
+const apiBase = useRuntimeConfig().public.apiBase;
+
+const contactInfos = ref([
+   {
+      icon: 'fa-solid fa-location-dot',
+      title: 'Office Location:',
+      addresses: [
+         {address: ''},
+      ]
+   },
+   {
+      icon: 'fa-solid fa-phone',
+      title: 'Contact Number:',
+      addresses: [
+         {address: ''},
+      ]
+   },
+   {
+      icon: 'fa-solid fa-envelope',
+      title: 'Email:',
+      addresses: [
+         {address: ''},
+      ]
+   },
+]);
+
+const defContact = ref({});
+
+const getDefContact = async () => {
+   try {
+      const response :any = await $fetch(`${apiBase}/contact-infos`);
+      
+      if(response)
+      {
+         defContact.value = response.data;
+      }
+      
+   } catch (error) {
+      console.error('Error fetching contact info:', error);
+   }
+};
+
+const getAdditionalContacts = async () => {
+   try {
+      const response :any = await $fetch(`${apiBase}/additional-contact`);
+      
+      if(response && response.data)
+      {
+         response.data.forEach((item: any) => {
+            contactInfos.value[0].addresses.push({address: item.address});
+            contactInfos.value[1].addresses.push({address: item.phone});
+            contactInfos.value[2].addresses.push({address: item.email});
+         });
+      }
+      
+   } catch (error) {
+      console.error('Error fetching additional contacts:', error);
+   }
+};
+
+
+
 onMounted(() => {
   nextTick(() => {
     AOS.init({
@@ -170,39 +232,10 @@ onMounted(() => {
   });
   
   AOS.refresh();
+  
+   getDefContact();
+   getAdditionalContacts();
 });
-
-const contactInfos = [
-   {
-      icon: 'fa-solid fa-location-dot',
-      title: 'Office Location:',
-      addresses: [
-         {address: 'Care2Training International Gazi Tower (3rd floor) House: 02, Green Road Dhanmondi, Dhaka 1205'},
-         {address: 'Care2Training International Gazi Tower (3rd floor) House: 02, Green Road Dhanmondi, Dhaka 1205'}
-      ]
-   },
-   {
-      icon: 'fa-solid fa-phone',
-      title: 'Contact Number:',
-      addresses: [
-         {address: '+880 2 8888 8888'},
-         {address: '+880 2 8888 8888'},
-         {address: '+880 2 8888 8888'},
-      ]
-   },
-   {
-      icon: 'fa-solid fa-envelope',
-      title: 'Email:',
-      addresses: [
-         {address: 'info@care2training.com'},
-         {address: 'info.uk@care2training.com'},
-         {address: 'info.australia@care2training.com'},
-         {address: 'info.us@care2training.com'},
-         {address: 'info.canada@care2training.com'},
-      ]
-   },
-];
-
 </script>
 
 <style></style>

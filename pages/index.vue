@@ -335,6 +335,11 @@ const getServices = async () => {
   }
 }
 
+const limitWords = (text: string, count: number) => {
+  if (!text) return '';
+  const clean = text.replace(/(<([^>]+)>)/gi, "");
+  return clean.split(" ").slice(0, count).join(" ") + "...";
+};
 
 onMounted(() => {
   nextTick(() => {
