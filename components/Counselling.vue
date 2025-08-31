@@ -183,8 +183,8 @@
 </template>
 
 <script lang="ts" setup>
-import aboutImg from '~/assets/images/about.jpg'
-import patt from '~/assets/images/pattern-2.png'
+import aboutImg from '~/public/assets/images/about.jpg'
+import patt from '~/public/assets/images/pattern-2.png'
 
 const props = defineProps({
     data: Object,

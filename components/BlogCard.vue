@@ -113,7 +113,7 @@
 </template>
 
 <script lang="ts" setup>
-import blogImg from '~/assets/images/slider/slide-1.jpeg'
+import blogImg from '~/public/assets/images/slider/slide-1.jpeg'
 
 defineProps({
   image: {

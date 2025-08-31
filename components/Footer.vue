@@ -62,7 +62,7 @@
                         <p class="">Have any queries?</p>
                         <p>
                             <span class="">Call: </span>
-                            <a class="text-gray-600" href="#">+880 2 555 5555</a>
+                            <a class="text-gray-600" href="#">{{ contactInfo.phone }}</a>
                         </p>
                     </div>
                 </div>
@@ -157,15 +157,11 @@
                         <li>
                             <p>
                                 <span class="text-gray-700 font-medium">Phone: </span>
-                                <a href="#">080 2 555 5555</a>
-                            </p>
-                            <p>
-                                <span class="text-gray-700 font-medium">Phone: </span>
-                                <a href="#">080 2 555 5555</a>
+                                <a href="#">{{ contactInfo.phone }}</a>
                             </p>
                             <p>
                                 <span class="text-gray-700 font-medium">Mail: </span>
-                                <a href="#">3fN2d@example.com</a>
+                                <a href="#">{{ contactInfo.email }}</a>
                             </p>
                             <p>
                                 <span class="text-gray-700 font-medium">Skype: </span>
@@ -282,7 +278,7 @@
                     rounded
                     overflow-hidden
                     ">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.0085844141754!2d90.3868791!3d23.7507284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9ac5fce59cb%3A0xfd3e17cbaa2f7805!2sKaizen%20IT%20Ltd.!5e1!3m2!1sen!2sbd!4v1755320894241!5m2!1sen!2sbd" width="100%" height="225" style="border:0;"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe :src="contactInfo?.map" width="100%" height="225" style="border:0;"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     
                 </div>
@@ -376,8 +372,8 @@
 </template>
 
 <script lang="ts" setup>
-import manImg from '~/assets/images/officer.jpg';
-import mainLogo from '~/assets/images/logo.webp'
+import manImg from '~/public/assets/images/officer.jpg';
+import mainLogo from '~/public/assets/images/logo.webp'
 
 const officer = ref(manImg);
 const logo = ref(mainLogo);
@@ -463,6 +459,21 @@ const submitForm = async () => {
         }
     }
 }
+
+const contactInfo = ref({});
+
+const getContactInfos = async () => {
+    const response: any = await $fetch(`${apiBase}/contact-infos`);
+    if(response)
+    {
+        contactInfo.value = response.data
+    }
+}
+
+
+onMounted(() => {
+    getContactInfos();
+})
 
 
 </script>

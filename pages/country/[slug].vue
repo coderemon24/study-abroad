@@ -288,8 +288,6 @@
 </template>
 
 <script lang="ts" setup>
-import girl from '~/assets/images/country/australian.webp';
-import utas from '~/assets/images/country/utas.png';
 import AOS from 'aos';
 
 const route = useRoute()

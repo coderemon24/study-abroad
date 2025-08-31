@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import slide1 from '~/assets/images/slider/uk.jpg'
-import slide2 from '~/assets/images/slider/australia.jpg'
-import slide3 from '~/assets/images/slider/canada.jpg'
-import { get } from '@nuxt/ui/runtime/utils/index.js'
 
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl

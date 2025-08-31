@@ -110,7 +110,7 @@
 </template>
 
 <script lang="ts" setup>
-import img from '~/assets/images/appointment.jpg'
+import img from '~/public/assets/images/appointment.jpg'
 import AOS from 'aos';
 import AppointmentForm from '~/components/AppointmentForm.vue';
 

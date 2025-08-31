@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import type { AccordionItem } from '@nuxt/ui';
-import faqImg from '~/assets/images/faq.png';
+import faqImg from '~/public/assets/images/faq.png';
 
 defineProps({
   imageProp: {

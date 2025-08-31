@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import client1 from '~/assets/images/clients/partner-1.webp'
 
 const containerRef = ref(null)
 const apiBase = useRuntimeConfig().public.apiBase

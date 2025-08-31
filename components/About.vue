@@ -135,9 +135,7 @@
 </template>
 
 <script lang="ts" setup>
-import logo from '~/assets/images/logo.webp';
-import ceo from '~/assets/images/ceo.jpg';
-import passport from '~/assets/images/visa-passport.png'
+import logo from '~/public/assets/images/logo.webp';
 const props = defineProps({
     data: Object,
     default: () => ({})
