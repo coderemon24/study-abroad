@@ -185,7 +185,7 @@
                     <!-- Bachelor’s Degree Card -->
                     <div data-aos="fade-left"
                         class="bg-white text-gray-800 shadow-lg rounded-2xl p-6 hover:scale-105 transition transform duration-300">
-                        <h3 class="text-xl font-semibold mb-3">🎓 Undergrad Bachelor’s Degree</h3>
+                        <h3 class="text-xl font-semibold mb-3">🎓 Undergrad/Bachelor’s Degree</h3>
                         <p class="text-lg font-bold text-blue-600">{{ countryPage?.contents?.under_cost }}</p>
                     </div>
 

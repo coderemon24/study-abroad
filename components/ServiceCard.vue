@@ -61,7 +61,7 @@
      text-gray-600
      text-sm
      ">
-      {{ description }}
+      {{ limitWords(description, 15) }}
      </p>
      
      <NuxtLink 
@@ -121,6 +121,12 @@ defineProps({
       default: '#'
     }
 });
+
+const limitWords = (text: string, count: number) => {
+  if (!text) return '';
+  const clean = text.replace(/(<([^>]+)>)/gi, "");
+  return clean.split(" ").slice(0, count).join(" ") + "...";
+};
 
 </script>
 

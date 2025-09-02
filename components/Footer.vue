@@ -95,19 +95,7 @@
                     
                     mt-4
                     ">
-                        Care2Training International
-                        Gazi Tower (3rd floor)
-                        House: 02, Green Road
-                        Dhanmondi, Dhaka 1205
-                    </p>
-                    <p class="
-                    
-                    mt-3
-                    ">
-                        Care2Training International
-                        Gazi Tower (3rd floor)
-                        House: 02, Green Road
-                        Dhanmondi, Dhaka 1205
+                        {{ contactInfo.address }}
                     </p>
 
                     <!--social icons-->
@@ -323,7 +311,7 @@
             </div>
             
             <a 
-            href="#"
+            :href="`https://wa.me/${ contactInfo.phone }`" target="_blank"
             class="
             bg-green-500
             text-white
@@ -406,7 +394,7 @@ const quickLinks = [
     { name: 'Services', href: '/services' },
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
-    { name: 'Book Appointment', href: '/contact' },
+    { name: 'Book Appointment', href: '/book-appointment' },
 ];
 
 

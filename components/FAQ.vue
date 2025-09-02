@@ -14,7 +14,7 @@
       :items="items" >
         
           <template #item="{ item }">
-            <div v-html="item.content"></div>
+            <div v-html="decodeHtml(item.content)"></div>
           </template>
       
       </UAccordion>
@@ -46,6 +46,7 @@ const items = ref<AccordionItem[]>([])
 
 const getFaq = async () => {
   const response: any = await $fetch(`${apiBase}/faq`);
+  console.log(response.data[0].answer);
   if (response && response.data) {
       items.value = response.data.map((faq: any) => ({
         label: faq.question,   // UAccordion expects `label`
@@ -53,6 +54,11 @@ const getFaq = async () => {
       }))
     }
 }
+const decodeHtml = (html: string) => {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+};
 
 onMounted(() => {
   getFaq()
