@@ -114,6 +114,16 @@ import img from '~/public/assets/images/appointment.jpg'
 import AOS from 'aos';
 import AppointmentForm from '~/components/AppointmentForm.vue';
 
+useHead({
+  title: 'Care2 Training – Book an Appointment for Study Abroad, Work Abroad & Recruitment Services',
+  meta: [
+    {
+      name: 'description',
+      content: 'Book an appointment with Care2 Training for personalized guidance on study abroad, work abroad, and recruitment services. Start your journey with expert support today.'
+    }
+  ]
+});
+
 onMounted(() => {
   nextTick(() => {
     AOS.init({

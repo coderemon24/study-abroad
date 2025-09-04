@@ -43,6 +43,16 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
+useHead({
+  title: 'Care2 Training – Privacy Policy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Read Care2 Training\'s Privacy Policy to understand how we collect, use, and protect your personal information while providing study abroad, work abroad, and recruitment services.'
+    }
+  ]
+});
+
 const apiBase = useRuntimeConfig().public.apiBase
 
 const terms = ref({});

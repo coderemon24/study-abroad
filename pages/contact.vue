@@ -161,6 +161,16 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
+useHead({
+  title: 'Care2 Training – Contact for Study Abroad, Work Abroad & Recruitment Services',
+  meta: [
+    {
+      name: 'description',
+      content: 'Contact Care2 Training for expert advice on study abroad, work abroad, and recruitment services. We are here to assist you on your journey.'
+    }
+  ]
+});
+
 const apiBase = useRuntimeConfig().public.apiBase;
 
 const contactInfos = ref([

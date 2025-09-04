@@ -48,7 +48,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-4">
                   {{ blog.title }}
                 </h2>
-                <p class=" mb-5">
+                <p class=" mb-5 blog-content">
                   <p v-html="blog.description"></p>
                 </p>
               </div>
@@ -72,6 +72,16 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+
+useHead({
+  title: 'Care2 Training – Blog Details on Study Abroad, Work Abroad & Recruitment Services',
+  meta: [
+    {
+      name: 'description',
+      content: 'Read the latest blog posts from Care2 Training on study abroad, work abroad, and recruitment services. Get expert insights and tips to guide your global journey.'
+    }
+  ]
+});
 
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl

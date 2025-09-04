@@ -112,9 +112,17 @@
 </template>
 
 <script lang="ts" setup>
-import img from '~/public/assets/images/appointment.jpg'
 import AOS from 'aos';
-import AppointmentForm from '~/components/AppointmentForm.vue';
+
+useHead({
+  title: 'Care2 Training – Become an Agent | Join Our Global Network',
+  meta: [
+    {
+      name: 'description',
+      content: 'Join Care2 Training as an agent and become part of our global network. Collaborate with us to provide exceptional study abroad, work abroad, and recruitment services.'
+    }
+  ]
+});
 
 onMounted(() => {
   nextTick(() => {

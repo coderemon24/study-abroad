@@ -63,6 +63,16 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
+useHead({
+  title: 'Care2 Training – Blogs on Study Abroad, Work Abroad & Recruitment',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore our latest blogs on study abroad, work abroad, and recruitment services. Stay informed with expert insights and tips from Care2 Training.'
+    }
+  ]
+});
+
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
 

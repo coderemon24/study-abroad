@@ -355,6 +355,16 @@ onMounted(() => {
   getServices();
   
 });
+
+useHead({
+  title: 'Care2 Training – Study, Work & Recruitment Support',
+  meta: [
+    {
+      name: 'description',
+      content: 'Care2 Training offers study abroad, work abroad, and recruitment services, guiding you from application to visa with trusted, seamless support.'
+    }
+  ]
+});
  </script>
  
  <style scoped>

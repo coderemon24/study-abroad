@@ -88,6 +88,16 @@ import { useRoute } from 'vue-router'
 import type { TimelineItem } from '@nuxt/ui'
 import AOS from 'aos';
 
+useHead({
+  title: 'Care2 Training – Services for Study Abroad, Work Abroad & Recruitment',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore Care2 Training’s comprehensive services for study abroad, work abroad, and recruitment. Discover how we can support your global journey with expert guidance and personalized solutions.'
+    }
+  ]
+});
+
 onMounted(() => {
   nextTick(() => {
     AOS.init({

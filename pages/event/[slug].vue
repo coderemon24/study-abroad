@@ -66,6 +66,16 @@
 
 <script lang="ts" setup>
 
+useHead({
+  title: 'Care2 Training – Event Details',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore the details of our upcoming events including seminars, workshops, and student meets. Join Care2 Training to enhance your study abroad, work abroad, and recruitment journey.'
+    }
+  ]
+});
+
 const route = useRoute();
 const slug = route.params.slug;
 

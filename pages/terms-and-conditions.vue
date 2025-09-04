@@ -44,6 +44,16 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
+useHead({
+  title: 'Care2 Training – Terms & Conditions',
+  meta: [
+    {
+      name: 'description',
+      content: 'Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.'
+    }
+  ]
+});
+
 const apiBase = useRuntimeConfig().public.apiBase
 
 const terms :any = ref({});

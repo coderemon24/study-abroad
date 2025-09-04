@@ -171,6 +171,17 @@
 <script lang="ts" setup>
 import AOS from "aos";
 
+useHead({
+  title: 'About Care2 Training – Education & Career Experts',
+  meta: [
+    {
+      name: 'description',
+      content: 'Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.'
+    }
+  ]
+});
+
+
 interface Tab {
   id: string;
   title: string;

@@ -63,6 +63,16 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
+useHead({
+  title: 'Care2 Training – Events: Seminars, Workshops & Student Meets',
+  meta: [
+    {
+      name: 'description',
+      content: 'Stay updated with Care2 Training\'s latest events including seminars, workshops, and student meets. Join us to explore opportunities in study abroad, work abroad, and recruitment services.'
+    }
+  ]
+});
+
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
 
