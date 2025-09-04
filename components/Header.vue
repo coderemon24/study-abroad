@@ -36,20 +36,26 @@
             md:flex-row-reverse
             ">
                         <!--social icons-->
-                        <ul class="
-                    flex
-                    gap-2
-                    items-center
-                    justify-center
-                    ">
-                            <li v-for="item in socialIcons">
-                                <a class="
-                            social_icon
-                            " :href="item.href">
-                                    <i :class="item.icon"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div>
+                            <NuxtLink class="
+                            bg-blue-800
+                            text-white
+                            py-1.5
+                            px-4
+                            rounded-full
+                            text-sm
+                            hover:bg-white
+                            hover:text-blue-800
+                            hover:ring-1
+                            hover:ring-blue-800
+                            transition
+                            duration-300
+                            " 
+                            :class="$route.path === '/agent-registration' ? 'bg-white text-blue-800! ring-1 ring-blue-800' : ''"
+                            to="/agent-registration">
+                                Become an Agent
+                            </NuxtLink>
+                        </div>
 
                         <!--address & appointment-->
                         <ul class="
@@ -115,10 +121,10 @@
 
             <!---- Header Menu -->
             <div class="
-    bg-white
-    md:bg-white
-    md:border-b-0
-    ">
+            bg-white
+            md:bg-white
+                md:border-b-0
+            ">
                 <div class="header container w-11/12 mx-auto">
                     <nav class="
             block
