@@ -107,7 +107,7 @@
                     mt-4
                     ">
                         <li v-for="item in socialIcons">
-                            <a class="
+                            <a target="_blank" class="
                             social_icon
                             text-blue-700!
                             ring-blue-700!
@@ -150,10 +150,6 @@
                             <p>
                                 <span class="text-gray-700 font-medium">Mail: </span>
                                 <a href="#">{{ contactInfo.email }}</a>
-                            </p>
-                            <p>
-                                <span class="text-gray-700 font-medium">Skype: </span>
-                                <a href="#">3fN2d@example.com</a>
                             </p>
                         </li>
                     </ul>
@@ -231,13 +227,13 @@
 
                     <ul>
                         <li v-for="item in quickLinks">
-                            <a class="
+                            <NuxtLink class="
                             flex
                             items-center
                             gap-5
-                            " :href="item.href">
+                            " :to="item.href">
                                 {{ item.name }}
-                            </a>
+                        </NuxtLink>
                         </li>
                     </ul>
                     
@@ -369,7 +365,7 @@ const socialIcons = [
     {
         name: 'facebook',
         icon: 'fa-brands fa-facebook-f',
-        href: '#',
+        href: 'https://www.facebook.com/care2traininguk/',
     },
     {
         name: 'twitter',
@@ -379,19 +375,18 @@ const socialIcons = [
     {
         name: 'instagram',
         icon: 'fa-brands fa-instagram',
-        href: '#',
+        href: 'https://www.instagram.com/care2training/',
     },
     {
         name: 'linkedin',
         icon: 'fa-brands fa-linkedin',
-        href: '#',
+        href: 'https://www.linkedin.com/company/care2-training',
     },
 ];
 
 const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services' },
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Book Appointment', href: '/book-appointment' },

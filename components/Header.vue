@@ -34,6 +34,8 @@
             items-center
             justify-between
             md:flex-row-reverse
+            flex-col
+            gap-4
             ">
                         <!--social icons-->
                         <div>
@@ -65,6 +67,7 @@
                             <li class="
                     relative
                     md:hidden
+                    
                     ">
                                 <NuxtLink :class="[
                                     'list_item appointment_btn ',

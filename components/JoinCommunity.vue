@@ -45,7 +45,7 @@
             data-aos-delay="600"
             class="
             btn-outline
-            " to="#contact">
+            " to="https://www.facebook.com/care2traininguk" target="_blank" rel="noopener noreferrer">
                <span class="relative z-10">Join Now</span>
             </NuxtLink>
          </div>

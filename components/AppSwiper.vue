@@ -58,6 +58,7 @@ onMounted(() => {
                         "></div>
 
                         <div class="
+                        w-full
                         md:w-1/2
                         absolute
                         top-1/2
@@ -71,11 +72,13 @@ onMounted(() => {
                         text-center
                         ">
                             <h3 class="
-                            text-5xl
+                            text-lg
+                            md:text-5xl
                             mb-3
                             ">{{ slide.title }}</h3>
                             <p class="
-                            text-lg
+                            text-sm
+                            md:text-lg
                             fw-thin
                             text-center
                             mb-[-1.2rem]
@@ -84,12 +87,15 @@ onMounted(() => {
                             </p>
                             <NuxtLink v-if="slide.button_text" :to="slide.button_link"
                                 class="
-                                text-lg
+                                text-sm
+                                md:text-lg
                                 font-normal
                                 text-blue-700
                                 bg-white
-                                py-2.5
-                                px-7
+                                py-1
+                                px-4
+                                md:py-2.5
+                                md:px-7
                                 rounded-full
                                 hover:bg-transparent
                                 hover:ring-2
