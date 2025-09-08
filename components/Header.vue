@@ -226,7 +226,7 @@
                                         $route.path === item.href
                                             ? 'activeRoute'
                                             : 'list_item_hover'
-                                    ]" :to="item.href" @click="closeMenu">
+                                    ]" :to="item.href" >
                                         {{ item.name }}
                                     </NuxtLink>
 
@@ -462,6 +462,11 @@ const stickyNav = () => {
         }
     });
 };
+
+const router = useRouter();
+router.afterEach(() => {
+    closeMenu();
+});
 
 onMounted(() => {
     stickyNav();

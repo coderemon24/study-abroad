@@ -73,7 +73,7 @@
               :alt="team.name"
             />
             <p class="text-black/80 text-2xl mt-3">{{ team.name }}</p>
-            <span>{{ team.role }}</span>
+            <span>{{ team.designation }}</span>
             <ul class="flex gap-4 items-center justify-center mt-3">
               <li><NuxtLink :to="team.facebook"><i class="fa-brands fa-square-facebook"></i></NuxtLink></li>
               <li><NuxtLink :to="team.twitter"><i class="fa-brands fa-square-x-twitter"></i></NuxtLink></li>

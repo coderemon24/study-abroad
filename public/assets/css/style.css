@@ -26,6 +26,16 @@ ul,ol{
   padding-left: revert;
 }
 
+.blog-content table,th,td{
+    border:1px solid #ddd;
+    padding:8px;
+    border-collapse: collapse;
+}
+
+.faq_accordion > * {
+    color: black !important;
+}
+
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Replace white with your background */
     -webkit-text-fill-color: #000 !important; /* Replace with your text color */
@@ -74,7 +84,7 @@ input:-internal-autofill-selected {
 
 .appointment_btn{
     @apply
-    bg-blue-900
+    bg-blue-800
     px-3
     md:px-5
     text-white

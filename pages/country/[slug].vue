@@ -323,11 +323,13 @@ const cardItems = ref([
     },
 ])
 
+const countryId = ref(null);
 const countryPage = ref([])
 const getCountryPage = async () => {
     const response: any = await $fetch(`${apiBase}/country/${slug}`);
     if (response && response.data) {
         countryPage.value = response.data
+        countryId.value = response.data.id
 
         cardItems.value = [
             {
@@ -353,13 +355,11 @@ const getCountryPage = async () => {
 
 const partners = ref([]);
 const getPartners = async () => {
-    const response: any = await $fetch(`${apiBase}/partners`);
+    const response: any = await $fetch(`${apiBase}/partners/${countryId.value}`);
     if (response) {
         partners.value = response.data;
     }
 }
-
-
 
 
 const getImgUrl = (url: string) => {
@@ -368,7 +368,7 @@ const getImgUrl = (url: string) => {
 
 
 
-onMounted(() => {
+onMounted(async() => {
     nextTick(() => {
         AOS.init({
             once: true, // animation once on scroll
@@ -378,8 +378,8 @@ onMounted(() => {
 
     AOS.refresh();
 
-    getCountryPage();
-    getPartners();
+    await getCountryPage();
+    await getPartners();
 });
 </script>
 

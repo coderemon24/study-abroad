@@ -240,7 +240,7 @@
                         v-model="formData.email"
                         class="
                         bg-gray-200
-                        ring-2
+                        ring-1
                         ring-blue-700
                         text-black
                         placeholder:text-gray-600
@@ -254,11 +254,11 @@
                         text-sm
                         " type="text" placeholder="example@gmail.com">
                         <button class="
-                        bg-blue-800
+                        bg-blue-700
                         text-white
-                        py-3.5
+                        py-[0.75rem]
                         px-4
-                        md:py-2.5
+                        md:py-2
                         md:px-3
                         rounded-tr-full
                         rounded-br-full
@@ -269,20 +269,72 @@
                         ease-in-out
                         duration-300
                         absolute
-                        right-[31%]
-                        md:left-[12rem]
+                        left-[47%]
+                        md:left-[12.5rem]
                         md:right-auto
-                        top-3.5
-                        md:top-3.5
+                        top-[0.9rem]
+                        md:top-[0.9rem]
                         z-10
                         text-sm
-                        ">Subscribe</button>
+                        "> <i class="fa-solid text-xl fa-paper-plane"></i> </button>
                         </div>
                     
                     <p v-if="errors.email" class="text-red-600 text-sm mt-1">{{ errors.email[0] }}</p>
                 </form>
                 </div>
 
+            </div>
+            
+            <!-- footer address -->
+            <div class="
+            py-5
+            grid
+            grid-cols-1
+            gap-5
+            md:grid-cols-4
+            md:gap-10
+            border-t
+            border-gray-300
+            ">
+                <div 
+                v-for = "(item, index) in footerAddress"
+                class="
+                flex
+                gap-3
+                ">
+                    <div class="
+                    bg-blue-700
+                    w-18
+                    h-18
+                    rounded-lg
+                    flex
+                    items-center
+                    justify-center
+                    text-3xl
+                    "
+                    :class="[
+                        index === 3 ? 'w-[9rem] md:w-[15rem]' : '',
+                        index === 2 ? 'w-[11.9rem] md:w-[20rem]' : ''
+                    ]"
+                    >
+                        <i :class="item.icon" class="text-white"></i>
+                    </div>
+                    <div>
+                        <p class="
+                        text-blue-700
+                        text-lg
+                        font-medium
+                        ">{{ item.title }}</p>
+                        <p class="
+                        hover:text-blue-700
+                        transition-all
+                        duration-300
+                        cursor-pointer
+                        "
+                        v-for="phone in item.contents"
+                        >{{ phone }}</p>
+                    </div>
+                </div>
             </div>
             
             <!-- footer bottom -->
@@ -408,6 +460,45 @@ const quickLinks = ref([
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Book Appointment', href: '/book-appointment' },
+]);
+
+const footerAddress = ref([
+   {
+    title: 'Call Us',
+    icon: 'fa-solid fa-phone',
+    contents:[
+        '+880 1842-497766',
+        '+44 0203 576 2072'
+    ]
+   },
+   {
+    title: 'Email Us',
+    icon: 'fa-solid fa-envelope',
+    contents:[
+        'info@care2training.com',
+        'study@care2training.com'
+    ]
+   },
+   {
+    title: 'Dhaka Office',
+    icon: 'fa-solid fa-location-dot',
+    contents:[
+        `Dhaka Office: 622 Mizan Square (13th Floor, 13/B),
+Begum Rokeya Avenue,
+West Kazipara, Mirpur, Dhaka, Bangladesh`
+    
+    ]
+   }, 
+   {
+    title: 'UK Office',
+    icon: 'fa-solid fa-location-dot',
+    contents:[
+        `UK Office: Unit 301, 3rd Floor, 7 Kirkdale Road, Bushwood, London E11 1HP, UK
+0203 576 2072
+`
+    
+    ]
+   } 
 ]);
 
 const destinations = ref([]);

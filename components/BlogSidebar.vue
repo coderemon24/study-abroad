@@ -6,7 +6,7 @@
         type="search"
         v-model="query"
         @focus="searchShow = true"
-        @blur="searchShow = false"
+        @mousedown="searchShow = false"
         placeholder="Search..."
         class="ring-1 ring-blue-700 w-full p-3 rounded-md focus:outline-none focus:ring-2 bg-transparent"
       />
