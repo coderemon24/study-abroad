@@ -139,28 +139,104 @@
                     before:bottom-0
                     mb-3
                     text-xl
-                    ">Contact Us</h4>
+                    ">Quick Links</h4>
+
+                    <ul>
+                        <li v-for="item in quickLinks">
+                            <NuxtLink class="
+                            flex
+                            items-center
+                            gap-5
+                            hover:text-blue-700
+                            transition-all
+                            duration-300
+                            " :to="item.href">
+                                {{ item.name }}
+                        </NuxtLink>
+                        </li>
+                    </ul>
+                    
+                </div>
+
+                <div class="
+                mt-4
+                md:mt-0
+                ">
+                    <h4 class="
+                    text-black/90
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Top Study Destinations</h4>
+
+                    <ul>
+                        <li v-for="item in destinations">
+                            <NuxtLink class="
+                            flex
+                            items-center
+                            gap-5
+                            hover:text-blue-700
+                            transition-all
+                            duration-300
+                            " :to="`/country/${item.slug}`">
+                                {{ item.name }}
+                        </NuxtLink>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+                <div class="
+                mt-4
+                md:mt-0
+                ">
+                    <h4 class="
+                    text-black/90
+                    font-semibold
+                    relative
+                    before:absolute
+                    before:content-['']
+                    before:h-[2px]
+                    before:w-12
+                    before:bg-blue-700
+                    before:bottom-0
+                    mb-3
+                    text-xl
+                    ">Business Hours</h4>
 
                     <ul>
                         <li>
-                            <p>
-                                <span class="text-gray-700 font-medium">Phone: </span>
-                                <a href="#">{{ contactInfo.phone }}</a>
-                            </p>
-                            <p>
-                                <span class="text-gray-700 font-medium">Mail: </span>
-                                <a href="#">{{ contactInfo.email }}</a>
-                            </p>
+                            <h4 class="
+                            text-lg
+                            text-black/90
+                            ">Opening Day: Everyday</h4>
                         </li>
                     </ul>
                     <!-- subscribe -->
                     <form 
                     @submit.prevent="submitForm"
                     class="
-                    py-4
-                    relative
+                    
                     ">
-                        <input 
+                       <h3 class="
+                       text-blue-700
+                       text-lg
+                       mt-2
+                       tracking-wider
+                       mb-[-0.6rem]
+                       ">Newsletter</h3>
+                        <div class="
+                        py-4
+                        relative
+                        ">
+                            <input 
                         v-model="formData.email"
                         class="
                         bg-gray-200
@@ -201,70 +277,10 @@
                         z-10
                         text-sm
                         ">Subscribe</button>
+                        </div>
                     
                     <p v-if="errors.email" class="text-red-600 text-sm mt-1">{{ errors.email[0] }}</p>
                 </form>
-                </div>
-                
-
-                <div class="
-                mt-4
-                md:mt-0
-                ">
-                    <h4 class="
-                    text-black/90
-                    font-semibold
-                    relative
-                    before:absolute
-                    before:content-['']
-                    before:h-[2px]
-                    before:w-12
-                    before:bg-blue-700
-                    before:bottom-0
-                    mb-3
-                    text-xl
-                    ">Quick Links</h4>
-
-                    <ul>
-                        <li v-for="item in quickLinks">
-                            <NuxtLink class="
-                            flex
-                            items-center
-                            gap-5
-                            " :to="item.href">
-                                {{ item.name }}
-                        </NuxtLink>
-                        </li>
-                    </ul>
-                    
-                </div>
-                
-
-                <div class="
-                mt-4
-                md:mt-0
-                ">
-                    <h4 class="
-                    text-black/90
-                    font-semibold
-                    relative
-                    before:absolute
-                    before:content-['']
-                    before:h-[2px]
-                    before:w-12
-                    before:bg-blue-700
-                    before:bottom-0
-                    mb-3
-                    text-xl
-                    ">Map</h4>
-                    
-                    <div class="
-                    rounded
-                    overflow-hidden
-                    ">
-                        <iframe :src="contactInfo?.map" width="100%" height="225" style="border:0;"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    
                 </div>
 
             </div>
@@ -274,6 +290,8 @@
             text-black/60
             py-4
             flex
+            flex-col
+            md:flex-row
             items-center
             justify-between
             gap-2
@@ -384,14 +402,23 @@ const socialIcons = [
     },
 ];
 
-const quickLinks = [
+const quickLinks = ref([
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Events', href: '/events' },
     { name: 'Blogs', href: '/blogs' },
     { name: 'Book Appointment', href: '/book-appointment' },
-];
+]);
 
+const destinations = ref([]);
+
+const getDestinations = async () => {
+    const response: any = await $fetch(`${apiBase}/top-study-destinations`);
+    if(response)
+    {
+        destinations.value = response.data
+    }
+}
 
 const year = new Date().getFullYear();
 const scrollButton = ref(false);
@@ -404,6 +431,8 @@ onMounted(() => {
             scrollButton.value = false;
         }
     });
+    
+    getDestinations();
 });
 
 onUnmounted(() => {
