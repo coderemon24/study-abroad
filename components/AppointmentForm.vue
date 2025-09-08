@@ -10,8 +10,9 @@ const formData = ref({
   subject: '',
   message: '',
   country: '',
-  is_ielts:'',
-  ielts_score:''
+  study_year:'',
+  ielts_score:'',
+  con_type: ''
 });
 
 const errors = ref<Record<string, string[]>>({});
@@ -46,8 +47,9 @@ const submitForm = async () => {
         subject: '',
         message: '',
         country: '',
-        is_ielts:'',
-        ielts_score:''
+        study_year:'',
+        ielts_score:'',
+        con_type: ''
       };
     }
   } catch (error: any) {
@@ -132,7 +134,7 @@ onMounted(async () => {
         </label>
         <input type="text" 
         @input="clearFieldError('email')"
-        v-model="formData.email" placeholder="ex: John Doe" class="
+        v-model="formData.email" placeholder="ex: info@care2training.com" class="
                ring-1
                ring-blue-700
                focus:ring-2
@@ -151,7 +153,7 @@ onMounted(async () => {
 
       <div>
         <label class="block text-sm font-medium">
-          Phone <span class="text-red-600">*</span>
+          Phone/WhatsApp Number <span class="text-red-600">*</span>
         </label>
         <input type="text" 
         @input="clearFieldError('phone')"
@@ -174,7 +176,8 @@ onMounted(async () => {
 
       <div>
         <label class="block text-sm font-medium">
-          Country
+          Preferred Study Destination <small> (e.g., UK, USA, Canada, Australia, Hungary, Malta, Italy)
+</small> <span class="text-red-600">*</span>
         </label>
         <select
         @change="clearFieldError('country')"
@@ -191,7 +194,7 @@ onMounted(async () => {
                 "
                 :class="errors.country ? 'ring-red-600' : ''"
                 >
-          <option value="">—Please choose an option—</option>
+          <option value="">—Please choose study destination—</option>
           <option v-for="country in countries" :key="country.id" :value="country.name">{{ country.name }}</option>
         </select>
 
@@ -202,38 +205,36 @@ onMounted(async () => {
 
       <div>
         <label class="block text-sm font-medium">
-          IELTS
+          Preferred Study Year / Intake
         </label>
-        <select
-        @change="clearFieldError('is_ielts')"
-        v-model="formData.is_ielts" class="
-                ring-1
-                ring-blue-700 
-                focus:ring-2
-                focus:ring-blue-700
-                focus:outline-none
-                w-full
-                mt-1
-                p-2
-                rounded-md
-                "
-                :class="errors.is_ielts ? 'ring-red-600' : ''"
-                >
-          <option value="">—Please choose an option—</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
+        <input type="text" 
+        v-model="formData.study_year"
+        @input="clearFieldError('study_year')"
+        placeholder="e.g., 2026 intake – Spring, Fall, Summer" class="
+               ring-1
+               ring-blue-700
+               focus:ring-2
+               focus:ring-blue-700
+               focus:outline-none
+               w-full
+               mt-1
+               p-2
+               rounded-md
+              "
+              :class="errors.study_year ? 'ring-red-600' : ''"
+        >
 
-        <p v-if="errors.is_ielts" class="text-red-600 text-sm mt-1">{{ errors.is_ielts[0] }}</p>
+        <p v-if="errors.study_year" class="text-red-600 text-sm mt-1">{{ errors.study_year[0] }}</p>
       </div>
 
       <div>
         <label class="block text-sm font-medium">
-          IELTS Score
+          English Proficiency Test & Score
         </label>
         <input 
         @input="clearFieldError('ielts_score')"
-        v-model="formData.ielts_score" type="text" placeholder="ex: John Doe" class="
+        v-model="formData.ielts_score" type="text" 
+        placeholder="e.g., IELTS 6.5, TOEFL iBT 80 etc." class="
                ring-1
                ring-blue-700
                focus:ring-2
@@ -250,15 +251,14 @@ onMounted(async () => {
           <p v-if="errors.ielts_score" class="text-red-600 text-sm mt-1">{{ errors.ielts_score[0] }}</p>
       </div>
 
-      <div class="
-            md:col-span-2
-            ">
+      <div>
         <label class="block text-sm font-medium">
-          Subject <span class="text-red-600">*</span>
+          Preferred Subjects <span class="text-red-600">*</span>
         </label>
         <input 
         @input="clearFieldError('subject')"
-        v-model="formData.subject" type="text" placeholder="ex: John Doe" class="
+        v-model="formData.subject" type="text" 
+        placeholder="e.g., Business Management, Computer Science, Engineering, Medicine, Law, Graphic Design, etc." class="
                ring-1
                ring-blue-700
                focus:ring-2
@@ -276,11 +276,40 @@ onMounted(async () => {
               
       </div>
 
+      <div>
+        <label class="block text-sm font-medium">
+          Consultation Type <span class="text-red-600">*</span>
+        </label>
+        <select @change="clearFieldError('con_type')" 
+        v-model="formData.con_type" 
+        class="
+          ring-1
+          ring-blue-700
+          focus:ring-2
+          focus:ring-blue-700
+          focus:outline-none
+          w-full
+          mt-1
+          p-2
+          rounded-md
+          "
+          :class="errors.con_type ? 'ring-red-600' : ''"
+        >
+          <option value="" disabled>—Please choose preferred consultation type—</option>
+          <option value="Online Meeting">Online Meeting</option>
+          <option value="Phone Call"> Phone Call</option>
+          <option value="Office Visit"> Office Visit</option>
+        </select>
+              
+          <p v-if="errors.con_type" class="text-red-600 text-sm mt-1">{{ errors.con_type[0] }}</p>
+              
+      </div>
+
       <div class="
             md:col-span-2
             ">
         <label class="block text-sm font-medium">
-          Inquery <span class="text-red-600">*</span>
+          Inquiry <span class="text-red-600">*</span>
         </label>
         <textarea
         @input="clearFieldError('message')"
@@ -303,11 +332,11 @@ onMounted(async () => {
 
       <div>
         <button type="submit"
-  class="bg-blue-800 w-[10rem] text-white px-6 py-2 rounded-md 
+  class="bg-blue-800 w-[13rem] text-white px-3 py-3 rounded-md 
          hover:bg-blue-700 transition duration-300 cursor-pointer flex items-center justify-center"
   :disabled="isLoading"
 >
-  <span v-if="!isLoading">Send</span>
+  <span v-if="!isLoading">GET CONSULTATION</span>
   <span v-else class="flex items-center">
     <svg class="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
          viewBox="0 0 24 24">

@@ -103,7 +103,9 @@
             py-5
             ">
                         <div class="md:hidden">
-                            <img class="w-12" :src="getImgUrl(generalSettings?.site_logo)" alt="main-logo">
+                            <NuxtLink to="/">
+                                <img class="w-12" :src="getImgUrl(generalSettings?.site_logo)" alt="main-logo">
+                            </NuxtLink>
                         </div>
 
                         <div class="icon 
@@ -196,7 +198,9 @@
                             </div>
 
                             <div class="hidden md:block">
-                                <img class="w-20" :src="getImgUrl(generalSettings?.site_logo)" alt="logo">
+                                <NuxtLink to="/">
+                                    <img class="w-20" :src="getImgUrl(generalSettings?.site_logo)" alt="logo"></img>
+                                </NuxtLink>
                             </div>
 
                             <ul class="
@@ -226,56 +230,52 @@
                                         {{ item.name }}
                                     </NuxtLink>
 
-                                    <ul class="
-                                 absolute
-                                 z-50
-                                 bg-white
-                                 shadow-md
-                                 md:shadow-none
-                                 md:pt-7
-                                 p-4
-                                 border
-                                 border-gray-300
-                                 md:border-0
-                                 w-full
-                                 md:w-56
-                                 overflow-hidden
-                                 invisible
-                                 translate-y-[80%]
-                                 opacity-0
-                                 group-hover:visible
-                                 group-hover:translate-y-0
-                                 group-hover:opacity-100
-                                 transition-all
-                                 duration-300
-                                 ease-in-out
-                                 md:border-b-2
-                                 md:border-blue-700
-                                " v-if="item.dropdown">
-                                        <li class="
-                                    relative
-                                    py-1
-                                    " v-for="dropdown in item.dropdown">
-                                            <NuxtLink v-if="dropdown.name" :class="[
-                                                'text-black/80 mb-1',
-                                                $route.path === '/services/' + item.slug
-                                                    ? 'activeRoute'
-                                                    : 'list_item_hover'
-                                            ]" :to="'/country/' + dropdown.slug">
-                                                {{ dropdown.name }}
-                                            </NuxtLink>
-                                            
-                                            <!-- services -->
-                                            <NuxtLink v-if="dropdown.title" :class="[
-                                                'text-black/80 mb-1',
-                                                $route.path === '/services/' + item.slug
-                                                    ? 'activeRoute'
-                                                    : 'list_item_hover'
-                                            ]" :to="'/services/' + dropdown.slug">
-                                                {{ dropdown.title }}
-                                            </NuxtLink>
-                                        </li>
-                                    </ul>
+                                    <ul 
+  class="absolute z-50 bg-white shadow-md md:shadow-none md:pt-7 p-4
+         border border-gray-300 md:border-0 w-full md:w-56
+         overflow-hidden invisible translate-y-[80%] opacity-0
+         group-hover:visible group-hover:translate-y-0 group-hover:opacity-100
+         transition-all duration-300 ease-in-out md:border-b-2 md:border-blue-700"
+  :class="[
+    item.dropdown.length > 8 ? 'grid md:grid-cols-2 gap-2 md:w-96' : 'block'
+  ]"
+  v-if="item.dropdown"
+>
+  <li 
+    class="relative py-1" 
+    v-for="dropdown in item.dropdown" 
+    :key="dropdown.slug"
+  >
+    <!-- countries -->
+    <NuxtLink 
+      v-if="dropdown.name" 
+      :class="[
+        'text-black/80 mb-1',
+        $route.path === '/country/' + item.slug
+          ? 'activeRoute'
+          : 'list_item_hover'
+      ]" 
+      :to="'/country/' + dropdown.slug"
+    >
+      {{ dropdown.name }}
+    </NuxtLink>
+    
+    <!-- services -->
+    <NuxtLink 
+      v-if="dropdown.title" 
+      :class="[
+        'text-black/80 mb-1',
+        $route.path === '/services/' + item.slug
+          ? 'activeRoute'
+          : 'list_item_hover'
+      ]" 
+      :to="'/services/' + dropdown.slug"
+    >
+      {{ dropdown.title }}
+    </NuxtLink>
+  </li>
+</ul>
+
                                 </li>
 
 
@@ -371,10 +371,6 @@ const ap_btn = {
 
 const details = ref([
     {
-        title: 'Panthapath, Dhaka',
-        icon: 'fa-solid fa-location-dot',
-    },
-    {
         title: 'support@care2training.com',
         icon: 'fa-solid fa-envelope',
     },
@@ -388,9 +384,8 @@ const getContactInfos = async () => {
     const response: any = await $fetch(`${apiBase}/contact-infos`);
     if(response)
     {
-        details.value[0].title = response.data.address
-        details.value[1].title = response.data.email
-        details.value[2].title = response.data.phone
+        details.value[0].title = response.data.email
+        details.value[1].title = response.data.phone
     }
 }
 

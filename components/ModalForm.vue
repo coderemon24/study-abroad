@@ -36,7 +36,7 @@
           left-1/2
           -translate-x-1/2
           -translate-y-1/2
-          md:w-[70rem]
+          md:w-3/4
           w-full
       ">
 

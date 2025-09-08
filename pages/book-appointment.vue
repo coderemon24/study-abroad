@@ -99,7 +99,7 @@
           </p>
           <NuxtLink class="
             btn-outline
-            " to="#contact">
+            " to="https://www.facebook.com/care2traininguk" target="_blank">
             <span class="relative z-10">Join Now</span>
           </NuxtLink>
         </div>
