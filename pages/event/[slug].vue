@@ -77,6 +77,7 @@ useHead({
 });
 
 const route = useRoute();
+const router = useRouter();
 const slug = route.params.slug;
 
 const apiBase = useRuntimeConfig().public.apiBase
@@ -88,11 +89,17 @@ const event = ref({});
 const getEvent = async () => {
     try {
         const response = await $fetch(`${apiBase}/event/${slug}`);
+        if (!response || !response.data) {
+            router.push('/errors/404')
+            return
+        }
+        
         if (response) {
             event.value = response.data;
         }
     }catch (error) {
-        //console.error(error);
+        router.push('/errors/404')
+        return
     }
 }
 

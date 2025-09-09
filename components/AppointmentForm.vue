@@ -111,7 +111,7 @@ onMounted(async () => {
         </label>
         <input type="text" 
         @input="clearFieldError('name')"
-        v-model="formData.name" placeholder="ex: John Doe" class="
+        v-model="formData.name" placeholder="e.g. Pial Azad" class="
                ring-1
                ring-blue-700
                focus:ring-2

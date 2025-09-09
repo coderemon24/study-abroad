@@ -3,9 +3,6 @@ import { $fetch } from 'ofetch'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  app: {
-    baseURL: '/',
-  },
   hooks: {
     async 'nitro:config'(nitroConfig) {
       let routes = []
@@ -60,6 +57,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    baseURL: '/',
     head: {
       link: [
         {rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css' },

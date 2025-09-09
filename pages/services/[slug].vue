@@ -110,6 +110,7 @@ onMounted(() => {
 });
 
 const route = useRoute();
+const router = useRouter();
 const slug = route.params.slug;
 const apiBase = useRuntimeConfig().public.apiBase
 
@@ -117,6 +118,12 @@ const service = ref({})
 
 const getService = async () => {
   const response: any = await $fetch(`${apiBase}/services/${slug}`);
+  
+  if (!response || !response.data) {
+      router.push('/errors/404')
+      return
+    }
+  
   if (response) {
     service.value = response.data;
 

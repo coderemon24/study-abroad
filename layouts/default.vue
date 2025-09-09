@@ -7,14 +7,14 @@
     ></div>
     
     <!-- Header -->
-    <Header />
+    <Header v-if="route.path !== '/errors/404'"  />
 
     <main class="flex-grow">
       <slot />
     </main>
 
     <!-- Footer -->
-    <Footer />
+    <Footer v-if="route.path !== '/errors/404'" />
   </div>
 </template>
 
@@ -28,6 +28,7 @@ useHead({
 
 const loading = ref(false)
 const router = useRouter()
+const route = useRoute()
 
 // Show loading bar on route change
 router.beforeEach((to, from, next) => {

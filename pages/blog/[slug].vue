@@ -87,6 +87,7 @@ const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
 
 const route = useRoute()
+const router = useRouter()
 const slug = route.params.slug
 
 const latestBlogs = ref([]);
@@ -96,14 +97,20 @@ const categories = ref([]);
 
 const getBlog = async () => {
   try {
-    const response = await $fetch(`${apiBase}/blog/${slug}`);
+    const response :any = await $fetch(`${apiBase}/blog/${slug}`);
+    
+    if (!response || !response.data) {
+      router.push('/errors/404')
+      return
+    }
     
     if(response) {
       blog.value = response.data;
     }
     
   } catch (error) {
-    console.error(error);
+    router.push('/errors/404')
+    return
   }
 };
 

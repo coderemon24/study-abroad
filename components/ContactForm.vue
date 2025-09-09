@@ -122,7 +122,7 @@ const clearFieldError = (field: string) => {
           v-model="formData.name"
           @input="clearFieldError('name')"
           type="text"
-          placeholder="ex: John Doe"
+          placeholder="e.g. Pial Azad"
           :class="errors.name ? 'ring-red-600' : ''"
           class="w-full mt-1 p-2 rounded-md ring-1 ring-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
         />
@@ -139,7 +139,7 @@ const clearFieldError = (field: string) => {
           v-model="formData.email"
           @input="clearFieldError('email')"
           type="email"
-          placeholder="ex: example@gmail.com"
+          placeholder="ex: info@care2training.com"
           :class="errors.email ? 'ring-red-600' : ''"
           class="w-full mt-1 p-2 rounded-md ring-1 ring-blue-700 focus:ring-2 focus:ring-blue-700 focus:outline-none"
         />

@@ -77,19 +77,9 @@
              md:gap-10
              ">
                 <div class="mb-1">
-                    <h4 class="
-                    text-black/90
-                    font-semibold
-                    relative
-                    before:absolute
-                    before:content-['']
-                    before:h-[2px]
-                    before:w-12
-                    before:bg-blue-700
-                    before:bottom-0
-                    mb-3
-                    text-xl
-                    ">Address</h4>
+                    <div>
+                        <img class="w-20" :src="getImgUrl(gSettings?.site_logo)" alt="care2training logo" >
+                    </div>
                     
                     <p class="
                     
@@ -216,7 +206,13 @@
                             <h4 class="
                             text-lg
                             text-black/90
-                            ">Opening Day: Everyday</h4>
+                            "><b>Uk:</b> Monday to Friday 9am - 5pm</h4>
+                        </li>
+                        <li>
+                            <h4 class="
+                            text-lg
+                            text-black/90
+                            "><b>BD:</b> Saturday to Thursday 10am - 6pm</h4>
                         </li>
                     </ul>
                     <!-- subscribe -->
@@ -428,6 +424,7 @@
 <script lang="ts" setup>
 import manImg from '~/public/assets/images/officer.jpg';
 import mainLogo from '~/public/assets/images/logo.webp'
+import { get } from '@nuxt/ui/runtime/utils/index.js';
 
 const officer = ref(manImg);
 const logo = ref(mainLogo);
@@ -453,7 +450,6 @@ const socialIcons = [
         href: 'https://www.linkedin.com/company/care2-training',
     },
 ];
-
 const quickLinks = ref([
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
@@ -483,7 +479,7 @@ const footerAddress = ref([
     title: 'Dhaka Office',
     icon: 'fa-solid fa-location-dot',
     contents:[
-        `Dhaka Office: 622 Mizan Square (13th Floor, 13/B),
+        `622 Mizan Square (13th Floor, 13/B),
 Begum Rokeya Avenue,
 West Kazipara, Mirpur, Dhaka, Bangladesh`
     
@@ -493,24 +489,13 @@ West Kazipara, Mirpur, Dhaka, Bangladesh`
     title: 'UK Office',
     icon: 'fa-solid fa-location-dot',
     contents:[
-        `UK Office: Unit 301, 3rd Floor, 7 Kirkdale Road, Bushwood, London E11 1HP, UK
+        `Unit 301, 3rd Floor, 7 Kirkdale Road, Bushwood, London E11 1HP, UK
 0203 576 2072
 `
     
     ]
    } 
 ]);
-
-const destinations = ref([]);
-
-const getDestinations = async () => {
-    const response: any = await $fetch(`${apiBase}/top-study-destinations`);
-    if(response)
-    {
-        destinations.value = response.data
-    }
-}
-
 const year = new Date().getFullYear();
 const scrollButton = ref(false);
 
@@ -523,7 +508,6 @@ onMounted(() => {
         }
     });
     
-    getDestinations();
 });
 
 onUnmounted(() => {
@@ -538,6 +522,7 @@ const scrollTop = () => {
 }
 
 const apiBase = useRuntimeConfig().public.apiBase
+const baseUrl = useRuntimeConfig().public.baseUrl
 
 const formData = ref({
     email:'',
@@ -573,9 +558,33 @@ const getContactInfos = async () => {
     }
 }
 
+const destinations = ref([]);
+const gSettings = ref({});
+
+const getDestinations = async () => {
+    const response: any = await $fetch(`${apiBase}/top-study-destinations`);
+    if(response)
+    {
+        destinations.value = response.data
+    }
+}
+
+const getGeneralSettings = async () => {
+    const response: any = await $fetch(`${apiBase}/general-settings`);
+    if(response)
+    {
+        gSettings.value = response.data
+    }
+}
+const getImgUrl = (imgPath: string) => {
+    return imgPath ? `${baseUrl}/` + imgPath : '';
+}
+
 
 onMounted(() => {
     getContactInfos();
+    getDestinations();
+    getGeneralSettings();
 })
 
 

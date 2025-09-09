@@ -53,6 +53,31 @@
                     <p data-aos="fade-up" data-aos-delay="400" class="
              
              ">{{ countryPage?.contents?.hero_subtitle }}</p>
+             <NuxtLink data-aos="fade-up" :to="`/blog/${countryPage?.slug}`"
+                        class="inline-block
+                        cursor-pointer
+                        bg-white
+                        text-gray-900
+                        px-6
+                        py-3
+                        mt-5
+                        rounded-full
+                        font-medium
+                        hover:bg-gray-100
+                        transition
+                        ease-in-out
+                        duration-300
+                        group
+                        ">
+                        Read More About {{ countryPage?.name }}
+                        <span class="
+                        group-hover:ml-2
+                        transition-all
+                        duration-300
+                        ">
+                            <i class="fa-solid fa-arrow-right-long ml-1"></i>
+                        </span>
+                    </NuxtLink>
                 </div>
 
                 <div data-aos="fade-right">
@@ -198,7 +223,38 @@
                 </div>
 
                 <!-- Link -->
-                <div class="mt-10">
+                <div class="mt-10
+                flex
+                flex-col
+                md:flex-row
+                gap-5
+                justify-center
+                ">
+                    <NuxtLink data-aos="fade-up" :to="`/blog/${countryPage?.slug}`"
+                        class="inline-block
+                        cursor-pointer
+                        bg-white
+                        text-gray-900
+                        px-6
+                        py-3
+                        rounded-full
+                        font-medium
+                        hover:bg-gray-100
+                        transition
+                        ease-in-out
+                        duration-300
+                        group
+                        ">
+                        Read More About {{ countryPage?.name }}
+                        <span class="
+                        group-hover:ml-2
+                        transition-all
+                        duration-300
+                        ">
+                            <i class="fa-solid fa-arrow-right-long ml-1"></i>
+                        </span>
+                    </NuxtLink>
+                    
                     <NuxtLink data-aos="fade-up" to="/book-appointment"
                         class="inline-block
                         cursor-pointer
@@ -325,9 +381,18 @@ const cardItems = ref([
 
 const countryId = ref(null);
 const countryPage = ref([])
+const notFound = ref(false)  
+const router = useRouter()
+
 const getCountryPage = async () => {
-    const response: any = await $fetch(`${apiBase}/country/${slug}`);
-    if (response && response.data) {
+    try {
+        const response: any = await $fetch(`${apiBase}/country/${slug}`);
+        
+        if (!response || !response.data) {
+            router.push('/errors/404')
+            return
+        }
+
         countryPage.value = response.data
         countryId.value = response.data.id
 
@@ -349,9 +414,12 @@ const getCountryPage = async () => {
             },
         ]
 
+    } catch (err) {
+      router.push('/errors/404')
+      return
     }
-
 }
+
 
 const partners = ref([]);
 const getPartners = async () => {
