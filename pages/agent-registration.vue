@@ -1,5 +1,6 @@
 <template>
-  <div class="
+  <div class="overflow-hidden">
+    <div class="
   py-8
   text-black/70
   ">
@@ -108,6 +109,7 @@
       </div>
     </section>
 
+  </div>
   </div>
 </template>
 

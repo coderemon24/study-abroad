@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-800 py-16 px-6">
+  <div class="overflow-hidden">
+    <div class="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-800 py-16 px-6">
     <div class="max-w-5xl mx-auto space-y-8">
 
       <!-- Service Hero Section -->
@@ -80,6 +81,7 @@
         </NuxtLink>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

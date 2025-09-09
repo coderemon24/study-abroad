@@ -1,5 +1,6 @@
 <template>
-  <div class="
+  <div class="overflow-hidden">
+    <div class="
   text-black/70
   py-8
   ">
@@ -57,6 +58,7 @@
       <JoinCommunity />
     </section>
     
+  </div>
   </div>
 </template>
 

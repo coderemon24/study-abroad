@@ -12,7 +12,7 @@
   ">
      <span class="
      text-3xl
-     bg-blue-700/20
+     bg-blue-700
      w-16
      h-16
      flex
@@ -24,6 +24,7 @@
      transition-all
      ease-in-out
      duration-300
+     text-white
      ">
         <i :class="icon"></i>
      </span>

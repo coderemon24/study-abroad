@@ -1,5 +1,6 @@
 <template>
-  <div class="text-black/70 pb-10">
+  <div class="overflow-hidden">
+    <div class="text-black/70 pb-10">
     <div class="container mx-auto w-11/12">
       <!----- Breadcrumb ------->
       <div class="breadcrumb pt-8 flex items-center gap-2 text-sm mb-6">
@@ -67,6 +68,7 @@
         </div>
       </div>
     </section>
+  </div>
   </div>
 </template>
 

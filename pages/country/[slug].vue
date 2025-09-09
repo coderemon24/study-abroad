@@ -1,5 +1,6 @@
 <template>
-    <div class="
+    <div class="overflow-hidden">
+        <div class="
   py-8
   text-black/70
   ">
@@ -36,7 +37,8 @@
         px-5
         pt-12
         grid
-        grid-cols-2
+        md:grid-cols-2
+        grid-cols-1
         items-end
         ">
                 <div data-aos="fade-left" class="
@@ -58,7 +60,8 @@
                         cursor-pointer
                         bg-white
                         text-gray-900
-                        px-6
+                        px-4
+                        md:px-6
                         py-3
                         mt-5
                         rounded-full
@@ -68,6 +71,8 @@
                         ease-in-out
                         duration-300
                         group
+                        text-sm
+                        md:text-base
                         ">
                         Read More About {{ countryPage?.name }}
                         <span class="
@@ -84,6 +89,8 @@
                     <img class="
              w-full
              md:w-3/4
+             hidden
+             md:block
              " :src="getImgUrl(countryPage?.contents?.hero_st_img)" :alt="countryPage?.contents?.hero_subtitle">
                 </div>
             </div>
@@ -340,6 +347,7 @@
             </div>
         </section>
 
+    </div>
     </div>
 </template>
 

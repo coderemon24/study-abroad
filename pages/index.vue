@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="overflow-hidden">
     <!-- hero section-->
      <section>
           <AppSwiper />
@@ -273,7 +273,7 @@
    </div>
  </template>
  
- <script lang="ts" setup>
+<script lang="ts" setup>
 import Counselling from '~/components/Counselling.vue';
 import FAQ from '~/components/FAQ.vue';
 import AOS from 'aos';

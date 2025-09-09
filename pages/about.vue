@@ -1,5 +1,6 @@
 <template>
-  <div class="py-8 pb-0 text-black/80">
+  <div class="overflow-hidden">
+    <div class="py-8 pb-0 text-black/80">
     <div class="container w-11/12 mx-auto">
       <!-- Breadcrumb -->
       <div class="breadcrumb flex items-center gap-2 text-sm mb-6">
@@ -165,6 +166,7 @@
         </div>
       </div>
     </section>
+  </div>
   </div>
 </template>
 

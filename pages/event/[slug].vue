@@ -1,5 +1,6 @@
 <template>
-    <section class=" text-gray-800">
+    <div class="overflow-hidden">
+        <section class=" text-gray-800">
 
         <div class="container mx-auto w-11/12">
             <!----- Breadcrumb ------->
@@ -62,6 +63,7 @@
             </div>
         </div>
     </section>
+    </div>
 </template>
 
 <script lang="ts" setup>

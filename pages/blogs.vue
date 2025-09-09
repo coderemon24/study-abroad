@@ -1,5 +1,6 @@
 <template>
-  <div class="
+  <div class="overflow-hidden">
+    <div class="
   text-black/70
   pb-10
   ">
@@ -57,6 +58,7 @@
        </div>
     </section>
     
+  </div>
   </div>
 </template>
 

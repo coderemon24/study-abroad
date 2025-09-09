@@ -10,7 +10,7 @@
       class="faq_accordion"
       :ui="{
         header: 'text-black/90! px-3 bg-blue-700/10 border-b border-blue-700/20',
-        body: '!text-black px-4 bg-white py-3 leading-7 font-poppins font-thin ',
+        body: '!text-black px-4 bg-white py-3 leading-7 font-poppins  ',
       }"
       :items="items" >
         

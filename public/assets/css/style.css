@@ -81,6 +81,17 @@ input:-internal-autofill-selected {
     hover:rounded-md 
     md:hover:before:w-[calc(100%-2.1rem)]
 }
+.list_item_hover_mobile{
+    @apply
+    hover:bg-blue-700/20
+    md:hover:bg-transparent
+    md:hover:text-blue-700
+    hover:text-black 
+    hover:rounded
+    md:hover:before:w-[calc(100%-2.1rem)]
+    px-2
+    py-1
+}
 
 .appointment_btn{
     @apply
@@ -110,6 +121,18 @@ input:-internal-autofill-selected {
     md:font-semibold
     rounded-md
 }
+.activeRouteMobile{
+    @apply  
+    text-white
+    bg-blue-700
+    md:bg-transparent
+    md:text-blue-700
+    md:font-semibold
+    rounded
+    px-2
+    py-1
+}
+
 .ap_btn_active{
     @apply
     bg-white

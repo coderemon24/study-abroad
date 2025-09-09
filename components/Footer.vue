@@ -252,7 +252,7 @@
                         <button class="
                         bg-blue-700
                         text-white
-                        py-[0.75rem]
+                        py-[0.78rem]
                         px-4
                         md:py-2
                         md:px-3
@@ -265,11 +265,11 @@
                         ease-in-out
                         duration-300
                         absolute
-                        left-[47%]
+                        left-[55%]
                         md:left-[12.5rem]
                         md:right-auto
-                        top-[0.9rem]
-                        md:top-[0.9rem]
+                        top-[0.89rem]
+                        md:top-[0.94rem]
                         z-10
                         text-sm
                         "> <i class="fa-solid text-xl fa-paper-plane"></i> </button>
