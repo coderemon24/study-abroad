@@ -73,50 +73,128 @@
             gap-5
             mt-10
             ">
-               <div
+            
+               <div class="
+                  p-6
+                  bg-white
+                  shadow-md
+                  rounded-lg
+               "
                data-aos="fade-up"
                data-aos-delay="200"
-               v-for="item in contactInfos" class="
-              bg-white
-              p-6
-              rounded-lg
-              flex
-              flex-row
-              gap-4
-              shadow-md
-              ">
-                  <p class="
-                bg-blue-700
-                w-13
-                h-13
-                flex
-                items-center
-                justify-center
-                text-white
-                text-xl
-                mb-3
-                rounded-md
-                ">
-                     <i :class="item.icon"></i>
-                  </p>
-
-                  <div class="
-                w-4/5
-                ">
-                     <h3 class="
+               v-for="(item, index) in contactInfos"
+               >
+                  <!-- address -->
+                  <div
+                  
+                  class="
+                     flex
+                     flex-row
+                     gap-4
+               ">
+                     <p class="
+                  bg-blue-700
+                  w-8
+                  h-8
+                  flex
+                  items-center
+                  justify-center
+                  text-white
                   text-lg
-                  font-semibold
-                  -mt-1
-                  mb-1
-                  ">{{ item.title }}</h3>
-                     <p v-for="address in item.addresses" class="
-                  text-gray-600
-                  mb-2
+                  mb-3
+                  rounded-md
                   ">
-                        {{ address.address }}
+                        <i class="fa-solid fa-location-dot"></i>
                      </p>
+
+                     <div class="
+                  w-4/5
+                  ">
+                        <h3 class="
+                     text-lg
+                     font-semibold
+                     -mt-1
+                     mb-1
+                     ">{{ item?.title }}</h3>
+                        <p class="
+                     text-gray-600
+                     mb-2
+                     ">
+                           {{ item?.address }}
+                        </p>
+                     </div>
                   </div>
+                  <!-- phone -->
+                  <div
+                  
+                  class="
+                     flex
+                     flex-row
+                     gap-4
+               ">
+                     <p class="
+                  bg-blue-700
+                  w-8
+                  h-8
+                  flex
+                  items-center
+                  justify-center
+                  text-white
+                  text-lg
+                  mb-3
+                  rounded-md
+                  ">
+                        <i class="fa-solid fa-phone"></i>
+                     </p>
+
+                     <div class="
+                  w-4/5
+                  ">
+                        <p class="
+                     text-gray-600
+                     mb-2
+                     ">
+                           {{ item?.phone }}
+                        </p>
+                     </div>
+                  </div>
+                  <!-- email -->
+                  <div
+                  
+                  class="
+                     flex
+                     flex-row
+                     gap-4
+               ">
+                     <p class="
+                  bg-blue-700
+                  w-8
+                  h-8
+                  flex
+                  items-center
+                  justify-center
+                  text-white
+                  text-lg
+                  mb-3
+                  rounded-md
+                  ">
+                        <i class="fa-solid fa-envelope"></i>
+                     </p>
+
+                     <div class="
+                  w-4/5
+                  ">
+                        <p class="
+                     text-gray-600
+                     mb-2
+                     ">
+                           {{ item?.email }}
+                        </p>
+                     </div>
+                  </div>
+                  
                </div>
+               
             </div>
          </div>
          <!----- page contents ----->
@@ -175,29 +253,7 @@ useHead({
 
 const apiBase = useRuntimeConfig().public.apiBase;
 
-const contactInfos = ref([
-   {
-      icon: 'fa-solid fa-location-dot',
-      title: 'Office Location:',
-      addresses: [
-         {address: ''},
-      ]
-   },
-   {
-      icon: 'fa-solid fa-phone',
-      title: 'Contact Number:',
-      addresses: [
-         {address: ''},
-      ]
-   },
-   {
-      icon: 'fa-solid fa-envelope',
-      title: 'Email:',
-      addresses: [
-         {address: ''},
-      ]
-   },
-]);
+const contactInfos = ref([]);
 
 const defContact = ref({});
 
@@ -221,11 +277,7 @@ const getAdditionalContacts = async () => {
       
       if(response && response.data)
       {
-         response.data.forEach((item: any) => {
-            contactInfos.value[0].addresses.push({address: item.address});
-            contactInfos.value[1].addresses.push({address: item.phone});
-            contactInfos.value[2].addresses.push({address: item.email});
-         });
+         contactInfos.value = response.data;
       }
       
    } catch (error) {
