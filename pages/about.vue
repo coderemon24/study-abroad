@@ -85,44 +85,37 @@
       </div>
     </section>
 
-    <!-- Our Reach -->
-    <section class="py-12 pb-22 bg-white">
-      <div class="container mx-auto w-11/12">
-        <div class="mb-10 ">
-          <h4 data-aos="fade-up" class="text-gray-500 capitalize mb-1">Our Reach</h4>
-          <h2 data-aos="fade-up" data-aos-delay="200" class="title-design text-3xl text-black/90">
-            Connecting Learners Worldwide
-          </h2>
+    <!-- FAQ -->
+      <section class="
+      py-12
+      pb-12
+      bg-gray-10/10
+      ">
+        <div class="
+        container mx-auto w-11/12
+        ">
+        
+        <div class="mb-10">
+            <h4 
+            data-aos="fade-up"
+            class="
+            text-gray-500
+            capitalize
+            mb-1
+            ">FAQ</h4>
+            <h2 
+            data-aos="fade-up"
+            data-aos-delay="200"
+            class="
+            title-design
+            text-3xl
+            text-black/90
+            ">Everything You Need to Know</h2>
+          </div>
+        
+          <FAQ :imageProp="homePage?.faq" />
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
-            data-aos="fade-up"
-            data-aos-delay="400"
-            class="shadow bg-blue-700/10 px-7 rounded-lg text-center flex flex-col items-center gap-4 py-8"
-          >
-            <h2 class="text-6xl text-blue-700 font-plus font-bold">{{ contents.partner_count }}+</h2>
-            <p class="text-black/80 text-3xl">{{ contents.university_partner }}</p>
-          </div>
-          <div
-            data-aos="fade-up"
-            data-aos-delay="300"
-            class="shadow bg-blue-700/10 px-7 rounded-lg text-center flex flex-col items-center gap-4 py-8"
-          >
-            <h2 class="text-6xl text-blue-700 font-plus font-bold">{{ contents.student_count }}+</h2>
-            <p class="text-black/80 text-3xl">{{ contents.student_recruited }}</p>
-          </div>
-          <div
-            data-aos="fade-up"
-            data-aos-delay="500"
-            class="shadow bg-blue-700/10 px-7 rounded-lg text-center flex flex-col items-center gap-4 py-8"
-          >
-            <h2 class="text-6xl text-blue-700 font-plus font-bold">{{ contents.ex_count }}+</h2>
-            <p class="text-black/80 text-3xl">{{ contents.ex_title }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
 
     <!-- Mission & Vision -->
     <section class="py-12 pb-10 bg-blue-100/10">
@@ -254,6 +247,27 @@ const tabContent = (id: string) => {
   }
 };
 
+const homePage = ref([]);
+
+const getPage = async () => {
+  try {
+    const response: any = await $fetch(`${apiBase}/home-page`);
+    if (response && response.data) {
+      homePage.value = response.data;
+
+      // Safely set titles and descriptions
+      cardItems.value[0].title = response.data.ss_title || '';
+      cardItems.value[0].description = response.data.ss_description || '';
+      cardItems.value[1].title = response.data.consultation_title || '';
+      cardItems.value[1].description = response.data.consultation_description || '';
+      cardItems.value[2].title = response.data.support_title || '';
+      cardItems.value[2].description = response.data.support_description || '';
+    }
+  } catch (error) {
+    console.error("Error fetching home page:", error);
+  }
+}
+
 // Fetch About Page Content
 const getContents = async () => {
   const res: any = await $fetch(`${apiBase}/about-page`);
@@ -263,6 +277,7 @@ const getContents = async () => {
 onMounted(async () => {
   AOS.init({ once: true, duration: 800 });
   await getContents();
+  await getPage();
 });
 </script>
 
