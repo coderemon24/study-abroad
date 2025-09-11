@@ -159,7 +159,7 @@
             w-11/12
             ">
                 <div class="
-                
+                blog-content
                 ">
                     <div v-html="countryPage?.contents?.page_description"></div>
                 </div>
