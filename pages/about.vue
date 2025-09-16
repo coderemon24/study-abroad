@@ -37,7 +37,7 @@
             data-aos="fade-up"
             class="text-2xl mb-5 font-semibold text-black/80 title-design md:text-4xl uppercase"
           >
-            About Care2Training
+            About Care2 Training
           </h2>
           <div
             data-aos="fade-up"

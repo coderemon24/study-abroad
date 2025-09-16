@@ -206,7 +206,7 @@
                             <h4 class="
                             text-lg
                             text-black/90
-                            "><b>Uk:</b> Monday to Friday 9am - 5pm</h4>
+                            "><b>UK:</b> Monday to Friday 9am - 5pm</h4>
                         </li>
                         <li>
                             <h4 class="
@@ -321,14 +321,20 @@
                         text-lg
                         font-medium
                         ">{{ item.title }}</p>
-                        <p class="
+                        <div
+                        v-for="content in item.contents"
+                        >
+                            <a class="
                         hover:text-blue-700
                         transition-all
                         duration-300
                         cursor-pointer
+                        block
                         "
-                        v-for="phone in item.contents"
-                        >{{ phone }}</p>
+                        target="_blank"
+                        :href="getHref(item, content)"
+                        >{{ content }}</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -460,6 +466,7 @@ const quickLinks = ref([
 
 const footerAddress = ref([
    {
+    id: 'phone',
     title: 'Call Us',
     icon: 'fa-solid fa-phone',
     contents:[
@@ -468,6 +475,7 @@ const footerAddress = ref([
     ]
    },
    {
+    id: 'email',
     title: 'Email Us',
     icon: 'fa-solid fa-envelope',
     contents:[
@@ -476,6 +484,7 @@ const footerAddress = ref([
     ]
    },
    {
+    id: 'dhaka_office',
     title: 'Dhaka Office',
     icon: 'fa-solid fa-location-dot',
     contents:[
@@ -486,6 +495,7 @@ West Kazipara, Mirpur, Dhaka, Bangladesh`
     ]
    }, 
    {
+    id: 'uk_office',
     title: 'UK Office',
     icon: 'fa-solid fa-location-dot',
     contents:[
@@ -496,6 +506,25 @@ West Kazipara, Mirpur, Dhaka, Bangladesh`
     ]
    } 
 ]);
+
+const getHref = (item: any, content: string) => {
+  if (item.id === "email") {
+    return `mailto:${content.trim()}`;
+  }
+  if (item.id === "phone") {
+    // ফোনে +880 1842-497766 → tel:+8801842-497766
+    return `tel:${content.replace(/\s+/g, "")}`;
+  }
+  if (item.id === "dhaka_office") {
+    return 'https://maps.app.goo.gl/aDvycdZZrEYthLUS9';
+  }
+  if (item.id === "uk_office") {
+    return 'https://maps.app.goo.gl/E6U9bR5NRjEi2kiv7';
+  }
+  return "#";
+};
+
+
 const year = new Date().getFullYear();
 const scrollButton = ref(false);
 

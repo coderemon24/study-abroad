@@ -116,12 +116,18 @@
                      -mt-1
                      mb-1
                      ">{{ item?.title }}</h3>
-                        <p class="
+                        <a class="
                      text-gray-600
                      mb-2
-                     ">
+                     block
+                     hover:text-blue-700
+                     transition-all
+                     "
+                     target="_blank"
+                     :href="getHref(item, 'map')"
+                     >
                            {{ item?.address }}
-                        </p>
+                        </a>
                      </div>
                   </div>
                   <!-- phone -->
@@ -150,12 +156,18 @@
                      <div class="
                   w-4/5
                   ">
-                        <p class="
+                        <a class="
                      text-gray-600
                      mb-2
-                     ">
+                     block
+                     hover:text-blue-700
+                     transition-all
+                     " 
+                     target="_blank"
+                     :href="getHref(item, 'phone')"
+                     >
                            {{ item?.phone }}
-                        </p>
+                        </a>
                      </div>
                   </div>
                   <!-- email -->
@@ -184,12 +196,18 @@
                      <div class="
                   w-4/5
                   ">
-                        <p class="
+                        <a class="
                      text-gray-600
                      mb-2
-                     ">
+                     block
+                     hover:text-blue-700
+                     transition-all
+                     "
+                     :href="getHref(item, 'email')"
+                     target="_blank"
+                     >
                            {{ item?.email }}
-                        </p>
+                        </a>
                      </div>
                   </div>
                   
@@ -285,6 +303,18 @@ const getAdditionalContacts = async () => {
    }
 };
 
+const getHref = (item: any, type: "phone" | "email" | "map" = "map") => {
+  if(type === "email" && item.email){
+    return `mailto:${item.email.trim()}`;
+  }
+  if(type === "phone" && item.phone){
+    return `tel:${item.phone.replace(/\s+/g, "")}`;
+  }
+  if(type === "map" && item.map_link && item.map_link !== "0"){
+    return item.map_link;
+  }
+  return "#";
+};
 
 
 onMounted(() => {

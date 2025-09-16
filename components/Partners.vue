@@ -37,6 +37,24 @@ const swiper = useSwiper(containerRef, {
   autoplay: {
     delay: 2000,
   },
+  breakpoints: {
+    1140: {
+      slidesPerView: 5,
+      spaceBetween: 40,
+    },
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 30,
+    },
+    640: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    360: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+  }
 })
 
 onMounted(() => {

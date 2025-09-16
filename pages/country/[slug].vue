@@ -55,7 +55,7 @@
                     <p data-aos="fade-up" data-aos-delay="400" class="
              
              ">{{ countryPage?.contents?.hero_subtitle }}</p>
-             <NuxtLink data-aos="fade-up" :to="`/blog/${countryPage?.slug}`"
+             <NuxtLink data-aos="fade-up" :to="`/book-appointment`"
                         class="inline-block
                         cursor-pointer
                         bg-white

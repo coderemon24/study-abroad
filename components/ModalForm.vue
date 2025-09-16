@@ -23,7 +23,7 @@
       shadow-lg
       overflow-y-scroll
       max-h-[80vh]
-      md:overflow-hidden
+      md:overflow-y-auto
       md:max-h-full
       scale-0
       transition-all

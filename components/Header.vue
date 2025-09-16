@@ -74,10 +74,16 @@
               </li>
 
               <li v-for="item in details" class="hidden md:block">
-                <a class="text-sm text-gray-700" href="#">
+                <a class="text-sm text-gray-700" 
+                :class="[
+                  item.id
+                ]"
+                target="_blank"
+                :href="getHref(item)">
                   <i :class="item.icon"></i>
                   <span v-if="item.flag" :class="item.flag"></span>
-                  <span class="ml-2">{{ item.title }}</span>
+                  <span class="ml-2" v-if="item.dynamic !== 'yes'">{{ item.title }}</span>
+                  <span class="ml-2" v-else>+{{ item.title }}</span>
                 </a>
               </li>
             </ul>
@@ -287,10 +293,20 @@ const getCountries = async () => {
 const ap_btn = { name: 'Book an appointment', href: '/book-appointment' };
 
 const details = ref([
-  { title: 'support@care2training.com', icon: 'fa-solid fa-envelope' },
-  { title: '+8801712345678', flag: 'fi fi-bd' },
-  { title: '+44 0203 576 2072', flag: 'fi fi-gb' },
+  { id:'email', title: 'support@care2training.com', icon: 'fa-solid fa-envelope' },
+  { id:'phone', dynamic:'yes', title: '+8801712345678', flag: 'fi fi-bd' },
+  { id:'phone', title: '+44 0203 576 2072', flag: 'fi fi-gb' },
 ]);
+
+const getHref = (item: any) => {
+  if (item.id === "email") {
+    return `mailto:${item.title}`;
+  }
+  if (item.id === "phone") {
+    return `tel:${item.title.replace(/\s+/g, "")}`; // space remove for tel:
+  }
+  return "#";
+};
 
 const getContactInfos = async () => {
   const response: any = await $fetch(`${apiBase}/contact-infos`);
