@@ -56,7 +56,7 @@
                         <p class="">
                             <span class="text-red-500">📝</span>
                             <span class="font-bold ml-2">Description:</span>
-                            <p class="mt-2" v-html="event.description"></p>
+                            <div class="mt-2 blog-content" v-html="event.description"></div>
                         </p>
                     </div>
                 </div>
@@ -135,5 +135,10 @@ onMounted(() => {
 /* Optional: small shadow effect for icons/text */
 .flex>span:first-child {
     font-size: 1.25rem;
+}
+
+.blog-content>* {
+  all: revert;
+  display: revert;
 }
 </style>

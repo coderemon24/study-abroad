@@ -311,4 +311,9 @@ onMounted(async() => {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.blog-content>* {
+  all: revert;
+  display: revert;
+}
 </style>
