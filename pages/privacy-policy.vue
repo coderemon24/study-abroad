@@ -44,17 +44,6 @@
 
 <script lang="ts" setup>
 import AOS from 'aos';
-
-useHead({
-  title: 'Care2 Training – Privacy Policy',
-  meta: [
-    {
-      name: 'description',
-      content: 'Read Care2 Training\'s Privacy Policy to understand how we collect, use, and protect your personal information while providing study abroad, work abroad, and recruitment services.'
-    }
-  ]
-});
-
 const apiBase = useRuntimeConfig().public.apiBase
 
 const terms = ref({});
@@ -78,6 +67,27 @@ onMounted(() => {
   
   getprivacy();
   
+});
+
+
+const {data: metaInfo} = await useAsyncData('meta-info', () => 
+  $fetch(`${apiBase}/meta-info/policy`)
+)
+
+const metaData = ref({});
+
+if (metaInfo.value) {
+  metaData.value = metaInfo.value.data;
+}
+
+useSeoMeta({
+  title: () => metaData.value?.title || "Privacy Policy | Care2 Training",
+  description: () =>
+    metaData.value?.description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    metaData.value?.keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
 });
 
 </script>

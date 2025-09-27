@@ -68,16 +68,6 @@
 
 <script lang="ts" setup>
 
-useHead({
-  title: 'Care2 Training – Event Details',
-  meta: [
-    {
-      name: 'description',
-      content: 'Explore the details of our upcoming events including seminars, workshops, and student meets. Join Care2 Training to enhance your study abroad, work abroad, and recruitment journey.'
-    }
-  ]
-});
-
 const route = useRoute();
 const router = useRouter();
 const slug = route.params.slug;
@@ -127,6 +117,16 @@ const formatDate = (dateString: string) => {
 
 onMounted(() => {
     getEvent();
+});
+
+useSeoMeta({
+  title: () => event.value?.meta_title || "Event",
+  description: () =>
+    event.value?.meta_description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    event.value?.meta_keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
 });
 
 </script>

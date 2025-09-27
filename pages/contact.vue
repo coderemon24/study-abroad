@@ -259,22 +259,10 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
-useHead({
-  title: 'Care2 Training – Contact for Study Abroad, Work Abroad & Recruitment Services',
-  meta: [
-    {
-      name: 'description',
-      content: 'Contact Care2 Training for expert advice on study abroad, work abroad, and recruitment services. We are here to assist you on your journey.'
-    }
-  ]
-});
-
 const apiBase = useRuntimeConfig().public.apiBase;
-
 const contactInfos = ref([]);
-
 const defContact = ref({});
-
+const metaData = ref({});
 const getDefContact = async () => {
    try {
       const response :any = await $fetch(`${apiBase}/contact-infos`);
@@ -282,6 +270,7 @@ const getDefContact = async () => {
       if(response)
       {
          defContact.value = response.data;
+         metaData.value = response.meta_info;
       }
       
    } catch (error) {
@@ -330,6 +319,17 @@ onMounted(() => {
    getDefContact();
    getAdditionalContacts();
 });
+
+useSeoMeta({
+  title: () => metaData.value?.title || "Contact",
+  description: () =>
+    metaData.value?.description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    metaData.value?.keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
+});
+
 </script>
 
 <style></style>

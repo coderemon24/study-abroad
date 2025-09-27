@@ -62,7 +62,11 @@
                         <p class="">Have any queries?</p>
                         <p>
                             <span class="">Call: </span>
-                            <a class="text-gray-600" href="#">{{ contactInfo.phone }}</a>
+                            <a class="text-gray-600" :href="`tel:${contactInfo.phone}`">+{{ contactInfo.phone }} (BD)</a>
+                        </p>
+                        <p>
+                            <span class="">Call: </span>
+                            <a class="text-gray-600" :href="`tel:+44 0203 576 2072`">+44 0203 576 2072 (UK)</a>
                         </p>
                     </div>
                 </div>

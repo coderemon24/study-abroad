@@ -102,7 +102,7 @@
           </p>
           <NuxtLink class="
             btn-outline
-            " to="#contact">
+            " to="https://www.facebook.com/care2traininguk" target="_blank">
             <span class="relative z-10">Join Now</span>
           </NuxtLink>
         </div>
@@ -116,16 +116,6 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
-useHead({
-  title: 'Care2 Training – Become an Agent | Join Our Global Network',
-  meta: [
-    {
-      name: 'description',
-      content: 'Join Care2 Training as an agent and become part of our global network. Collaborate with us to provide exceptional study abroad, work abroad, and recruitment services.'
-    }
-  ]
-});
-
 onMounted(() => {
   nextTick(() => {
     AOS.init({
@@ -135,6 +125,28 @@ onMounted(() => {
   });
   
   AOS.refresh();
+});
+
+const apiBase = useRuntimeConfig().public.apiBase
+
+const {data: metaInfo} = await useAsyncData('meta-info', () => 
+  $fetch(`${apiBase}/meta-info/agent`)
+)
+
+const metaData = ref({});
+
+if (metaInfo.value) {
+  metaData.value = metaInfo.value.data;
+}
+
+useSeoMeta({
+  title: () => metaData.value?.title || "Become an Agent | Care2 Training",
+  description: () =>
+    metaData.value?.description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    metaData.value?.keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
 });
 
 </script>

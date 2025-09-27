@@ -65,27 +65,20 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
-useHead({
-  title: 'Care2 Training – Events: Seminars, Workshops & Student Meets',
-  meta: [
-    {
-      name: 'description',
-      content: 'Stay updated with Care2 Training\'s latest events including seminars, workshops, and student meets. Join us to explore opportunities in study abroad, work abroad, and recruitment services.'
-    }
-  ]
-});
-
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
 
 const events = ref([]);
+const metaData = ref({});
+
 const getEvents = async () => {
   try {
     const response = await $fetch(`${apiBase}/events`);
     
     if(response)
     {
-      events.value = response.data
+      events.value = response.data;
+      metaData.value = response.meta_info;
     }
     
   } catch (err) {
@@ -127,6 +120,15 @@ onMounted(() => {
   
 });
 
+useSeoMeta({
+  title: () => metaData.value?.title || "Events | Care2 Training",
+  description: () =>
+    metaData.value?.description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    metaData.value?.keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
+});
 
 </script>
 

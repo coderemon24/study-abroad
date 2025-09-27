@@ -90,15 +90,6 @@ import { useRoute } from 'vue-router'
 import type { TimelineItem } from '@nuxt/ui'
 import AOS from 'aos';
 
-useHead({
-  title: 'Care2 Training – Services for Study Abroad, Work Abroad & Recruitment',
-  meta: [
-    {
-      name: 'description',
-      content: 'Explore Care2 Training’s comprehensive services for study abroad, work abroad, and recruitment. Discover how we can support your global journey with expert guidance and personalized solutions.'
-    }
-  ]
-});
 
 onMounted(() => {
   nextTick(() => {
@@ -146,6 +137,16 @@ const process = ref<TimelineItem[]>([]);
 onMounted(() => {
   getService();
 
+});
+
+useSeoMeta({
+  title: () => service.value?.meta_title || "Services | Care2 Training",
+  description: () =>
+    service.value?.meta_description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    service.value?.meta_keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
 });
 
 </script>

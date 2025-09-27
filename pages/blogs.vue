@@ -1,10 +1,10 @@
 <template>
   <div class="overflow-hidden">
     <!-- Loader -->
-    <div v-if="pendingBlogs || pendingLatest" class="p-6">
-      <div class="h-6 w-40 bg-gray-200 animate-pulse mb-4"></div>
-      <div class="h-4 w-full bg-gray-200 animate-pulse mb-2"></div>
-      <div class="h-4 w-5/6 bg-gray-200 animate-pulse"></div>
+    <div v-if="pendingBlogs || pendingLatest" class="p-6 space-y-4">
+      <div class="h-6 w-40 bg-gray-200 animate-pulse rounded"></div>
+      <div class="h-4 w-full bg-gray-200 animate-pulse rounded"></div>
+      <div class="h-4 w-5/6 bg-gray-200 animate-pulse rounded"></div>
     </div>
 
     <!-- Main Content -->
@@ -110,6 +110,7 @@ const pendingBlogs = ref(true);
 const pendingLatest = ref(true);
 
 const getImgUrl = (url: string) => `${baseUrl}/${url}`;
+const metaData = ref<Record<string, string>>({});
 
 // Fetch Blogs
 const fetchBlogs = async (page = 1) => {
@@ -120,11 +121,12 @@ const fetchBlogs = async (page = 1) => {
   pendingBlogs.value = false;
 };
 
-// Fetch Latest Blogs
+// Fetch Latest Blogs + Meta
 const fetchLatestBlogs = async () => {
   pendingLatest.value = true;
   const res: any = await $fetch(`${apiBase}/latest-blogs`);
   latestBlogs.value = res.data;
+  metaData.value = res.meta_info || {};
   pendingLatest.value = false;
 };
 
@@ -144,5 +146,16 @@ onMounted(() => {
   fetchBlogs();
   fetchLatestBlogs();
   AOS.init({ once: true, duration: 800 });
+});
+
+// Reactive SEO Meta
+useSeoMeta({
+  title: () => metaData.value?.title || "Blogs",
+  description: () =>
+    metaData.value?.description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    metaData.value?.keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
 });
 </script>

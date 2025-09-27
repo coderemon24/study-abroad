@@ -60,8 +60,7 @@ export default defineNuxtConfig({
     baseURL: '/',
     head: {
       link: [
-        {rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css' },
-        {rel: 'icon', type: 'image/x-icon', href: '/favicon.webp'}
+        {rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css' }
       ]
     },
     pageTransition: { 

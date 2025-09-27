@@ -199,15 +199,6 @@
 <script lang="ts" setup>
 import AOS from 'aos';
 
-useHead({
-  title: 'Care2 Training – Country Information for Study Abroad, Work Abroad & Recruitment Services',
-  meta: [
-    {
-      name: 'description',
-      content: 'Explore detailed country information with Care2 Training. Get insights on study abroad, work abroad, and recruitment services to make informed decisions for your global journey.'
-    }
-  ]
-});
 
 const route = useRoute()
 const slug = route.params.slug
@@ -302,6 +293,17 @@ onMounted(async() => {
     await getCountryPage();
     await getPartners();
 });
+
+useSeoMeta({
+  title: () => countryPage.value?.meta_title || "Country",
+  description: () =>
+    countryPage.value?.meta_description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    countryPage.value?.meta_keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
+});
+
 </script>
 
 <style>

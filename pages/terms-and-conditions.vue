@@ -81,6 +81,27 @@ onMounted(() => {
   
 });
 
+
+const {data: metaInfo} = await useAsyncData('meta-info', () => 
+  $fetch(`${apiBase}/meta-info/terms`)
+)
+
+const metaData = ref({});
+
+if (metaInfo.value) {
+  metaData.value = metaInfo.value.data;
+}
+
+useSeoMeta({
+  title: () => metaData.value?.title || "Terms & Conditions | Care2 Training",
+  description: () =>
+    metaData.value?.description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    metaData.value?.keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
+});
+
 </script>
 
 <style scoped>

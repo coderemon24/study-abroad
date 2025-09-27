@@ -166,17 +166,6 @@
 <script lang="ts" setup>
 import AOS from "aos";
 
-useHead({
-  title: 'About Care2 Training – Education & Career Experts',
-  meta: [
-    {
-      name: 'description',
-      content: 'Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.'
-    }
-  ]
-});
-
-
 interface Tab {
   id: string;
   title: string;
@@ -247,37 +236,34 @@ const tabContent = (id: string) => {
   }
 };
 
-const homePage = ref([]);
+const metaData = ref({});
 
-const getPage = async () => {
-  try {
-    const response: any = await $fetch(`${apiBase}/home-page`);
-    if (response && response.data) {
-      homePage.value = response.data;
+const {data: aboutContent, pending, error} = await useAsyncData('about-content', () =>
+  $fetch(`${apiBase}/about-page`)
+);
 
-      // Safely set titles and descriptions
-      cardItems.value[0].title = response.data.ss_title || '';
-      cardItems.value[0].description = response.data.ss_description || '';
-      cardItems.value[1].title = response.data.consultation_title || '';
-      cardItems.value[1].description = response.data.consultation_description || '';
-      cardItems.value[2].title = response.data.support_title || '';
-      cardItems.value[2].description = response.data.support_description || '';
-    }
-  } catch (error) {
-    console.error("Error fetching home page:", error);
-  }
+if(aboutContent.value)
+{
+  contents.value = aboutContent.value?.about;
+  metaData.value = aboutContent.value?.meta_info;
 }
-
-// Fetch About Page Content
-const getContents = async () => {
-  const res: any = await $fetch(`${apiBase}/about-page`);
-  if (res?.data) contents.value = res.data;
-};
 
 onMounted(async () => {
   AOS.init({ once: true, duration: 800 });
-  await getContents();
-  await getPage();
+});
+
+useHead({
+  title: metaData.value.title || 'About Care2 Training',
+  meta: [
+    {
+      name: 'description',
+      content: metaData.value.description || 'Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.'
+    },
+    {
+      name: 'keywords',
+      content: metaData.value?.keywords || 'Care2 Training, Study Abroad, Career, Recruitment, Education'
+    }
+  ]
 });
 </script>
 

@@ -116,14 +116,26 @@ import img from '~/public/assets/images/appointment.jpg'
 import AOS from 'aos';
 import AppointmentForm from '~/components/AppointmentForm.vue';
 
-useHead({
-  title: 'Care2 Training – Book an Appointment for Study Abroad, Work Abroad & Recruitment Services',
-  meta: [
-    {
-      name: 'description',
-      content: 'Book an appointment with Care2 Training for personalized guidance on study abroad, work abroad, and recruitment services. Start your journey with expert support today.'
-    }
-  ]
+const apiBase = useRuntimeConfig().public.apiBase
+
+const {data: metaInfo} = await useAsyncData('meta-info', () => 
+  $fetch(`${apiBase}/meta-info/book-appointment`)
+)
+
+const metaData = ref({});
+
+if (metaInfo.value) {
+  metaData.value = metaInfo.value.data;
+}
+
+useSeoMeta({
+  title: () => metaData.value?.title || "Book Appointment | Care2 Training",
+  description: () =>
+    metaData.value?.description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    metaData.value?.keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
 });
 
 onMounted(() => {

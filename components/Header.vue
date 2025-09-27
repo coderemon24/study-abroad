@@ -243,10 +243,6 @@
 </template>
 
 <script lang="ts" setup>
-useHead({
-  link: [{ rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css' }],
-});
-
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -273,22 +269,13 @@ const apiBase = useRuntimeConfig().public.apiBase;
 const baseUrl = useRuntimeConfig().public.baseUrl;
 
 const generalSettings = ref({});
-const getGeneralSettings = async () => {
-  const response: any = await $fetch(`${apiBase}/general-settings`);
-  if (response) generalSettings.value = response.data;
-};
+
+const { data: headerData, pending, error } = await useAsyncData('header-data', () =>
+  $fetch(`${apiBase}/get-header`)
+  
+)
 
 const getImgUrl = (url: string) => `${baseUrl}/${url}`;
-
-const getServices = async () => {
-  const response: any = await $fetch(`${apiBase}/services`);
-  if (response) navItems.value[3].dropdown = response.data;
-};
-
-const getCountries = async () => {
-  const response: any = await $fetch(`${apiBase}/get-countries`);
-  if (response) navItems.value[2].dropdown = response.data;
-};
 
 const ap_btn = { name: 'Book an appointment', href: '/book-appointment' };
 
@@ -297,6 +284,15 @@ const details = ref([
   { id:'phone', dynamic:'yes', title: '+8801712345678', flag: 'fi fi-bd' },
   { id:'phone', title: '+44 0203 576 2072', flag: 'fi fi-gb' },
 ]);
+
+
+if(headerData.value){
+  generalSettings.value = headerData.value?.icons;
+  navItems.value[3].dropdown = headerData.value?.services;
+  navItems.value[2].dropdown = headerData.value?.countries;
+  details.value[0].title = headerData.value?.contacts?.email;
+  details.value[1].title = headerData.value?.contacts?.phone;
+}
 
 const getHref = (item: any) => {
   if (item.id === "email") {
@@ -308,13 +304,6 @@ const getHref = (item: any) => {
   return "#";
 };
 
-const getContactInfos = async () => {
-  const response: any = await $fetch(`${apiBase}/contact-infos`);
-  if (response) {
-    details.value[0].title = response.data.email;
-    details.value[1].title = response.data.phone;
-  }
-};
 
 const toggleMenu = () => {
   const menu = document.querySelector('#menu');
@@ -365,10 +354,13 @@ onMounted(() => {
   window.addEventListener('resize', checkScreen);
 
   stickyNav();
-  getServices();
-  getCountries();
-  getGeneralSettings();
-  getContactInfos();
+});
+
+useHead({
+  link: [
+    { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css' },
+    {rel: 'icon', type: 'image/x-icon', href: computed(() => getImgUrl(generalSettings.value?.site_favicon))},
+  ],
 });
 </script>
 

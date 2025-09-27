@@ -59,6 +59,30 @@
                   <div class="mb-5 blog-content">
                     <div v-html="blog.description"></div>
                   </div>
+                  
+                  <!-- author Section -->
+                <div class="mt-10 p-4 border-t border-b border-gray-200">
+                  
+                  <div class="flex gap-4">
+                    <img
+                      v-if="blog.user?.profile_picture"
+                      :src="getImgUrl(blog.user?.profile_picture)"
+                      alt="Author Avatar"
+                      class="w-20 h-20 
+                      rounded-full 
+                      border-2 border-blue-700
+                      object-cover
+                      "
+                    />
+                    <div class="w-[50%]">
+                      <p class="text-gray-500 text-sm">This is an article written by:</p>
+                      <h3 class="text-lg font-semibold">{{ blog.user?.name }}</h3>
+                      <p class="text-gray-500 text-sm">{{ blog.user?.designation }}</p>
+                      <p class="mt-2 text-gray-600 text-sm" v-html="blog.user?.details"></p>
+                    </div>
+                  </div>
+                </div>
+                  
                 </div>
               </div>
             </div>
@@ -79,15 +103,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 
-useHead({
-  title: 'Care2 Training – Blog Details on Study Abroad, Work Abroad & Recruitment Services',
-  meta: [
-    {
-      name: 'description',
-      content: 'Read the latest blog posts from Care2 Training on study abroad, work abroad, and recruitment services. Get expert insights and tips to guide your global journey.'
-    }
-  ]
-});
 
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
@@ -166,6 +181,17 @@ onMounted(() => {
   getCategories()
   getBlogs()
 })
+
+useSeoMeta({
+  title: () => blog.value?.meta_title || "Blogs",
+  description: () =>
+    blog.value?.meta_description ||
+    "Learn about Care2 Training’s mission to guide students and professionals worldwide with trusted study abroad, career, and recruitment services.",
+  keywords: () =>
+    blog.value?.meta_keywords ||
+    "Care2 Training, Study Abroad, Career, Recruitment, Education"
+});
+
 </script>
 
 <style scoped>
