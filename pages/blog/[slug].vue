@@ -195,7 +195,7 @@ useSeoMeta({
 </script>
 
 <style scoped>
-.blog-content>* {
+:deep(.blog-content *) {
   all: revert;
   display: revert;
 }

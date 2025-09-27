@@ -137,7 +137,7 @@ useSeoMeta({
     font-size: 1.25rem;
 }
 
-.blog-content>* {
+:deep(.blog-content *) {
   all: revert;
   display: revert;
 }

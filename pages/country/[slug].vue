@@ -314,7 +314,7 @@ useSeoMeta({
     background-repeat: no-repeat;
 }
 
-.blog-content>* {
+:deep(.blog-content *) {
   all: revert;
   display: revert;
 }
