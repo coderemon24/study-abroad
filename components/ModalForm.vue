@@ -78,25 +78,26 @@
 
 <script lang="ts" setup>
 const showModal = () => {
-    const modal = document.querySelector('.leadModal') as HTMLElement;
-    modal.classList.remove('scale-0');
-    modal.classList.add('scale-100');
-}
+  const modal = document.querySelector('.leadModal') as HTMLElement | null;
+  if (!modal) return; // null হলে কিছুই করবে না
+  
+  modal.classList.remove('scale-0');
+  modal.classList.add('scale-100');
+};
 
 const modalClose = () => {
-    const modal = document.querySelector('.leadModal') as HTMLElement;
-    const overlay = document.querySelector('.modalOverly') as HTMLElement;
-    
-    overlay.classList.add('hidden');
+  const modal = document.querySelector('.leadModal') as HTMLElement | null;
+  const overlay = document.querySelector('.modalOverly') as HTMLElement | null;
 
+  if (overlay) overlay.classList.add('hidden');
+  if (modal) {
     modal.classList.remove('scale-100');
     modal.classList.add('scale-0');
-}
-
-
+  }
+};
 
 onMounted(() => {
-    showModal();
+  showModal();
 });
 </script>
 
