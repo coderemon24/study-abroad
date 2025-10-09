@@ -47,7 +47,7 @@ onMounted(() => {
                     w-full
                     relative
                     ">
-                        <img width="100%" :src="getImgUrl(slide.image)" :alt="slide.title">
+                        <img width="100%" :src="getImgUrl(slide.image ?? '')" :alt="slide.title">
 
                         <div class="
                         w-full

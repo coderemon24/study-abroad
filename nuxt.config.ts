@@ -39,6 +39,10 @@ export default defineNuxtConfig({
     }
   },
   ssr: false,
+  target: 'static',
+  generate: {
+    fallback: true
+  },
   devtools: { enabled: false },
   runtimeConfig: {
       public: {

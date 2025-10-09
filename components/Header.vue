@@ -94,7 +94,7 @@
         <div class="md:hidden container w-11/12 mx-auto">
           <div class="flex items-center justify-between py-5">
             <NuxtLink to="/">
-              <img class="w-12" :src="getImgUrl(generalSettings?.site_logo)" alt="main-logo" />
+              <img class="w-12" :src="getImgUrl(generalSettings?.site_logo ?? '')" alt="main-logo" />
             </NuxtLink>
 
             <a href="javascript:void(0)" @click="toggleMenu" class="text-black">
@@ -158,7 +158,7 @@
 
               <div class="hidden md:block">
                 <NuxtLink to="/">
-                  <img class="w-20" :src="getImgUrl(generalSettings?.site_logo)" alt="logo" />
+                  <img class="w-20" :src="getImgUrl(generalSettings?.site_logo ?? '')" alt="logo" />
                 </NuxtLink>
               </div>
 
@@ -270,9 +270,11 @@ const baseUrl = useRuntimeConfig().public.baseUrl;
 
 const generalSettings = ref({});
 
-const { data: headerData, pending, error } = await useAsyncData('header-data', () =>
+if (!apiBase) {
+  console.error('❌ apiBase is missing in runtime config!');
+}
+const { data: headerData } = await useAsyncData('header-data', () =>
   $fetch(`${apiBase}/get-header`)
-  
 )
 
 const getImgUrl = (url: string) => `${baseUrl}/${url}`;
@@ -359,7 +361,7 @@ onMounted(() => {
 useHead({
   link: [
     { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css' },
-    {rel: 'icon', type: 'image/x-icon', href: computed(() => getImgUrl(generalSettings.value?.site_favicon))},
+    {rel: 'icon', type: 'image/x-icon', href: computed(() => getImgUrl(generalSettings.value?.site_favicon ?? ''))},
   ],
 });
 </script>

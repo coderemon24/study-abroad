@@ -74,7 +74,7 @@ onMounted(() => {
               :key="i"
               class="bg-white p-2 flex items-center justify-center cursor-pointer "
             >
-              <img class="w-10/12" :src="getImgUrl(item.image)" />
+              <img class="w-10/12" :src="getImgUrl(item.image ?? '')" />
             </div>
           </div>
         </swiper-slide>

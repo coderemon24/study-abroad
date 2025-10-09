@@ -71,7 +71,7 @@
             md:block
             w-1/4
             absolute
-            " :src="logo" alt="logo" >
+            " :src="logo ?? ''" alt="logo" >
             
             <img 
             data-aos="fade-right"
@@ -79,7 +79,7 @@
             md:w-[22rem]
             float-end
             md:ml-[15rem]
-            " :src="getImgUrl(props.data?.man)" alt="ceo" >
+            " :src="getImgUrl(props.data?.man ?? '')" alt="ceo" >
             
             <div class="
             circle-shape
@@ -95,7 +95,7 @@
             right-[9rem]
             top-[19rem]
             z-[-1]
-            " :src="getImgUrl(props.data?.passport)" alt="passport" >
+            " :src="getImgUrl(props.data?.passport ?? '')" alt="passport" >
             
             <div 
             data-aos="fade-up"

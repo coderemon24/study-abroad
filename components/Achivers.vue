@@ -48,7 +48,7 @@ onMounted(() => {
     hover:shadow-lg
     hover:shadow-blue-600/30
     ">
-        <img :src="getImgUrl(item.image)" width="100%" height="320" class="overflow-hidden">
+        <img :src="getImgUrl(item.image ?? '')" width="100%" height="320" class="overflow-hidden">
         <h2 class="
         p-3
         text-black/90

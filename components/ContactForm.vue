@@ -254,7 +254,7 @@ const clearFieldError = (field: string) => {
       v-if="!contactPage"
       class="hidden md:flex flex-1 justify-center"
     >
-      <img class="w-[80%] object-fit" :src="getImgUrl(contactImg)" alt="contact-image" />
+      <img class="w-[80%] object-fit" :src="getImgUrl(contactImg ?? '')" alt="contact-image" />
     </div>
   </div>
 </template>
