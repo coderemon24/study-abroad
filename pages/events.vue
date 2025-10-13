@@ -1,5 +1,8 @@
 <template>
-  <div class="overflow-hidden">
+  <div v-if="pending" class="overflow-hidden">
+    <PlaceholderLoader />
+  </div>
+  <div v-else class="overflow-hidden">
     <div class="
   text-black/70
   py-8
@@ -70,6 +73,7 @@ const baseUrl = useRuntimeConfig().public.baseUrl
 
 const events = ref([]);
 const metaData = ref({});
+const pending = ref(true);
 
 const getEvents = async () => {
   try {
@@ -79,6 +83,7 @@ const getEvents = async () => {
     {
       events.value = response.data;
       metaData.value = response.meta_info;
+      pending.value = false
     }
     
   } catch (err) {

@@ -1,5 +1,9 @@
 <template>
-    <div class="overflow-hidden">
+    <div class="overflow-hidden" v-if="pending" >
+        <PlaceholderLoader />
+    </div>
+    
+    <div class="overflow-hidden" v-else>
         <div class="
   py-8
   text-black/70
@@ -205,6 +209,8 @@ const slug = route.params.slug
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
 
+const pending = ref(true)
+
 const cardItems = ref([
     {
         icon: 'fa-solid fa-graduation-cap',
@@ -239,6 +245,7 @@ const getCountryPage = async () => {
 
         countryPage.value = response.data
         countryId.value = response.data.id
+        pending.value = false
 
         cardItems.value = [
             {

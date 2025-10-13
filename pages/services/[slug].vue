@@ -108,6 +108,7 @@ const slug = route.params.slug;
 const apiBase = useRuntimeConfig().public.apiBase
 
 const service = ref({})
+const pending = ref(true);
 
 const getService = async () => {
   const response: any = await $fetch(`${apiBase}/services/${slug}`);
@@ -119,6 +120,7 @@ const getService = async () => {
   
   if (response) {
     service.value = response.data;
+    pending.value = false
 
     if (response.data?.process) {
       process.value = response.data.process.map((item: any) => ({

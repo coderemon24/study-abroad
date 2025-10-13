@@ -190,7 +190,7 @@
                     :class="[
                       'absolute z-50 bg-white shadow-md md:shadow-none md:pt-7 p-4 border border-gray-300 md:border-0 w-full md:w-56 overflow-hidden transition-all duration-300 ease-in-out md:border-b-2 md:border-blue-700',
                       item.dropdown.length > 8 ? 'grid md:grid-cols-2 gap-2 md:w-96' : 'block',
-                      isMobile ? (activeDropdown === item.name ? 'relative visible opacity-100 translate-y-0' : 'hidden') : 'invisible translate-y-[80%] opacity-0 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100'
+                      isMobile ? (activeDropdown === item.name ? 'relative visible opacity-100 ' : 'hidden') : 'invisible  opacity-0 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100'
                     ]"
                   >
                     <li class="relative py-1" v-for="dropdown in item.dropdown" :key="dropdown.slug">

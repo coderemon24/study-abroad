@@ -134,6 +134,7 @@ const {data: metaInfo} = await useAsyncData('meta-info', () =>
 )
 
 const metaData = ref({});
+const pending = ref(true);
 
 if (metaInfo.value) {
   metaData.value = metaInfo.value.data;

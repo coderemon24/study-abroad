@@ -1,5 +1,8 @@
 <template>
-    <div class="overflow-hidden">
+    <div v-if="pending" class="overflow-hidden">
+        <PlaceholderLoader />
+    </div>
+    <div v-else class="overflow-hidden">
         <section class=" text-gray-800">
 
         <div class="container mx-auto w-11/12">
@@ -74,6 +77,7 @@ const slug = route.params.slug;
 
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
+const pending = ref(true)
 
 // Example Event Data
 const event = ref({});
@@ -88,6 +92,7 @@ const getEvent = async () => {
         
         if (response) {
             event.value = response.data;
+            pending.value = false
         }
     }catch (error) {
         router.push('/errors/404')

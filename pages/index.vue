@@ -7,7 +7,7 @@
         <div class="h-6 bg-gray-300 rounded w-1/2"></div>
         <div class="h-64 bg-gray-200 rounded"></div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
-          <div v-for="i in 3" :key="i" class="h-40 bg-gray-200 rounded"></div>
+          <div v-for="i in 5" :key="i" class="h-40 bg-gray-200 rounded"></div>
         </div>
       </div>
     </div>

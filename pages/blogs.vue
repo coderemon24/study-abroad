@@ -2,9 +2,7 @@
   <div class="overflow-hidden">
     <!-- Loader -->
     <div v-if="pendingBlogs || pendingLatest" class="p-6 space-y-4">
-      <div class="h-6 w-40 bg-gray-200 animate-pulse rounded"></div>
-      <div class="h-4 w-full bg-gray-200 animate-pulse rounded"></div>
-      <div class="h-4 w-5/6 bg-gray-200 animate-pulse rounded"></div>
+      <PlaceholderLoader />
     </div>
 
     <!-- Main Content -->

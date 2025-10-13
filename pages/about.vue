@@ -1,5 +1,9 @@
 <template>
-  <div class="overflow-hidden">
+  <div v-if="pendingContent" class="overflow-hidden">
+    <PlaceholderLoader />
+  </div>
+  
+  <div v-else class="overflow-hidden">
     <div class="py-8 pb-0 text-black/80">
     <div class="container w-11/12 mx-auto">
       <!-- Breadcrumb -->
@@ -191,7 +195,6 @@ interface Content {
 const config = useRuntimeConfig();
 const apiBase = config.public.apiBase;
 const baseUrl = config.public.baseUrl;
-
 const contents = ref<Content>({
   main_title: "",
   subtitle: "",
@@ -207,7 +210,7 @@ const contents = ref<Content>({
   vision: "",
   values: ""
 });
-
+const pendingContent = ref(true);
 const tabs = ref<Tab[]>([
   { id: "mission", title: "Our Mission", content: "" },
   { id: "vision", title: "Our Vision", content: "" },
@@ -246,6 +249,7 @@ if(aboutContent.value)
 {
   contents.value = aboutContent.value?.about;
   metaData.value = aboutContent.value?.meta_info;
+  pendingContent.value = false
 }
 
 onMounted(async () => {
