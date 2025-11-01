@@ -1,21 +1,19 @@
 <script setup lang="ts">
 
+defineProps({
+    slides: {
+        type: Array,
+        default: () => []
+    }
+})
+
 const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
 const containerRef = ref(null)
-const slides = ref([])
-
-const getSliders = async () => {
-    const response: any = await $fetch(`${apiBase}/sliders`);
-    if (response) {
-        slides.value = response.data;
-    }
-}
 
 const getImgUrl = (url: string) => {
     return `${baseUrl}/${url}`
 }
-
 
 const swiper = useSwiper(containerRef, {
     effect: 'slide',
@@ -26,9 +24,6 @@ const swiper = useSwiper(containerRef, {
     },
 })
 
-onMounted(() => {
-    getSliders()
-})
 </script>
 
 <template>

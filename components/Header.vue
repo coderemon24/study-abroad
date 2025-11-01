@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div
+    
+    <div v-if="pending">
+      <PlaceholderLoader />
+    </div>
+    
+    <div v-else
       class="
         sticky_header 
         w-full top-0 z-99
@@ -273,7 +278,7 @@ const generalSettings = ref({});
 if (!apiBase) {
   console.error('❌ apiBase is missing in runtime config!');
 }
-const { data: headerData } = await useAsyncData('header-data', () =>
+const { data: headerData, pending } = await useAsyncData('header-data', () =>
   $fetch(`${apiBase}/get-header`)
 )
 

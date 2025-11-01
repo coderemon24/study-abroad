@@ -582,43 +582,26 @@ const submitForm = async () => {
 }
 
 const contactInfo = ref({});
-
-const getContactInfos = async () => {
-    const response: any = await $fetch(`${apiBase}/contact-infos`);
-    if(response)
-    {
-        contactInfo.value = response.data
-    }
-}
-
 const destinations = ref([]);
 const gSettings = ref({});
 
-const getDestinations = async () => {
-    const response: any = await $fetch(`${apiBase}/top-study-destinations`);
-    if(response)
-    {
-        destinations.value = response.data
-    }
-}
+const { data: footer, pending, error } = useAsyncData('footer', () =>
+  $fetch(`${apiBase}/get-footer`)
+);
 
-const getGeneralSettings = async () => {
-    const response: any = await $fetch(`${apiBase}/general-settings`);
-    if(response)
-    {
-        gSettings.value = response.data
-    }
-}
+watchEffect(() => {
+  if (footer.value) {
+    destinations.value = footer.value.countries;
+    gSettings.value = footer.value.settings;
+    contactInfo.value = footer.value.contact_infos;
+  }
+})
+
+
+
 const getImgUrl = (imgPath: string) => {
     return imgPath ? `${baseUrl}/` + imgPath : '';
 }
-
-
-onMounted(() => {
-    getContactInfos();
-    getDestinations();
-    getGeneralSettings();
-})
 
 
 </script>

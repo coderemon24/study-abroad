@@ -12,6 +12,7 @@
     z-999
     bg-black/50
     modalOverly
+    hidden
     "></div>
 
         <div class="container mx-auto w-11/12">
@@ -79,10 +80,12 @@
 <script lang="ts" setup>
 const showModal = () => {
   const modal = document.querySelector('.leadModal') as HTMLElement | null;
+  const overlay = document.querySelector('.modalOverly') as HTMLElement | null;
   if (!modal) return; // null হলে কিছুই করবে না
   
   modal.classList.remove('scale-0');
   modal.classList.add('scale-100');
+  overlay?.classList.remove('hidden');
 };
 
 const modalClose = () => {
@@ -97,7 +100,9 @@ const modalClose = () => {
 };
 
 onMounted(() => {
-  showModal();
+  setTimeout(() => {
+    showModal();
+  },3000)
 });
 </script>
 

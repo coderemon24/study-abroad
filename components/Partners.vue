@@ -1,36 +1,33 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useRuntimeConfig } from '#app'
+
+const props = defineProps<{
+  slides: Array<{ image: string }>
+}>()
+
 const containerRef = ref(null)
-const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
 
-const slides = ref<any[]>([])
+// props.slides কে reactive local variable এ assign করা
+const slides = ref(props.slides ?? [])
 
-// প্রতি স্লাইডে ২টা logo রাখার জন্য chunk তৈরি করছি
 const chunkedSlides = computed(() => {
   const chunkSize = 2
-  const result = []
+  const result: any[] = []
   for (let i = 0; i < slides.value.length; i += chunkSize) {
     result.push(slides.value.slice(i, i + chunkSize))
   }
   return result
 })
 
-const getPartners = async () => {
-  const response: any = await $fetch(`${apiBase}/partners`)
-  if (response) {
-    slides.value = response.data
-  }
-}
-
 const getImgUrl = (url: string) => {
-  return `${baseUrl}/${url}`
+  return url ? `${baseUrl}/${url}` : '/placeholder.png'
 }
 
 const swiper = useSwiper(containerRef, {
   effect: 'slide',
-  slidesPerView: 5, // প্রতি স্লাইডে শুধু ১ ব্লক (যেখানে ২টা লোগো থাকবে)
+  slidesPerView: 5,
   spaceBetween: 20,
   speed: 2000,
   loop: true,
@@ -38,27 +35,11 @@ const swiper = useSwiper(containerRef, {
     delay: 2000,
   },
   breakpoints: {
-    1140: {
-      slidesPerView: 5,
-      spaceBetween: 40,
-    },
-    768: {
-      slidesPerView: 4,
-      spaceBetween: 30,
-    },
-    640: {
-      slidesPerView: 3,
-      spaceBetween: 20,
-    },
-    360: {
-      slidesPerView: 2,
-      spaceBetween: 10,
-    },
+    1140: { slidesPerView: 5, spaceBetween: 40 },
+    768: { slidesPerView: 4, spaceBetween: 30 },
+    640: { slidesPerView: 3, spaceBetween: 20 },
+    360: { slidesPerView: 2, spaceBetween: 10 },
   }
-})
-
-onMounted(() => {
-  getPartners()
 })
 </script>
 
@@ -66,15 +47,10 @@ onMounted(() => {
   <div class="relative">
     <ClientOnly>
       <swiper-container ref="containerRef" :init="false">
-        <!-- এখানে প্রতিটা slide এ ২টা logo দেখাবে -->
-        <swiper-slide class="" v-for="(slide, idx) in chunkedSlides" :key="idx">
+        <swiper-slide v-for="(slide, idx) in chunkedSlides" :key="idx">
           <div class="grid grid-rows-2 gap-4">
-            <div
-              v-for="(item, i) in slide"
-              :key="i"
-              class="bg-white p-2 flex items-center justify-center cursor-pointer "
-            >
-              <img class="w-10/12" :src="getImgUrl(item.image ?? '')" />
+            <div v-for="(item, i) in slide" :key="i" class="bg-white p-2 flex items-center justify-center cursor-pointer">
+              <img class="w-10/12" :src="getImgUrl(item.image)" />
             </div>
           </div>
         </swiper-slide>
@@ -84,5 +60,5 @@ onMounted(() => {
 </template>
 
 <style lang="css">
-/* চাইলে custom css যোগ করতে পারো */
+/* custom CSS */
 </style>

@@ -17,10 +17,7 @@
       <!-- hero section -->
       <section>
         <AppSwiper
-          :data="homePage.hero"
-          :title="homePage.main_title"
-          :subtitle="homePage.subtitle"
-          :description="homePage.hero_description"
+          :slides="sliders"
         />
       </section>
 
@@ -49,7 +46,7 @@
             <h4 data-aos="fade-up" class="text-gray-500 capitalize mb-1">Our Partners</h4>
             <h2 data-aos="fade-up" data-aos-delay="200" class="title-design text-3xl text-black/90">Building Future Together</h2>
           </div>
-          <Partners data-aos="fade-up" :partners="homePage.universities || []" />
+          <Partners data-aos="fade-up" :slides="partners || []" />
         </div>
       </section>
 
@@ -106,7 +103,7 @@
             <h4 data-aos="fade-up" class="text-gray-500 capitalize mb-1">Success Story</h4>
             <h2 data-aos="fade-up" data-aos-delay="200" class="title-design text-3xl text-black/90">Voice of Achievers</h2>
           </div>
-          <Achivers data-aos="fade-up" prevIcon="i-lucide-chevron-left" nextIcon="i-lucide-chevron-right" />
+          <Achivers :items="achivers" data-aos="fade-up" prevIcon="i-lucide-chevron-left" nextIcon="i-lucide-chevron-right" />
         </div>
       </section>
 
@@ -159,6 +156,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import AOS from 'aos';
+import { slider } from '#build/ui';
 const apiBase = useRuntimeConfig().public.apiBase;
 // useAsyncData to fetch home page content
 const { data: homeData, pending, error } = await useAsyncData('home-page', () =>
@@ -174,6 +172,9 @@ const cardItems = ref([
 const serviceItems = ref([]);
 const aboutItems = ref({});
 const metaInfo = ref({});
+const sliders = ref([]);
+const achivers = ref([]);
+const partners = ref([]);
 
 if (homeData.value) {
   homePage.value = homeData.value.home;
@@ -192,6 +193,12 @@ if (homeData.value) {
   aboutItems.value = homeData.value.about || {};
   // Meta
   metaInfo.value = homeData.value.meta_data || {};
+  // Sliders
+  sliders.value = homeData.value.sliders || [];
+  // Achivers
+  achivers.value = homeData.value.success_stories || [];
+  // Partners
+  partners.value = homeData.value.partners || [];
 }
 
 // initialize AOS

@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 
       routes.push(...countryRoutes, ...serviceRoutes, ...blogRoutes, ...eventRoutes)
 
-      console.log("✅ Pre-render routes:", routes)
+      // console.log("Pre-render routes:", routes)
 
       nitroConfig.prerender = nitroConfig.prerender || {}
       nitroConfig.prerender.routes = [
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  ssr: false,
+  ssr: true,
   target: 'static',
   generate: {
     fallback: true
@@ -64,7 +64,7 @@ export default defineNuxtConfig({
     baseURL: '/',
     head: {
       link: [
-        {rel: 'icon', href:'/favicon.webp', type: 'image/x-icon'},
+        {rel: 'icon', href:'/favicon.ico', type: 'image/x-icon'},
         {rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css' }
       ]
     },

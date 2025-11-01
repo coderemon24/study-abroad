@@ -2,27 +2,13 @@
 defineProps<{
   prevIcon?: string
   nextIcon?: string
+  items: Array<any>
 }>()
 
-const apiBase = useRuntimeConfig().public.apiBase
 const baseUrl = useRuntimeConfig().public.baseUrl
-const items = ref([]);
-
-const getStories = async () => {
-  const response: any = await $fetch(`${apiBase}/success-stories`);
-  if (response) {
-    items.value = response.data;
-  }
-}
-
 const getImgUrl = (url: string) => {
   return `${baseUrl}/${url}`
 }
-
-
-onMounted(() => {
-  getStories();
-})
 
 </script>
 
